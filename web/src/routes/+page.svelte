@@ -1,0 +1,9 @@
+<script>
+    import Page from '$lib/components/Page.svelte';
+</script>
+
+<Page>
+    <a href="/elections">
+        Elections
+    </a>
+</Page>

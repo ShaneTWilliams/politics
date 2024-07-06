@@ -1,0 +1,17 @@
+# Pol
+/sources
+/artifacts
+
+# Python
+/.venv
+*.egg-info
+__pycache__
+
+# Web
+/web/node_modules
+/web/.svelte-kit
+/web/build
+/web/src/lib/artifacts
+
+# OS
+.DS_Store
