@@ -1,16 +1,19 @@
-import click
 import sys
 
+import click
 from pol.targets import *
+
 
 @click.group()
 def cli():
     pass
 
+
 def main():
     cli.add_command(scratch)
     cli.add_command(build)
     cli.add_command(serve_web)
+    cli.add_command(format_code, "format")
 
     try:
         ctx = cli.make_context("cli", sys.argv[1:])

@@ -1,9 +1,10 @@
 <script>
-	import { onMount, afterUpdate } from "svelte";
+	import { onMount } from "svelte";
 
     import ridings from "$lib/artifacts/riding.json"
     import runs from "$lib/artifacts/run.json"
     import parties from "$lib/artifacts/party.json"
+    import elections from "$lib/artifacts/election.json"
 
     const COLOR_TO_FILL = {
         "RED":      "fill-red-700",
@@ -32,7 +33,7 @@
         "PINK":     "hover:fill-pink-500",
     };
 
-    export let selectedRiding = null;
+    export let selectedRiding, electionId;
 
     let svgEl;
     let x = 0;
@@ -49,19 +50,19 @@
     }
 
     let ridingsToShow = {};
-    for (const [ridingId, riding] of Object.entries(ridings)) {
-        if (riding.start_date.year != 1867) {
-            continue;
-        }
-        for (const [runId, run] of Object.entries(runs)) {
-            if (run.riding === ridingId && 
-            (run.result === "ELECTED" || run.result === "ACCLAIMED")) {
-                let color = parties[run.party].color;
-                ridingsToShow[ridingId] = {
-                    ...riding,
-                    color: color
-                };
+    let election = elections[electionId];
+    for (const runId of election.runs) {
+        let run = runs[runId];
+        let riding = ridings[run.riding];
+        if ((run.result === "ELECTED" || run.result === "ACCLAIMED")) {
+            let color = parties[run.party].color;
+            if (color === null) {
+                console.log("No color for: " + parties[run.party].name)
             }
+            ridingsToShow[run.riding] = {
+                ...riding,
+                color: color
+            };
         }
     }
 
@@ -79,17 +80,15 @@
 >
     <g transform='scale(1,-1)' bind:this={svgEl}>
         {#each Object.entries(ridingsToShow) as [id, riding]}
-        {#if riding.geometry !== null && riding.start_date.year === 1867}
         <g class={`
             stroke-white stroke-[1000]
-            ${COLOR_TO_HOVER_FILL[riding.color]}
-            ${selectedRiding == id ? "fill-black hover:fill-black" : COLOR_TO_FILL[riding.color]}
+            ${selectedRiding == id ? "" : COLOR_TO_HOVER_FILL[riding.color]}
+            ${selectedRiding == id ? "fill-black" : COLOR_TO_FILL[riding.color]}
         `}
             on:click={() => {selectedRiding = id}
         }>
             {@html riding.geometry}
         </g>
-        {/if}
         {/each}
     </g>
 </svg>

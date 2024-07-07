@@ -1,13 +1,13 @@
+import abc
+import datetime
 import enum
 import typing
-import datetime
-import abc
 
-HASH_MODULUS = 1000000000
 
 class ElectionType(enum.Enum):
     GENERAL = 1
     BYELECTION = 2
+
 
 class ElectionResult(enum.Enum):
     ELECTED = 1
@@ -21,14 +21,16 @@ class ElectionResult(enum.Enum):
             "Elected": ElectionResult.ELECTED,
             "Elected (Acclamation)": ElectionResult.ACCLAIMED,
             "Defeated": ElectionResult.DEFEATED,
-            "Elected (Court decision)": ElectionResult.ELECTED_COURT_DECISION
+            "Elected (Court decision)": ElectionResult.ELECTED_COURT_DECISION,
         }[s]
+
 
 class Gender(enum.Enum):
     FEMALE = 1
     MALE = 2
     OTHER = 3
     UNKNOWN = 4
+
 
 class Province(enum.Enum):
     AB = 1
@@ -60,8 +62,9 @@ class Province(enum.Enum):
             "Prince Edward Island": Province.PE,
             "Quebec": Province.QC,
             "Saskatchewan": Province.SK,
-            "Yukon": Province.YT
+            "Yukon": Province.YT,
         }[name]
+
 
 class Color(enum.Enum):
     RED = 1
@@ -78,12 +81,12 @@ class Color(enum.Enum):
 
 
 class Record(abc.ABC):
-    @abc.abstractmethod
     def id(self) -> str:
-        pass
+        return str(self.__hash__())
 
+    @abc.abstractmethod
     def __hash__(self):
-        return hash(self.id())
+        pass
 
     def to_json(self):
         ret = {}
@@ -93,11 +96,7 @@ class Record(abc.ABC):
             elif isinstance(v, Record):
                 ret[k] = v.id()
             elif isinstance(v, datetime.date):
-                ret[k] = {
-                    "year": v.year,
-                    "month": v.month,
-                    "day": v.day
-                }
+                ret[k] = {"year": v.year, "month": v.month, "day": v.day}
             else:
                 ret[k] = v
 
@@ -109,16 +108,16 @@ class Party(Record):
         self.name = name
         self.color = color
 
-    def id(self):
-        return str(hash(self.name) % HASH_MODULUS)
+    def __hash__(self):
+        return hash(self.name)
 
 
 class Parliament(Record):
     def __init__(self, number: int):
         self.number = number
 
-    def id(self):
-        return str(self.number)
+    def __hash__(self):
+        return hash(self.number)
 
 
 class Riding(Record):
@@ -128,7 +127,7 @@ class Riding(Record):
         province: Province,
         geometry: str,
         start_date: datetime.date,
-        end_date: datetime.date
+        end_date: datetime.date,
     ):
         self.name = name
         self.province = province
@@ -136,9 +135,9 @@ class Riding(Record):
         self.start_date = start_date
         self.end_date = end_date
 
-    def id(self):
+    def __hash__(self):
         # Riding geometry changes over time.
-        return str((hash(self.geometry) + hash(self.name)) % HASH_MODULUS)
+        return hash(self.geometry) + hash(self.name)
 
 
 class Election(Record):
@@ -153,25 +152,21 @@ class Election(Record):
         self.parliament = parliament
         self.runs = []
 
-    def id(self):
-        return str(hash(self.date) % HASH_MODULUS)
+    def __hash__(self):
+        return hash(self.date)
 
 
 class Candidate(Record):
     def __init__(
-        self,
-        first_name: str,
-        last_name: str,
-        gender: Gender,
-        occupation: str
+        self, first_name: str, last_name: str, gender: Gender, occupation: str
     ):
         self.first_name = first_name
         self.last_name = last_name
         self.gender = gender
         self.occupation = occupation
 
-    def id(self):
-        return str(hash(self.first_name + self.last_name) % HASH_MODULUS)
+    def __hash__(self):
+        return hash(self.first_name) + hash(self.last_name)
 
 
 class Run(Record):
@@ -191,5 +186,5 @@ class Run(Record):
         self.result = result
         self.votes = votes
 
-    def id(self):
-        return str((hash(self.election) + hash(self.riding) + hash(self.candidate)) % HASH_MODULUS)
+    def __hash__(self):
+        return hash(self.election) + hash(self.riding) + hash(self.candidate)
