@@ -1,7 +1,14 @@
 import abc
+import base64
 import datetime
 import enum
+import hashlib
 import typing
+
+
+def hash_string(s: str):
+    hash_bytes = hashlib.sha1(s.encode()).digest()
+    return base64.urlsafe_b64encode(hash_bytes).decode()[:10]
 
 
 class ElectionType(enum.Enum):
@@ -81,13 +88,6 @@ class Color(enum.Enum):
 
 
 class Record(abc.ABC):
-    def id(self) -> str:
-        return str(self.__hash__())
-
-    @abc.abstractmethod
-    def __hash__(self):
-        pass
-
     def to_json(self):
         ret = {}
         for k, v in vars(self).items():
@@ -108,16 +108,16 @@ class Party(Record):
         self.name = name
         self.color = color
 
-    def __hash__(self):
-        return hash(self.name)
+    def id(self):
+        return hash_string(self.name)
 
 
 class Parliament(Record):
     def __init__(self, number: int):
         self.number = number
 
-    def __hash__(self):
-        return hash(self.number)
+    def id(self):
+        return str(self.number)
 
 
 class Riding(Record):
@@ -135,9 +135,9 @@ class Riding(Record):
         self.start_date = start_date
         self.end_date = end_date
 
-    def __hash__(self):
+    def id(self):
         # Riding geometry changes over time.
-        return hash(self.geometry) + hash(self.name)
+        return hash_string(self.geometry + self.name)
 
 
 class Election(Record):
@@ -152,8 +152,8 @@ class Election(Record):
         self.parliament = parliament
         self.runs = []
 
-    def __hash__(self):
-        return hash(self.date)
+    def id(self):
+        return hash_string(str(self.date))
 
 
 class Candidate(Record):
@@ -165,8 +165,8 @@ class Candidate(Record):
         self.gender = gender
         self.occupation = occupation
 
-    def __hash__(self):
-        return hash(self.first_name) + hash(self.last_name)
+    def id(self):
+        return hash_string(self.first_name + self.last_name)
 
 
 class Run(Record):
@@ -186,5 +186,10 @@ class Run(Record):
         self.result = result
         self.votes = votes
 
-    def __hash__(self):
-        return hash(self.election) + hash(self.riding) + hash(self.candidate)
+    def id(self):
+        return hash_string(
+            str(self.election.date)
+            + self.riding.name
+            + self.candidate.last_name
+            + self.candidate.first_name
+        )
