@@ -58,8 +58,3 @@ def format_code():
     )
     run_cmd(["black", PYTHON_PACKAGE_DIR], "Failed to format Python code")
     click.secho("Successfully formatted Python code", bold=True, fg="green")
-
-@click.command()
-def label():
-    import curses
-    
