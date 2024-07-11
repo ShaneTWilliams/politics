@@ -2446,5 +2446,6 @@ GEO_ID_TO_EC_RIDINGS = {
 }
 
 import json
+
 with open("corrections.json", "w") as f:
     json.dump(GEO_ID_TO_EC_RIDINGS, f, sort_keys=True, indent=4)

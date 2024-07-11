@@ -4,6 +4,11 @@
         "name": "Kings",
         "province": "Nova Scotia"
     },
+    "186712014": {
+        "geo_name": "Queens",
+        "name": "Queen's",
+        "province": "New Brunswick"
+    },
     "186712017": {
         "geo_name": "Victoria (N.S.)",
         "name": "Victoria",
@@ -42,11 +47,6 @@
     "186713013": {
         "geo_name": "Victoria (N.B.)",
         "name": "Victoria",
-        "province": "New Brunswick"
-    },
-    "186712014": {
-        "geo_name": "Queens",
-        "name": "Queen's",
         "province": "New Brunswick"
     },
     "186724021": {
@@ -351,11 +351,6 @@
         "name": "St. Henri",
         "province": "Quebec"
     },
-    "193324060": {
-        "geo_name": "Saint-Denis",
-        "name": "St. Denis",
-        "province": "Quebec"
-    },
     "192424062": {
         "geo_name": "Trois-Rivi\u00e8res--Saint-Maurice",
         "name": "Three Rivers--St. Maurice",
@@ -404,6 +399,11 @@
     "193324059": {
         "geo_name": "Saint-Antoine--Westmount",
         "name": "St. Antoine--Westmount",
+        "province": "Quebec"
+    },
+    "193324060": {
+        "geo_name": "Saint-Denis",
+        "name": "St. Denis",
         "province": "Quebec"
     },
     "193324061": {
@@ -466,14 +466,14 @@
         "name": "Northumberland--Miramichi",
         "province": "New Brunswick"
     },
-    "195224050": {
-        "geo_name": "T\u00e9miscouata",
-        "name": "Rivi\u00e8re-du-Loup--T\u00e9miscouata",
-        "province": "Quebec"
-    },
     "195224005": {
         "geo_name": "Berthier--Maskinong\u00e9--Delanaudi\u00e8re",
         "name": "Berthier--Maskinong\u00e9--de Lanaudi\u00e8re",
+        "province": "Quebec"
+    },
+    "195224050": {
+        "geo_name": "T\u00e9miscouata",
+        "name": "Rivi\u00e8re-du-Loup--T\u00e9miscouata",
         "province": "Quebec"
     },
     "195224068": {
@@ -574,6 +574,11 @@
     "196635004": {
         "geo_name": "Bruce",
         "name": "Bruce--Grey",
+        "province": "Ontario"
+    },
+    "196635010": {
+        "geo_name": "Essex",
+        "name": "Essex--Windsor",
         "province": "Ontario"
     },
     "196635014": {
@@ -1042,11 +1047,6 @@
         "name": "Surrey--White Rock",
         "province": "British Columbia"
     },
-    "199612001": {
-        "geo_name": "Bras d'Or",
-        "name": "Bras d'Or--Cape Breton",
-        "province": "Nova Scotia"
-    },
     "199610002": {
         "geo_name": "Burin0St. George's",
         "name": "Burin--St. George's",
@@ -1056,6 +1056,11 @@
         "geo_name": "Humber0St. BarbelBaie Verte",
         "name": "Humber--St. Barbe--Baie Verte",
         "province": "Newfoundland and Labrador"
+    },
+    "199612001": {
+        "geo_name": "Bras d'Or",
+        "name": "Bras d'Or--Cape Breton",
+        "province": "Nova Scotia"
     },
     "199612006": {
         "geo_name": "Kings2Hants",
@@ -1284,11 +1289,6 @@
         "name": "Brampton West--Mississauga",
         "province": "Ontario"
     },
-    "196635010": {
-        "geo_name": "Essex",
-        "name": "Essex--Windsor",
-        "province": "Ontario"
-    },
     "199635015": {
         "geo_name": "Dufferin4PeelsWellingtoneGrey",
         "name": "Dufferin--Peel--Wellington--Grey",
@@ -1435,11 +1435,6 @@
         "name": "Windsor--St. Clair",
         "province": "Ontario"
     },
-    "199646008": {
-        "geo_name": "Selkirk0Interlake",
-        "name": "Selkirk--Interlake",
-        "province": "Manitoba"
-    },
     "199646002": [
         {
             "geo_name": "Charleswood St. James",
@@ -1455,6 +1450,11 @@
     "199646005": {
         "geo_name": "Portage0Lisgar",
         "name": "Portage--Lisgar",
+        "province": "Manitoba"
+    },
+    "199646008": {
+        "geo_name": "Selkirk0Interlake",
+        "name": "Selkirk--Interlake",
         "province": "Manitoba"
     },
     "199646009": {
@@ -1764,8 +1764,8 @@
     ],
     "200310007": [
         {
-            "province": "Newfoundland and Labrador",
-            "name": "St. John's South"
+            "name": "St. John's South",
+            "province": "Newfoundland and Labrador"
         },
         {
             "name": "St. John's South--Mount Pearl",

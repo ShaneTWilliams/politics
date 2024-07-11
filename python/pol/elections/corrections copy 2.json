@@ -1351,11 +1351,6 @@
         "name": "Victoria",
         "province": "Ontario"
     },
-    "193359015": {
-        "geo_name": "Victoria (B.C.)",
-        "name": "Victoria",
-        "province": "British Columbia"
-    },
     "194711001": {
         "geo_name": "Kings",
         "name": "King's",
@@ -1461,11 +1456,6 @@
         "name": "Victoria",
         "province": "Ontario"
     },
-    "194759017": {
-        "geo_name": "Victoria (B.C.)",
-        "name": "Victoria",
-        "province": "British Columbia"
-    },
     "195211001": {
         "geo_name": "Kings",
         "name": "King's",
@@ -1569,16 +1559,6 @@
     "195259019": {
         "geo_name": "Vancouver--Kingsway",
         "name": "Vancouver Kingsway",
-        "province": "British Columbia"
-    },
-    "195259020": {
-        "geo_name": "Vancouver--Quadra",
-        "name": "Vancouver Quadra",
-        "province": "British Columbia"
-    },
-    "195259022": {
-        "geo_name": "Victoria (B.C.)",
-        "name": "Victoria",
         "province": "British Columbia"
     },
     "195261001": {
@@ -1928,11 +1908,6 @@
         "name": "Cape Breton--The Sydneys",
         "province": "Nova Scotia"
     },
-    "198712009": {
-        "geo_name": "Halifax West (Ouest)",
-        "name": "Halifax West",
-        "province": "Nova Scotia"
-    },
     "198713001": {
         "geo_name": "BeausÃÂ©jour",
         "name": "Beauséjour",
@@ -2020,11 +1995,6 @@
         "name": "Lotbinière",
         "province": "Quebec"
     },
-    "198724041": {
-        "geo_name": "Louis-HÃÂ©bert",
-        "name": "Louis-Hébert",
-        "province": "Quebec"
-    },
     "198724043": {
         "geo_name": "MatapÃÂ©dia-Matane",
         "name": "Matapédia--Matane",
@@ -2075,11 +2045,6 @@
         "name": "Témiscamingue",
         "province": "Quebec"
     },
-    "198724072": {
-        "geo_name": "Trois-RiviÃÂ¨res",
-        "name": "Trois-Rivières",
-        "province": "Quebec"
-    },
     "198724074": {
         "geo_name": "VerchÃÂ¨res",
         "name": "Verchères",
@@ -2090,24 +2055,9 @@
         "name": "Brampton--Malton",
         "province": "Ontario"
     },
-    "198735013": {
-        "geo_name": "Don Valley East (Est)",
-        "name": "Don Valley East",
-        "province": "Ontario"
-    },
     "198735014": {
         "geo_name": "Don Valley North (Nord)",
         "name": "Don Valley North",
-        "province": "Ontario"
-    },
-    "198735015": {
-        "geo_name": "Don Valley West (Ouest)",
-        "name": "Don Valley West",
-        "province": "Ontario"
-    },
-    "198735024": {
-        "geo_name": "Etobicoke North (Nord)",
-        "name": "Etobicoke North",
         "province": "Ontario"
     },
     "198735029": {
@@ -2123,11 +2073,6 @@
     "198735043": {
         "geo_name": "London East (Est)",
         "name": "London East",
-        "province": "Ontario"
-    },
-    "198735045": {
-        "geo_name": "London West (Ouest)",
-        "name": "London West",
         "province": "Ontario"
     },
     "198735046": {
@@ -2175,11 +2120,6 @@
         "name": "Scarborough West",
         "province": "Ontario"
     },
-    "198735080": {
-        "geo_name": "Simcoe North (Nord)",
-        "name": "Simcoe North",
-        "province": "Ontario"
-    },
     "198735085": {
         "geo_name": "Timiskaming",
         "name": "Timiskaming--French River",
@@ -2197,19 +2137,9 @@
             "province": "Ontario"
         }
     ],
-    "198735094": {
-        "geo_name": "Windsor West (Ouest)",
-        "name": "Windsor West",
-        "province": "Ontario"
-    },
     "198735096": {
         "geo_name": "York North (Nord)",
         "name": "York North",
-        "province": "Ontario"
-    },
-    "198735098": {
-        "geo_name": "York South (Sud)-Weston",
-        "name": "York South--Weston",
         "province": "Ontario"
     },
     "198735099": {
@@ -2347,11 +2277,6 @@
         "name": "Surrey--White Rock",
         "province": "British Columbia"
     },
-    "198759029": {
-        "geo_name": "Vancouver East (Est)",
-        "name": "Vancouver East",
-        "province": "British Columbia"
-    },
     "198759031": {
         "geo_name": "Vancouver South (Sud)",
         "name": "Vancouver South",
@@ -2411,11 +2336,6 @@
         "geo_name": "West Nova/Ouest Nova",
         "name": "West Nova",
         "province": "Nova Scotia"
-    },
-    "199613001": {
-        "geo_name": "Acadie0Bathurst",
-        "name": "Acadie--Bathurst",
-        "province": "New Brunswick"
     },
     "199613002": {
         "geo_name": "Beaus3jourhPetitcodiac",
@@ -2484,11 +2404,6 @@
         "name": "Berthier--Montcalm",
         "province": "Quebec"
     },
-    "199624011": {
-        "geo_name": "Brome4Missisquoi",
-        "name": "Brome--Missisquoi",
-        "province": "Quebec"
-    },
     "199624012": {
         "geo_name": "Brossard1La Prairie",
         "name": "Brossard--La Prairie",
@@ -2524,11 +2439,6 @@
     "199624024": {
         "geo_name": "Hochelaga",
         "name": "Hochelaga--Maisonneuve",
-        "province": "Quebec"
-    },
-    "199624025": {
-        "geo_name": "Hull2Aylmer",
-        "name": "Hull--Aylmer",
         "province": "Quebec"
     },
     "199624027": {
@@ -2595,11 +2505,6 @@
         "name": "Lotbinière",
         "province": "Quebec"
     },
-    "199624041": {
-        "geo_name": "Louis-H4bert",
-        "name": "Louis-Hébert",
-        "province": "Quebec"
-    },
     "199624043": {
         "geo_name": "Matap4dia",
         "name": "Matapédia--Matane",
@@ -2615,19 +2520,9 @@
         "name": "Papineau--Saint-Denis",
         "province": "Quebec"
     },
-    "199624048": {
-        "geo_name": "PierrefondsiDollard",
-        "name": "Pierrefonds--Dollard",
-        "province": "Quebec"
-    },
     "199624049": {
         "geo_name": "Pontiac4GatineauaLabelle",
         "name": "Pontiac--Gatineau--Labelle",
-        "province": "Quebec"
-    },
-    "199624051": {
-        "geo_name": "Qu9bec",
-        "name": "Québec",
         "province": "Quebec"
     },
     "199624052": {
@@ -2681,11 +2576,6 @@
             "province": "Quebec"
         }
     ],
-    "199624062": {
-        "geo_name": "Saint-HyacinthenBagot",
-        "name": "Saint-Hyacinthe--Bagot",
-        "province": "Quebec"
-    },
     "199624065": {
         "geo_name": "Saint-Laurent",
         "name": "Saint-Laurent--Cartierville",
@@ -2699,11 +2589,6 @@
     "199624070": {
         "geo_name": "Terrebonne",
         "name": "Terrebonne--Blainville",
-        "province": "Quebec"
-    },
-    "199624071": {
-        "geo_name": "Trois-Rivi",
-        "name": "Trois-Rivières",
         "province": "Quebec"
     },
     "199624072": {
@@ -2766,11 +2651,6 @@
         "name": "Dufferin--Peel--Wellington--Grey",
         "province": "Ontario"
     },
-    "199635017": {
-        "geo_name": "Eglinton6Lawrence",
-        "name": "Eglinton--Lawrence",
-        "province": "Ontario"
-    },
     "199635018": {
         "geo_name": "Elgin5MiddlesexcLondon",
         "name": "Elgin--Middlesex--London",
@@ -2779,16 +2659,6 @@
     "199635019": {
         "geo_name": "Erie3Lincoln",
         "name": "Erie--Lincoln",
-        "province": "Ontario"
-    },
-    "199635022": {
-        "geo_name": "Etobicoke",
-        "name": "Etobicoke--Lakeshore",
-        "province": "Ontario"
-    },
-    "199635024": {
-        "geo_name": "Glengarry",
-        "name": "Glengarry--Prescott--Russell",
         "province": "Ontario"
     },
     "199635025": [
@@ -2816,11 +2686,6 @@
     "199635032": {
         "geo_name": "Hastings1FrontenaclLennox and Addington",
         "name": "Hastings--Frontenac--Lennox and Addington",
-        "province": "Ontario"
-    },
-    "199635033": {
-        "geo_name": "Huron5Bruce",
-        "name": "Huron--Bruce",
         "province": "Ontario"
     },
     "199635034": {
@@ -2870,24 +2735,9 @@
         "name": "Nepean--Carleton",
         "province": "Ontario"
     },
-    "199635061": {
-        "geo_name": "Ottawa0Vanier",
-        "name": "Ottawa--Vanier",
-        "province": "Ontario"
-    },
     "199635062": {
         "geo_name": "Ottawa WesteNepean/Ottawa-OuesteNepean",
         "name": "Ottawa West--Nepean",
-        "province": "Ontario"
-    },
-    "199635064": {
-        "geo_name": "Parkdale3High Park",
-        "name": "Parkdale--High Park",
-        "province": "Ontario"
-    },
-    "199635065": {
-        "geo_name": "Parry SoundgMuskoka",
-        "name": "Parry Sound--Muskoka",
         "province": "Ontario"
     },
     "199635066": {
@@ -2903,21 +2753,6 @@
     "199635069": {
         "geo_name": "Prince EdwardxHastings",
         "name": "Prince Edward--Hastings",
-        "province": "Ontario"
-    },
-    "199635070": {
-        "geo_name": "Renfrew6NipissingtPembroke",
-        "name": "Renfrew--Nipissing--Pembroke",
-        "province": "Ontario"
-    },
-    "199635071": {
-        "geo_name": "Sarnia0Lambton",
-        "name": "Sarnia--Lambton",
-        "province": "Ontario"
-    },
-    "199635073": {
-        "geo_name": "ScarboroughMAgincourt",
-        "name": "Scarborough--Agincourt",
         "province": "Ontario"
     },
     "199635076": {
@@ -3001,16 +2836,6 @@
         "geo_name": "Windsor9St. Clair",
         "name": "Windsor--St. Clair",
         "province": "Ontario"
-    },
-    "199635102": {
-        "geo_name": "York South/Weston/York-Sud",
-        "name": "York South--Weston",
-        "province": "Ontario"
-    },
-    "199646001": {
-        "geo_name": "Brandon1Souris",
-        "name": "Brandon--Souris",
-        "province": "Manitoba"
     },
     "199646002": [
         {
@@ -3115,16 +2940,6 @@
     "199647010": {
         "geo_name": "Saskatoon",
         "name": "Saskatoon--Rosetown--Biggar",
-        "province": "Saskatchewan"
-    },
-    "199647011": {
-        "geo_name": "Souris0Moose Mountain",
-        "name": "Souris--Moose Mountain",
-        "province": "Saskatchewan"
-    },
-    "199647014": {
-        "geo_name": "Yorkton1Melville",
-        "name": "Yorkton--Melville",
         "province": "Saskatchewan"
     },
     "199648005": {
@@ -3298,11 +3113,6 @@
         "name": "Cumberland--Colchester",
         "province": "Nova Scotia"
     },
-    "199912006": {
-        "geo_name": "Kings2Hants",
-        "name": "Kings--Hants",
-        "province": "Nova Scotia"
-    },
     "199912007": {
         "geo_name": "Pictou0AntigonishfGuysborough",
         "name": "Pictou--Antigonish--Guysborough",
@@ -3313,16 +3123,6 @@
         "name": "Sackville--Musquodoboit Valley--Eastern Shore",
         "province": "Nova Scotia"
     },
-    "199912010": {
-        "geo_name": "Sydney0Victoria",
-        "name": "Sydney--Victoria",
-        "province": "Nova Scotia"
-    },
-    "199913001": {
-        "geo_name": "Acadie0Bathurst",
-        "name": "Acadie--Bathurst",
-        "province": "New Brunswick"
-    },
     "199913002": {
         "geo_name": "Beaus3jourhPetitcodiac",
         "name": "Beauséjour--Petitcodiac",
@@ -3331,21 +3131,6 @@
     "199913005": {
         "geo_name": "Fundy3Royal",
         "name": "Fundy--Royal",
-        "province": "New Brunswick"
-    },
-    "199913006": {
-        "geo_name": "Madawaska",
-        "name": "Madawaska--Restigouche",
-        "province": "New Brunswick"
-    },
-    "199913008": {
-        "geo_name": "Moncton0RiverviewuDieppe",
-        "name": "Moncton--Riverview--Dieppe",
-        "province": "New Brunswick"
-    },
-    "199913010": {
-        "geo_name": "Tobique0Mactaquac",
-        "name": "Tobique--Mactaquac",
         "province": "New Brunswick"
     },
     "199924001": {
@@ -3383,11 +3168,6 @@
         "name": "Berthier--Montcalm",
         "province": "Quebec"
     },
-    "199924011": {
-        "geo_name": "Brome4Missisquoi",
-        "name": "Brome--Missisquoi",
-        "province": "Quebec"
-    },
     "199924012": {
         "geo_name": "Brossard1La Prairie",
         "name": "Brossard--La Prairie",
@@ -3408,11 +3188,6 @@
         "name": "Chicoutimi--Le Fjord",
         "province": "Quebec"
     },
-    "199924019": {
-        "geo_name": "Compton1Stanstead",
-        "name": "Compton--Stanstead",
-        "province": "Quebec"
-    },
     "199924021": {
         "geo_name": "Frontenac",
         "name": "Frontenac--Mégantic",
@@ -3426,11 +3201,6 @@
     "199924024": {
         "geo_name": "Hochelaga",
         "name": "Hochelaga--Maisonneuve",
-        "province": "Quebec"
-    },
-    "199924025": {
-        "geo_name": "Hull2Aylmer",
-        "name": "Hull--Aylmer",
         "province": "Quebec"
     },
     "199924027": {
@@ -3488,11 +3258,6 @@
         "name": "Lotbinière--L'Érable",
         "province": "Quebec"
     },
-    "199924041": {
-        "geo_name": "Louis-H4bert",
-        "name": "Louis-Hébert",
-        "province": "Quebec"
-    },
     "199924043": {
         "geo_name": "Matap4dia",
         "name": "Matapédia--Matane",
@@ -3508,19 +3273,9 @@
         "name": "Papineau--Saint-Denis",
         "province": "Quebec"
     },
-    "199924048": {
-        "geo_name": "PierrefondsiDollard",
-        "name": "Pierrefonds--Dollard",
-        "province": "Quebec"
-    },
     "199924049": {
         "geo_name": "Pontiac4GatineauaLabelle",
         "name": "Pontiac--Gatineau--Labelle",
-        "province": "Quebec"
-    },
-    "199924051": {
-        "geo_name": "Qu9bec",
-        "name": "Québec",
         "province": "Quebec"
     },
     "199924052": {
@@ -3531,11 +3286,6 @@
     "199924054": {
         "geo_name": "Bas-RichelieueNicolettBecancour",
         "name": "Bas-Richelieu--Nicolet--Bécancour",
-        "province": "Quebec"
-    },
-    "199924055": {
-        "geo_name": "Richmond4Arthabaska",
-        "name": "Richmond--Arthabaska",
         "province": "Quebec"
     },
     "199924056": {
@@ -3553,34 +3303,14 @@
         "name": "Témiscamingue",
         "province": "Quebec"
     },
-    "199924060": {
-        "geo_name": "Rivi2re-des-Mille-ales",
-        "name": "Rivière-des-Mille-Îles",
-        "province": "Quebec"
-    },
-    "199924062": {
-        "geo_name": "Saint-HyacinthenBagot",
-        "name": "Saint-Hyacinthe--Bagot",
-        "province": "Quebec"
-    },
     "199924065": {
         "geo_name": "Saint-Laurent",
         "name": "Saint-Laurent--Cartierville",
         "province": "Quebec"
     },
-    "199924066": {
-        "geo_name": "Saint-L6onard",
-        "name": "Saint-Léonard--Saint-Michel",
-        "province": "Quebec"
-    },
     "199924070": {
         "geo_name": "Terrebonne",
         "name": "Terrebonne--Blainville",
-        "province": "Quebec"
-    },
-    "199924071": {
-        "geo_name": "Trois-Rivi",
-        "name": "Trois-Rivières",
         "province": "Quebec"
     },
     "199924072": {
@@ -3613,11 +3343,6 @@
         "name": "Barrie--Simcoe--Bradford",
         "province": "Ontario"
     },
-    "199935003": {
-        "geo_name": "Beaches0East York",
-        "name": "Beaches--East York",
-        "province": "Ontario"
-    },
     "199935004": {
         "geo_name": "Bramalea3GoreYMaltonrSpringdale",
         "name": "Bramalea--Gore--Malton--Springdale",
@@ -3643,29 +3368,9 @@
         "name": "Dufferin--Peel--Wellington--Grey",
         "province": "Ontario"
     },
-    "199935017": {
-        "geo_name": "Eglinton6Lawrence",
-        "name": "Eglinton--Lawrence",
-        "province": "Ontario"
-    },
-    "199935018": {
-        "geo_name": "Elgin5MiddlesexcLondon",
-        "name": "Elgin--Middlesex--London",
-        "province": "Ontario"
-    },
     "199935019": {
         "geo_name": "Erie3Lincoln",
         "name": "Erie--Lincoln",
-        "province": "Ontario"
-    },
-    "199935022": {
-        "geo_name": "Etobicoke",
-        "name": "Etobicoke--Lakeshore",
-        "province": "Ontario"
-    },
-    "199935024": {
-        "geo_name": "Glengarry",
-        "name": "Glengarry--Prescott--Russell",
         "province": "Ontario"
     },
     "199935025": {
@@ -3686,11 +3391,6 @@
     "199935032": {
         "geo_name": "Hastings1FrontenaclLennox and Addington",
         "name": "Hastings--Frontenac--Lennox and Addington",
-        "province": "Ontario"
-    },
-    "199935033": {
-        "geo_name": "Huron5Bruce",
-        "name": "Huron--Bruce",
         "province": "Ontario"
     },
     "199935034": {
@@ -3718,34 +3418,9 @@
         "name": "Leeds--Grenville",
         "province": "Ontario"
     },
-    "199935043": {
-        "geo_name": "London0Fanshawe",
-        "name": "London--Fanshawe",
-        "province": "Ontario"
-    },
     "199935050": {
         "geo_name": "Nepean0Carleton",
         "name": "Nepean--Carleton",
-        "province": "Ontario"
-    },
-    "199935061": {
-        "geo_name": "Ottawa0Vanier",
-        "name": "Ottawa--Vanier",
-        "province": "Ontario"
-    },
-    "199935062": {
-        "geo_name": "Ottawa WesteNepean/Ottawa-OuesteNepean",
-        "name": "Ottawa West--Nepean",
-        "province": "Ontario"
-    },
-    "199935064": {
-        "geo_name": "Parkdale3High Park",
-        "name": "Parkdale--High Park",
-        "province": "Ontario"
-    },
-    "199935065": {
-        "geo_name": "Parry SoundgMuskoka",
-        "name": "Parry Sound--Muskoka",
         "province": "Ontario"
     },
     "199935066": {
@@ -3763,29 +3438,9 @@
         "name": "Prince Edward--Hastings",
         "province": "Ontario"
     },
-    "199935070": {
-        "geo_name": "Renfrew6NipissingtPembroke",
-        "name": "Renfrew--Nipissing--Pembroke",
-        "province": "Ontario"
-    },
-    "199935071": {
-        "geo_name": "Sarnia0Lambton",
-        "name": "Sarnia--Lambton",
-        "province": "Ontario"
-    },
-    "199935073": {
-        "geo_name": "ScarboroughMAgincourt",
-        "name": "Scarborough--Agincourt",
-        "province": "Ontario"
-    },
     "199935076": {
         "geo_name": "Scarborough Rouge River",
         "name": "Scarborough--Rouge River",
-        "province": "Ontario"
-    },
-    "199935078": {
-        "geo_name": "Simcoe0Grey",
-        "name": "Simcoe--Grey",
         "province": "Ontario"
     },
     "199935083": {
@@ -3798,19 +3453,9 @@
         "name": "Thunder Bay--Atikokan",
         "province": "Ontario"
     },
-    "199935087": {
-        "geo_name": "Thunder BaynSuperior North/Thunder BayOSuperior-Nord",
-        "name": "Thunder Bay--Superior North",
-        "province": "Ontario"
-    },
     "199935088": {
         "geo_name": "TimiskamingnCochrane",
         "name": "Timiskaming--Cochrane",
-        "province": "Ontario"
-    },
-    "199935089": {
-        "geo_name": "Timmins8James Bay/TimminshBaie James",
-        "name": "Timmins--James Bay",
         "province": "Ontario"
     },
     "199935090": {
@@ -3853,16 +3498,6 @@
         "name": "Windsor--St. Clair",
         "province": "Ontario"
     },
-    "199935102": {
-        "geo_name": "York South/Weston/York-Sud",
-        "name": "York South--Weston",
-        "province": "Ontario"
-    },
-    "199946001": {
-        "geo_name": "Brandon1Souris",
-        "name": "Brandon--Souris",
-        "province": "Manitoba"
-    },
     "199946002": {
         "geo_name": "Charleswood St. James",
         "name": "Charleswood St. James--Assiniboia",
@@ -3871,11 +3506,6 @@
     "199946004": {
         "geo_name": "Dauphin0Swan River",
         "name": "Dauphin--Swan River",
-        "province": "Manitoba"
-    },
-    "199946005": {
-        "geo_name": "Portage0Lisgar",
-        "name": "Portage--Lisgar",
         "province": "Manitoba"
     },
     "199946008": {
@@ -3892,21 +3522,6 @@
         "geo_name": "Winnipeg3Transcona",
         "name": "Winnipeg--Transcona",
         "province": "Manitoba"
-    },
-    "199947001": {
-        "geo_name": "Battlefords",
-        "name": "Battlefords--Lloydminster",
-        "province": "Saskatchewan"
-    },
-    "199947004": {
-        "geo_name": "Cypress HillseGrasslands",
-        "name": "Cypress Hills--Grasslands",
-        "province": "Saskatchewan"
-    },
-    "199947007": {
-        "geo_name": "Regina0Qu'Appelle",
-        "name": "Regina--Qu'Appelle",
-        "province": "Saskatchewan"
     },
     "199947008": {
         "geo_name": "Regina0LumsdenlLake Centre",
@@ -3925,19 +3540,9 @@
             "province": "Saskatchewan"
         }
     ],
-    "199947011": {
-        "geo_name": "Souris0Moose Mountain",
-        "name": "Souris--Moose Mountain",
-        "province": "Saskatchewan"
-    },
     "199947012": {
         "geo_name": "Wanuskewin",
         "name": "Saskatoon--Wanuskewin",
-        "province": "Saskatchewan"
-    },
-    "199947014": {
-        "geo_name": "Yorkton1Melville",
-        "name": "Yorkton--Melville",
         "province": "Saskatchewan"
     },
     "199948005": {
@@ -3987,11 +3592,6 @@
         "name": "Esquimalt--Juan de Fuca",
         "province": "British Columbia"
     },
-    "199959009": {
-        "geo_name": "Kootenay8Columbia",
-        "name": "Kootenay--Columbia",
-        "province": "British Columbia"
-    },
     "199959010": {
         "geo_name": "Langley0Abbotsford",
         "name": "Langley--Abbotsford",
@@ -4035,11 +3635,6 @@
     "199959019": {
         "geo_name": "Prince GeorgeqPeace River",
         "name": "Prince George--Peace River",
-        "province": "British Columbia"
-    },
-    "199959021": {
-        "geo_name": "Saanich2Gulf Islands",
-        "name": "Saanich--Gulf Islands",
         "province": "British Columbia"
     },
     "199959023": {
@@ -5522,16 +5117,6 @@
         "name": "Nunavut",
         "province": "Nunavut"
     },
-    "201313002": {
-        "geo_name": "Beaus�jour",
-        "name": "Beauséjour",
-        "province": "New Brunswick"
-    },
-    "201324002": {
-        "geo_name": "Abitibi--T�miscamingue",
-        "name": "Abitibi--Témiscamingue",
-        "province": "Quebec"
-    },
     "201324006": {
         "geo_name": "Avignon--La Mitis--Matane--Matap�dia",
         "name": "Avignon--La Mitis--Matane--Matapédia",
@@ -5545,11 +5130,6 @@
     "201324010": {
         "geo_name": "Bellechasse--Les Etchemins--L�vis",
         "name": "Bellechasse--Les Etchemins--Lévis",
-        "province": "Quebec"
-    },
-    "201324012": {
-        "geo_name": "Berthier--Maskinong�",
-        "name": "Berthier--Maskinongé",
         "province": "Quebec"
     },
     "201324013": {
@@ -5599,19 +5179,9 @@
         "name": "Gaspésie--Les Îles-de-la-Madeleine",
         "province": "Quebec"
     },
-    "201324029": {
-        "geo_name": "Honor�-Mercier",
-        "name": "Honoré-Mercier",
-        "province": "Quebec"
-    },
     "201324032": {
         "geo_name": "Jonqui�re",
         "name": "Jonquière",
-        "province": "Quebec"
-    },
-    "201324033": {
-        "geo_name": "La Pointe-de-l'�le",
-        "name": "La Pointe-de-l'Île",
         "province": "Quebec"
     },
     "201324037": [
@@ -5626,11 +5196,6 @@
             "province": "Quebec"
         }
     ],
-    "201324040": {
-        "geo_name": "Laval--Les �les",
-        "name": "Laval--Les Îles",
-        "province": "Quebec"
-    },
     "201324041": [
         {
             "geo_name": "Longueuil--Charles-LeMoyne",
@@ -5648,39 +5213,9 @@
         "name": "Lévis--Lotbinière",
         "province": "Quebec"
     },
-    "201324044": {
-        "geo_name": "Louis-H�bert",
-        "name": "Louis-Hébert",
-        "province": "Quebec"
-    },
-    "201324047": {
-        "geo_name": "M�gantic--L'�rable",
-        "name": "Mégantic--L'Érable",
-        "province": "Quebec"
-    },
-    "201324051": {
-        "geo_name": "Montmagny--L'Islet--Kamouraska--Rivi�re-du-Loup",
-        "name": "Montmagny--L’Islet--Kamouraska--Rivière-du-Loup",
-        "province": "Quebec"
-    },
     "201324053": {
         "geo_name": "Notre-Dame-de-Gr�ce--Westmount",
         "name": "Notre-Dame-de-Grâce--Westmount",
-        "province": "Quebec"
-    },
-    "201324059": {
-        "geo_name": "Qu�bec",
-        "name": "Québec",
-        "province": "Quebec"
-    },
-    "201324062": {
-        "geo_name": "Rivi�re-des-Mille-�les",
-        "name": "Rivière-des-Mille-Îles",
-        "province": "Quebec"
-    },
-    "201324063": {
-        "geo_name": "Rivi�re-du-Nord",
-        "name": "Rivière-du-Nord",
         "province": "Quebec"
     },
     "201324065": {
@@ -5693,11 +5228,6 @@
         "name": "Saint-Laurent--Cartierville",
         "province": "Quebec"
     },
-    "201324069": {
-        "geo_name": "Saint-L�onard--Saint-Michel",
-        "name": "Saint-Léonard--Saint-Michel",
-        "province": "Quebec"
-    },
     "201324071": {
         "geo_name": "Salaberry--Suro�t",
         "name": "Salaberry--Suroît",
@@ -5706,11 +5236,6 @@
     "201324074": {
         "geo_name": "Vaudreuil--Soulanges",
         "name": "Soulanges--Vaudreuil",
-        "province": "Quebec"
-    },
-    "201324076": {
-        "geo_name": "Trois-Rivi�res",
-        "name": "Trois-Rivières",
         "province": "Quebec"
     },
     "201324077": [
@@ -5754,11 +5279,6 @@
         "geo_name": "Toronto--St. Paul's",
         "name": "St. Paul's",
         "province": "Ontario"
-    },
-    "201347003": {
-        "geo_name": "Desneth�--Missinippi--Churchill River",
-        "name": "Desnethé--Missinippi--Churchill River",
-        "province": "Saskatchewan"
     },
     "201347004": {
         "geo_name": "Carlton Trail--Eagle Creek",

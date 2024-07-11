@@ -3,7 +3,5 @@
 </script>
 
 <Page>
-    <a href="/elections">
-        Elections
-    </a>
+    Home Page!
 </Page>

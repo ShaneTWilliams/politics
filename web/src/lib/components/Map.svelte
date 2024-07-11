@@ -6,34 +6,30 @@
     import parties from "$lib/artifacts/party.json"
     import elections from "$lib/artifacts/election.json"
 
-    const COLOR_TO_FILL = {
-        "RED":      "fill-red-700",
-        "ORANGE":   "fill-amber-600",
-        "YELLOW":   "fill-yellow-700",
-        "GREEN":    "fill-green-700",
-        "BLUE":     "fill-blue-700",
-        "PURPLE":   "fill-purple-700",
-        "GREY":     "fill-grey-700",
-        "BLACK":    "fill-black-700",
-        "WHITE":    "fill-white-700",
-        "BROWN":    "fill-brown-700",
-        "PINK":     "fill-pink-700",
-    };
-    const COLOR_TO_HOVER_FILL = {
-        "RED":      "hover:fill-red-500",
-        "ORANGE":   "hover:fill-amber-500",
-        "YELLOW":   "hover:fill-yellow-500",
-        "GREEN":    "hover:fill-green-500",
-        "BLUE":     "hover:fill-blue-500",
-        "PURPLE":   "hover:fill-purple-500",
-        "GREY":     "hover:fill-grey-500",
-        "BLACK":    "hover:fill-black-500",
-        "WHITE":    "hover:fill-white-500",
-        "BROWN":    "hover:fill-brown-500",
-        "PINK":     "hover:fill-pink-500",
-    };
+    import { FILL_COLORS } from "$lib/constants.js"
 
-    export let selectedRiding, electionId;
+    const RO_YEARS = [
+        1867,
+        1872,
+        1882,
+        1892,
+        1903,
+        1905,
+        1914,
+        1924,
+        1933,
+        1947,
+        1952,
+        1966,
+        1976,
+        1987,
+        1996,
+        1999,
+        2003,
+        2013
+    ]
+
+    export let selectedRiding, hoveredRiding, electionId, hoveredParty, view;
 
     let svgEl;
     let x = 0;
@@ -42,15 +38,31 @@
     let height = 0;
 
     function resizeSvg() {
-        const bbox = svgEl.getBBox();
-        x = bbox.x;
-        y = -(bbox.y + bbox.height);
-        width = bbox.width;
-        height = bbox.height;
+        if (view === null) {
+            const bbox = svgEl.getBBox();
+            x = bbox.x;
+            y = -(bbox.y + bbox.height);
+            width = bbox.width;
+            height = bbox.height;
+        } else {
+            x = view.x;
+            y = -view.y;
+            width = view.width;
+            height = view.height;
+        }
     }
 
     let ridingsToShow = {};
     let election = elections[electionId];
+
+    let ro_year = RO_YEARS[0];
+    for (const y of RO_YEARS) {
+        if (election.date.year >= y) {
+            ro_year = y;
+        } else {
+            break;
+        }
+    }
     for (const runId of election.runs) {
         let run = runs[runId];
         let riding = ridings[run.riding];
@@ -61,13 +73,20 @@
             }
             ridingsToShow[run.riding] = {
                 ...riding,
-                color: color
+                color: color,
+                victorParty: run.party,
             };
         }
     }
 
     onMount(() => {
         resizeSvg();
+
+        window.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                selectedRiding = null;
+            }
+        });
     });
 </script>
 
@@ -77,17 +96,22 @@
 <svg
     xmlns='http://www.w3.org/2000/svg'
     viewBox={`${x} ${y} ${width} ${height}`}
+    class="border"
 >
     <g transform='scale(1,-1)' bind:this={svgEl}>
         {#each Object.entries(ridingsToShow) as [id, riding]}
-        <g class={`
-            stroke-white stroke-[1000]
-            ${selectedRiding == id ? "" : COLOR_TO_HOVER_FILL[riding.color]}
-            ${selectedRiding == id ? "fill-black" : COLOR_TO_FILL[riding.color]}
-        `}
-            on:click={() => {selectedRiding = id}
-        }>
-            {@html riding.geometry}
+        <g
+            class={`
+                stroke-sol-light3 ${FILL_COLORS[riding.color]}
+                ${hoveredParty == riding.victorParty || hoveredRiding == id ? "opacity-70" : ""}
+                ${selectedRiding == id ? "opacity-70" : ""}
+            `}
+            style={`stroke-width: ${Math.pow(Math.min(width, height), 2) / 2}`}
+            on:click={() => {selectedRiding = id;}}
+            on:mouseenter={() => {hoveredRiding = id;}}
+            on:mouseleave={() => {hoveredRiding = null;}}
+        >
+            {@html riding.geometry[ro_year]}
         </g>
         {/each}
     </g>
