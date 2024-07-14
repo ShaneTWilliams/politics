@@ -776,6 +776,16 @@
         "name": "Victoria",
         "province": "Ontario"
     },
+    "190361001": {
+        "geo_name": "Alberta",
+        "name": "Alberta (Provisional District)",
+        "province": "Alberta"
+    },
+    "190361009": {
+        "geo_name": "Saskatchewan",
+        "name": "Saskatchewan (Provisional District)",
+        "province": "Saskatchewan"
+    },
     "190511001": {
         "geo_name": "Kings (P.E.I.)",
         "name": "King's",

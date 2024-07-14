@@ -34,9 +34,6 @@ def build():
 
     build()
 
-    WEB_ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
-    shutil.copytree(ARTIFACT_DIR, WEB_ARTIFACT_DIR, dirs_exist_ok=True)
-
 
 @click.command()
 def scratch():

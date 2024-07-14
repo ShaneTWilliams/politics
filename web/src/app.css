@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.diagonal-lines {
+    background: repeating-linear-gradient(
+    45deg,
+    theme("colors.sol-light2"),
+    theme("colors.sol-light2") 5px,
+    theme("colors.sol-light3") 5px,
+    theme("colors.sol-light3") 10px
+    );
+}

@@ -43,11 +43,11 @@
         </button>
     </div>
     {#if sortedElections !== undefined}
-    <div class="space-y-2">
+    <div class="space-y-2 flex flex-col items-center">
         {#each (sort_ascending ? sortedElections : sortedElections.toReversed()) as [electionId, election]}
             {#if checked || election.type === "GENERAL"}
             <a
-            class={`flex flex-row items-center rounded px-4 py-1 w-full hover:cursor-pointer hover:bg-sol-light2 border-sol-light1 border ${election.type === "GENERAL" ? "bg-sol-light2" : ""}`}
+            class={`flex flex-row items-center rounded px-4 py-1 max-w-2xl w-full hover:cursor-pointer hover:bg-sol-light2 border-sol-light1 ${election.type === "GENERAL" ? "bg-sol-light2" : ""}`}
             href={`/elections/elections/${electionId}`}
             >
                 <p class="font-semibold mr-4 text-sm text-sol-dark3">

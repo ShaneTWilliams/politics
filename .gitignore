@@ -12,6 +12,7 @@ __pycache__
 /web/.svelte-kit
 /web/build
 /web/src/lib/artifacts
+/web/static/geometry
 
 # OS
 .DS_Store

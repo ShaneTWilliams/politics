@@ -4,42 +4,36 @@
     import { page } from '$app/stores';
 
     import elections from '$lib/artifacts/election.json';
-    import ridings from '$lib/artifacts/riding.json';
     import runs from '$lib/artifacts/run.json';
     import parties from '$lib/artifacts/party.json';
+    import ridings from '$lib/artifacts/riding.json';
     import candidates from '$lib/artifacts/candidate.json';
 
-    import { MONTHS, PARTIES, FILL_COLORS } from '$lib/constants.js';
-	import CanadaMap from '$lib/components/CanadaMap.svelte';
+    import CanadaMap from '$lib/components/CanadaMap.svelte';
+    import Map from '$lib/components/Map.svelte';
+    import HorizontalBar from '$lib/components/HorizontalBar.svelte';
+    import LargeCard from '$lib/components/LargeCard.svelte';
+    import SmallStat from '$lib/components/SmallStat.svelte';
+
+    import { MONTHS, PARTIES, PROVINCES } from '$lib/constants.js';
+    import {
+        getClosestRidingInElection,
+        getRunsInRiding,
+        getTotalElectionVotes,
+        getVotesByParty,
+        getNumberOfCandidates,
+        getNumberOfRidings,
+        getNumberOfCandidatesByParty,
+     } from '$lib/stats.js';
+    import { formatNumber } from '$lib/utils.js';
 
     const ELECTION_TYPE = {
         "GENERAL": "General Election",
         "BYELECTION": "By-Election",
     }
 
-    const SEAT_BAR_OFFSET = 3;
-    const VOTE_BAR_OFFSET = 10;
-
     let election = elections[$page.params.electionId];
-    let selectedRiding = null;
 
-    let relevant_runs = [];
-    let max_votes = 0;
-    $: if (selectedRiding !== null) {
-        relevant_runs = [];
-        max_votes = 0;
-        for (const run_id of election.runs) {
-            let run = runs[run_id];
-            if (run.riding == selectedRiding) {
-                relevant_runs.push(run);
-                if (run.votes > max_votes) {
-                    max_votes = run.votes;
-                }
-            }
-        }
-    }
-
-    let hoveredParty = null;
     let party_results = {};
     let max_seats = 0;
     for (const run_id of election.runs) {
@@ -58,6 +52,22 @@
         }
     }
     let party_results_sorted = Object.entries(party_results).sort((a, b) => b[1].count - a[1].count);
+
+    const closestRidingId = getClosestRidingInElection($page.params.electionId, true);
+    const closestRidingRuns = getRunsInRiding($page.params.electionId, closestRidingId);
+    const closestRiding = ridings[closestRidingId];
+
+    const blowoutRidingId = getClosestRidingInElection($page.params.electionId, false);
+    const blowoutRidingRuns = getRunsInRiding($page.params.electionId, blowoutRidingId);
+    const blowoutRiding = ridings[blowoutRidingId];
+
+    const votesByParty = getVotesByParty($page.params.electionId);
+
+    const totalVotesCast = getTotalElectionVotes($page.params.electionId);
+    const numberOfCandidates = getNumberOfCandidates($page.params.electionId);
+    const numberOfRidings = getNumberOfRidings($page.params.electionId);
+
+    const numberOfCandidatesByParty = getNumberOfCandidatesByParty($page.params.electionId);
 </script>
 
 <svelte:head>
@@ -65,87 +75,75 @@
 </svelte:head>
 
 <Page>
-    <div class="my-8 ml-8">
+    <div class="my-8 ml-4">
         <p class="font-bold text-4xl text-sol-dark3">
             {election.type == "GENERAL" ? "General Election" : "By-Election"}
         </p>
-        <p class="text-xl text-sol-dark1 font-semibold">
+        <p class="text-xl text-sol-light1 font-semibold ml-2">
             {MONTHS[election.date.month]} {election.date.day}, {election.date.year}
         </p>
     </div>
-    <div class="space-y-2 flex flex-col items-end">
-        <div class="flex flex-row space-x-4 w-full">
-            <div class="space-y-1">
-                {#each party_results_sorted as [party_id, result]}
-                <p class="flex-none text-right text-sm h-5">
-                    {PARTIES[parties[party_id].name]}
-                </p>
-                {/each}
-            </div>
-            <div class="grow space-y-1">
-                {#each party_results_sorted as [party_id, result]}
-                <div class="border border-sol-light2 rounded h-5">
-                    <div
-                        class={`h-full rounded hover:opacity-80 ${FILL_COLORS[result.color]}`}
-                        style={`width: ${(result.count + SEAT_BAR_OFFSET) * 100 / (max_seats + SEAT_BAR_OFFSET)}%`}
-                        on:mouseenter={() => hoveredParty = party_id}
-                        on:mouseleave={() => hoveredParty = null}
-                        role="none"
-                    />
-                </div>
-                {/each}
-            </div>
-            <div class="space-y-1">
-                {#each party_results_sorted as [party_id, result]}
-                <p class="w-4 flex-none text-sm">
-                    {result.count}
-                </p>
-                {/each}
-            </div>
+    <LargeCard title="">
+        <HorizontalBar
+            primaryLabels={party_results_sorted.map(([partyId, result]) => PARTIES[parties[partyId].name])}
+            secondaryLabels={[]}
+            counts={party_results_sorted.map(([partyId, result]) => result.count)}
+            colors={party_results_sorted.map(([partyId, result]) => result.color)}
+            showTotal={true}
+        />
+    </LargeCard>
+    <div class="h-12"/>
+    <CanadaMap electionId={$page.params.electionId}/>
+    <p class="text-2xl font-bold mt-8 mb-4">Statistics</p>
+    <div class="space-y-16">
+        <LargeCard title="Popular Vote">
+            <HorizontalBar
+                primaryLabels={votesByParty.map(([partyId, votes]) => PARTIES[parties[partyId].name])}
+                secondaryLabels={[]}
+                counts={votesByParty.map(([partyId, votes]) => votesByParty.length == 1 ? "Acclaimed" : votes)}
+                colors={votesByParty.map(([partyId, votes]) => parties[partyId].color)}
+                showTotal={votesByParty.length > 1}
+            />
+        </LargeCard>
+        <div class="flex flex-row justify-center space-x-6 w-full">
+            <SmallStat name="Total votes cast" value={ formatNumber(totalVotesCast) } />
+            <SmallStat name="Number of candidates" value={ formatNumber(numberOfCandidates) } />
+            <SmallStat name="Number of ridings" value={ formatNumber(numberOfRidings) } />
         </div>
-        <p>
-            {max_seats} seats total
-        </p>
+        <LargeCard title="Candidates by Party">
+            <HorizontalBar
+                primaryLabels={numberOfCandidatesByParty.map(([partyId, numCandidates]) => PARTIES[parties[partyId].name])}
+                secondaryLabels={[]}
+                counts={numberOfCandidatesByParty.map(([partyId, numCandidates]) => numCandidates)}
+                colors={numberOfCandidatesByParty.map(([partyId, numCandidates]) => parties[partyId].color)}
+                showTotal={false}
+            />
+        </LargeCard>
+        {#if closestRiding && blowoutRiding}
+        <LargeCard
+            title="Closest Race"
+            subtitle={closestRiding.name + ", " + PROVINCES[closestRiding.province]}
+        >
+            <HorizontalBar
+                primaryLabels={closestRidingRuns.map(run => candidates[run.candidate].first_name + ' ' + candidates[run.candidate].last_name)}
+                secondaryLabels={closestRidingRuns.map(run => PARTIES[parties[run.party].name])}
+                counts={closestRidingRuns.map(run => run.votes)}
+                colors={closestRidingRuns.map(run => parties[run.party].color)}
+                showTotal={false}
+            />
+        </LargeCard>
+        <LargeCard
+            title="Biggest Blowout"
+            subtitle={blowoutRiding.name + ", " + PROVINCES[blowoutRiding.province]}
+        >
+            <HorizontalBar
+                primaryLabels={blowoutRidingRuns.map(run => candidates[run.candidate].first_name + ' ' + candidates[run.candidate].last_name)}
+                secondaryLabels={blowoutRidingRuns.map(run => PARTIES[parties[run.party].name])}
+                counts={blowoutRidingRuns.map(run => run.votes)}
+                colors={blowoutRidingRuns.map(run => parties[run.party].color)}
+                showTotal={false}
+            />
+        </LargeCard>
+        {/if}
     </div>
-    <CanadaMap bind:selectedRiding={selectedRiding} electionId={$page.params.electionId} {hoveredParty}/>
-    {#if selectedRiding !== null}
-    <div class="mt-6 mb-2 flex flex-col items-center bg-sol-light2 p-2 rounded">
-        <p class="mb-4 font-black">
-            {ridings[selectedRiding].name}, {ridings[selectedRiding].province}
-        </p>
-        <div class="flex flex-row space-x-4 w-full">
-            <div class="space-y-1">
-            {#each relevant_runs as run}
-                <p class="text-sm font-black text-right">
-                    {candidates[run.candidate].first_name} {candidates[run.candidate].last_name}
-                </p>
-            {/each}
-            </div>
-            <div class="space-y-1">
-            {#each relevant_runs as run}
-                <p class="text-sm text-left">
-                    {PARTIES[parties[run.party].name]}
-                </p>
-            {/each}
-            </div>
-            <div class="grow space-y-1">
-            {#each relevant_runs as run}
-                <div class="border border-sol-light2 rounded h-5">
-                    <div
-                        class={`h-full rounded hover:opacity-80 ${FILL_COLORS[parties[run.party].color]}`}
-                        style={`width: ${run.votes * 100 / max_votes}%`}
-                    />
-                </div>
-            {/each}
-            </div>
-            <div class="space-y-1">
-            {#each relevant_runs as run}
-                <p class="text-sm space-y-1">
-                    {relevant_runs.length == 1 ? "Acclaimed" : run.votes}
-                </p>
-            {/each}
-            </div>
-        </div>
-    </div>
-    {/if}
 </Page>

@@ -39,6 +39,30 @@ class Gender(enum.Enum):
     UNKNOWN = 4
 
 
+class DetailViewName(enum.Enum):
+    # REFERENCE: https://upload.wikimedia.org/wikipedia/commons/f/f8/Canada_Election_2021_Results_Map.svg
+    ST_JOHNS = enum.auto()
+    PEI = enum.auto()
+    MONCTON = enum.auto()
+    HALIFAX = enum.auto()
+    MONTREAL = enum.auto()
+    QUEBEC_CITY = enum.auto()
+    SOUTHERN_QUEBEC = enum.auto()
+    TROIS_RIVIERES = enum.auto()
+    OTTAWA = enum.auto()
+    TORONTO = enum.auto()
+    GOLDEN_HORSESHOE = enum.auto()
+    LONDON = enum.auto()
+    REGINA = enum.auto()
+    WINNIPEG = enum.auto()
+    ESSEX = enum.auto()
+    SASKATOON = enum.auto()
+    CALGARY = enum.auto()
+    EDMONTON = enum.auto()
+    VANCOUVER = enum.auto()
+    VICTORIA = enum.auto()
+
+
 class Province(enum.Enum):
     AB = 1
     BC = 2
@@ -467,8 +491,7 @@ class PartyName(enum.Enum):
             PartyName.PARTI_POUR_LINDÉPENDANCE_DU_QUÉBEC: Color.BLACK,
             PartyName.PARTY_FOR_THE_COMMONWEALTH_OF_CANADA: Color.BLACK,
             PartyName.PATRONS_OF_INDUSTRY: Color.BLACK,
-            PartyName.PEOPLES_PARTY_OF_CANADA: Color.BLACK,
-            PartyName.PEOPLES_PARTY_OF_CANADA: Color.BLACK,
+            PartyName.PEOPLES_PARTY_OF_CANADA: Color.PURPLE,
             PartyName.PEOPLES_POLITICAL_POWER_PARTY_OF_CANADA: Color.BLACK,
             PartyName.PIRATE_PARTY_OF_CANADA: Color.BLACK,
             PartyName.PROGRESSIVE: Color.BLACK,
@@ -536,6 +559,7 @@ class Color(enum.Enum):
 
 
 class Record(abc.ABC):
+    # TODO: Make this recursive and cleaner.
     def to_json(self):
         ret = {}
         for k, v in vars(self).items():
@@ -545,6 +569,12 @@ class Record(abc.ABC):
                 ret[k] = v.id()
             elif isinstance(v, datetime.date):
                 ret[k] = {"year": v.year, "month": v.month, "day": v.day}
+            elif isinstance(v, dict):
+                for k2, v2 in v.items():
+                    if isinstance(v2, list):
+                        if len(v2) > 0 and isinstance(v2[0], Record):
+                            v[k2] = [v3.id() for v3 in v2]
+                ret[k] = v
             else:
                 ret[k] = v
 
@@ -579,26 +609,46 @@ class Riding(Record):
         self,
         name: str,
         province: Province,
-        geometry: typing.Dict[int, str],
         start_date: datetime.date,
         end_date: datetime.date,
+        area_by_year: typing.Dict[int, int],
     ):
         self.name = name
         self.province = province
-        self.geometry = geometry
         self.start_date = start_date
         self.end_date = end_date
+        self.area_by_year = area_by_year
 
     def id(self):
         # Riding geometry changes over time.
-        geo_cat = "".join([geo for geo in self.geometry.values() if geo is not None])
         return hash_string(
-            geo_cat
-            + self.name
+            self.name
             + str(self.province)
             + str(self.start_date)
             + str(self.end_date)
+            + str(self.area_by_year)
         )
+
+
+class DetailView(Record):
+    def __init__(
+        self,
+        name: DetailViewName,
+        ridings_by_year: typing.Dict[int, Riding],
+        x: int,
+        y: int,
+        width: int,
+        height: int,
+    ):
+        self.name = name
+        self.ridings_by_year = ridings_by_year
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+    def id(self):
+        return self.name.name
 
 
 class Election(Record):

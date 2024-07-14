@@ -1,11 +1,19 @@
 import datetime
 import json
+import re
 import xml
 
 import geopandas
 import openpyxl
 from pol.elections.structures import *
-from pol.paths import ARTIFACT_DIR, CACHE_DIR, PYTHON_PACKAGE_DIR, SOURCES_DIR
+from pol.paths import (
+    ARTIFACT_DIR,
+    CACHE_DIR,
+    PYTHON_PACKAGE_DIR,
+    SOURCES_DIR,
+    WEB_ARTIFACT_DIR,
+)
+from shapely.geometry import Polygon
 
 PARTY_COLORS = {
     "Liberal Party of Canada": Color.RED,
@@ -21,6 +29,191 @@ PARTY_COLORS = {
 
 GEOMETRY_DIR = SOURCES_DIR / "geometry/fedshapes_cbf_20221003"
 RIDING_YEARS = sorted([int(f.stem[6:10]) for f in GEOMETRY_DIR.glob("*.shp")])
+RO_YEARS = [
+    1867,
+    1872,
+    1882,
+    1892,
+    1903,
+    1905,
+    1914,
+    1924,
+    1933,
+    1947,
+    1952,
+    1966,
+    1976,
+    1987,
+    1996,
+    1999,
+    2003,
+    2013,
+]
+
+
+DETAIL_MAP_BOUNDS = {
+    DetailViewName.ST_JOHNS: {
+        "x": 8900000,
+        "y": 2200000,
+        "width": 100000,
+        "height": 100000,
+    },
+    DetailViewName.PEI: {"x": 8340000, "y": 1650000, "width": 50000, "height": 50000},
+    DetailViewName.MONCTON: {
+        "x": 8200000,
+        "y": 1600000,
+        "width": 100000,
+        "height": 100000,
+    },
+    DetailViewName.HALIFAX: {
+        "x": 8360000,
+        "y": 1490000,
+        "width": 100000,
+        "height": 100000,
+    },
+    DetailViewName.MONTREAL: {
+        "x": 7595000,
+        "y": 1270000,
+        "width": 50000,
+        "height": 50000,
+    },
+    DetailViewName.QUEBEC_CITY: {
+        "x": 7730000,
+        "y": 1470000,
+        "width": 50000,
+        "height": 50000,
+    },
+    DetailViewName.SOUTHERN_QUEBEC: {
+        "x": 7580000,
+        "y": 1350000,
+        "width": 200000,
+        "height": 200000,
+    },
+    DetailViewName.TROIS_RIVIERES: {
+        "x": 7650000,
+        "y": 1380000,
+        "width": 50000,
+        "height": 50000,
+    },
+    DetailViewName.OTTAWA: {
+        "x": 7430000,
+        "y": 1220000,
+        "width": 70000,
+        "height": 70000,
+    },
+    DetailViewName.TORONTO: {
+        "x": 7190000,
+        "y": 960000,
+        "width": 60000,
+        "height": 60000,
+    },
+    DetailViewName.GOLDEN_HORSESHOE: {
+        "x": 7100000,
+        "y": 1030000,
+        "width": 200000,
+        "height": 200000,
+    },
+    DetailViewName.LONDON: {"x": 7060000, "y": 850000, "width": 50000, "height": 50000},
+    DetailViewName.REGINA: {
+        "x": 5280000,
+        "y": 1700000,
+        "width": 50000,
+        "height": 50000,
+    },
+    DetailViewName.WINNIPEG: {
+        "x": 5800000,
+        "y": 1565000,
+        "width": 50000,
+        "height": 50000,
+    },
+    DetailViewName.ESSEX: {"x": 6930000, "y": 750000, "width": 50000, "height": 50000},
+    DetailViewName.SASKATOON: {
+        "x": 5180000,
+        "y": 1910000,
+        "width": 50000,
+        "height": 50000,
+    },
+    DetailViewName.CALGARY: {
+        "x": 4660000,
+        "y": 1950000,
+        "width": 60000,
+        "height": 60000,
+    },
+    DetailViewName.EDMONTON: {
+        "x": 4780000,
+        "y": 2200000,
+        "width": 70000,
+        "height": 70000,
+    },
+    DetailViewName.VANCOUVER: {
+        "x": 3990000,
+        "y": 2030000,
+        "width": 70000,
+        "height": 70000,
+    },
+    DetailViewName.VICTORIA: {
+        "x": 3920000,
+        "y": 1970000,
+        "width": 50000,
+        "height": 50000,
+    },
+}
+
+detail_map_polygons = {}
+for city, bounds in DETAIL_MAP_BOUNDS.items():
+    detail_map_polygons[city] = Polygon(
+        [
+            (bounds["x"], bounds["y"]),
+            (bounds["x"] + bounds["width"], bounds["y"]),
+            (bounds["x"] + bounds["width"], bounds["y"] - bounds["height"]),
+            (bounds["x"], bounds["y"] - bounds["height"]),
+        ]
+    )
+
+
+class Geometry:
+    def __init__(self, name: str, id: int, shape: Polygon):
+        self.name = name
+        self.id = id
+        self.shape = shape
+
+    @property
+    def area(self):
+        return int(self.shape.area / 1e6)
+
+    def intersects(self, other):
+        return self.shape.intersects(other)
+
+    @staticmethod
+    def process_svg(svg):
+        for attr_key in ["fill", "stroke", "stroke-width", "opacity"]:
+            svg.attrib.pop(attr_key, None)
+
+        if "d" not in svg.attrib:
+            return
+
+        new_d = []
+        for split1 in svg.attrib["d"].split(" "):
+            new_split1 = []
+            for split2 in split1.split(","):
+                try:
+                    float(split2)
+                except ValueError:
+                    new_split1.append(split2)
+                    continue
+                new_split1.append(f"{float(split2):.0f}")
+            new_d.append(",".join(new_split1))
+        svg.attrib["d"] = " ".join(new_d)
+
+    def to_svg(self, tolerance) -> str:
+        simple_geometry = self.geometry.simplify(tolerance, preserve_topology=False)
+        svg = simple_geometry.svg()
+        xml_svg = xml.etree.ElementTree.fromstring(svg)
+        self.process_svg(xml_svg)
+        for child in xml_svg:
+            self.process_svg(child)
+
+        return xml.etree.ElementTree.tostring(xml_svg).decode("utf-8")
 
 
 def get_cached_xlsx(xlsx_path, json_path):
@@ -42,18 +235,10 @@ def get_cached_xlsx(xlsx_path, json_path):
         return json.load(f)
 
 
-def get_cached_geo_ridings():
-    cache_file = CACHE_DIR / "geo_ridings.json"
-
-    if cache_file.exists():
-        with open(cache_file) as f:
-            return json.load(f)
-
+def load_geo_ridings():
     ridings = {year: [] for year in RIDING_YEARS}
 
-    debug_geo_ridings = []
     for year in RIDING_YEARS:
-        print(year)
         gdf = geopandas.read_file(
             SOURCES_DIR / f"geometry/fedshapes_cbf_20221003/CBF_RO{year}_CSRS.shp",
             engine="pyogrio",
@@ -82,28 +267,7 @@ def get_cached_geo_ridings():
             else:
                 raise RuntimeError(f"Unhandled year: {year}")
 
-            simple_geometry = geometry.simplify(10000, preserve_topology=False)
-            svg = simple_geometry.svg()
-            xml_svg = xml.etree.ElementTree.fromstring(svg)
-            for attr_key in ["fill", "stroke", "stroke-width", "opacity"]:
-                xml_svg.attrib.pop(attr_key, None)
-                for child in xml_svg:
-                    child.attrib.pop(attr_key, None)
-            final_svg = xml.etree.ElementTree.tostring(xml_svg).decode("utf-8")
-
-            ridings[year].append({"name": name, "id": id, "geometry": final_svg})
-            debug_geo_ridings.append(
-                {"name": name, "id": id, "year": year, "copy": f"{id}: {{ # {name}"}
-            )
-
-    with open(ARTIFACT_DIR / "debug_geo_ridings.json", "w") as f:
-        json.dump(debug_geo_ridings, f, indent=4, ensure_ascii=False)
-
-    with open(cache_file, "w") as f:
-        json.dump(ridings, f, indent=4, ensure_ascii=False)
-
-    with open(cache_file) as f:
-        ridings = json.load(f)
+            ridings[year].append(Geometry(name, id, geometry))
 
     return ridings
 
@@ -112,7 +276,8 @@ def build():
     ARTIFACT_DIR.mkdir(exist_ok=True)
     CACHE_DIR.mkdir(exist_ok=True)
 
-    ridings = get_cached_geo_ridings()
+    print("Loading geometry")
+    ridings = load_geo_ridings()
 
     election_and_candidate_rows = get_cached_xlsx(
         SOURCES_DIR / "electionsCandidates.xlsx", CACHE_DIR / "electionsCandidates.json"
@@ -130,10 +295,14 @@ def build():
         Riding: [],
         Candidate: set(),
         Run: [],
+        DetailView: [],
     }
 
     print("Processing ridings")
-    unassigned_ridings = []
+    riding_by_detail_view = {
+        view_name: {year: [] for year in RIDING_YEARS}
+        for view_name in DETAIL_MAP_BOUNDS.keys()
+    }
     for row in riding_rows:
         name, province, region, start_date, end_date, status = row
         if start_date == "":
@@ -178,26 +347,24 @@ def build():
             if year <= start_date_obj.year:
                 break
 
-        geometry_by_year = {}
+        geo_riding_by_year = {}
         for ro_year in ro_years:
-            is_duplicate = (
-                len([r for r in ridings[str(ro_year)] if r["name"] == name]) > 1
-            )
-            geometry = None
-            for riding in ridings[str(ro_year)]:
+            is_duplicate = len([r for r in ridings[ro_year] if r.name == name]) > 1
+            matched_geo_riding = None
+            for geo_riding in ridings[ro_year]:
                 if (
                     not is_duplicate
-                    and riding["name"]
+                    and geo_riding.name
                     and (
-                        riding["name"].lower() == name.lower()
-                        or riding["name"] == name.replace("--", "-")
-                        or riding["name"].split("/")[0] == name
+                        geo_riding.name.lower() == name.lower()
+                        or geo_riding.name == name.replace("--", "-")
+                        or geo_riding.name.split("/")[0] == name
                     )
                 ):
-                    geometry = riding["geometry"]
+                    matched_geo_riding = geo_riding
                     break
 
-                manual_match = corrections.get(riding["id"])
+                manual_match = corrections.get(geo_riding.id)
                 if manual_match is None:
                     continue
 
@@ -206,13 +373,11 @@ def build():
 
                 for match in manual_match:
                     if match["name"] == name and match["province"] == province:
-                        geometry = riding["geometry"]
+                        matched_geo_riding = geo_riding
                         break
 
-            if geometry is None:
+            if matched_geo_riding is None:
                 if name in (
-                    "Saskatchewan",
-                    "Saskatchewan (Provisional District)",
                     "Kitchener--Waterloo",
                     "Fort Nelson--Peace River",
                     "Charlotte",
@@ -227,39 +392,47 @@ def build():
                 ):
                     continue
 
-                ed = (
-                    {
-                        "year": end_date_obj.year,
-                        "month": end_date_obj.month,
-                        "day": end_date_obj.day,
-                    }
-                    if end_date_obj
-                    else None
-                )
                 if end_date_obj is None:
-                    unassigned_ridings.append(
-                        {
-                            "name": name,
-                            "province": province,
-                            "start_date": {
-                                "year": start_date_obj.year,
-                                "month": start_date_obj.month,
-                                "day": start_date_obj.day,
-                            },
-                            "end_date": ed,
-                            "ro_year": ro_year,
-                        }
-                    )
-                # assert False, f"Unassigned riding: {name} ({province})"
+                    assert False, f"Could not find {name} in {ro_year}"
+            else:
+                geo_riding_by_year[ro_year] = matched_geo_riding
 
-            geometry_by_year[ro_year] = geometry
-
-        province_enum = Province.from_name(province)
-        data[Riding].append(
-            Riding(name, province_enum, geometry_by_year, start_date_obj, end_date_obj)
+        riding = Riding(
+            name,
+            Province.from_name(province),
+            start_date_obj,
+            end_date_obj,
+            {year: geo_riding.area for year, geo_riding in geo_riding_by_year.items()},
         )
+        data[Riding].append(riding)
 
-    print(len(unassigned_ridings), "unassigned ridings")
+        for year, geometry in geo_riding_by_year.items():
+            for view_name in DetailViewName:
+                if geometry.intersects(detail_map_polygons[view_name]):
+                    riding_by_detail_view[view_name][year].append(riding)
+
+            svg_dir = WEB_ARTIFACT_DIR / f"geometry/{riding.id()}/{year}"
+            svg_dir.mkdir(parents=True, exist_ok=True)
+
+            if not (svg_dir / "simple.svg").exists():
+                with open(svg_dir / "simple.svg", "w") as f:
+                    f.write(geometry.to_svg(1000))
+            if not (svg_dir / "detailed.svg").exists():
+                with open(svg_dir / "detailed.svg", "w") as f:
+                    f.write(geometry.to_svg(100))
+
+    for view_name, ridings_by_year in riding_by_detail_view.items():
+        # print(view_name, ridings_by_year)
+        data[DetailView].append(
+            DetailView(
+                view_name,
+                ridings_by_year,
+                DETAIL_MAP_BOUNDS[view_name]["x"],
+                DETAIL_MAP_BOUNDS[view_name]["y"],
+                DETAIL_MAP_BOUNDS[view_name]["width"],
+                DETAIL_MAP_BOUNDS[view_name]["height"],
+            )
+        )
 
     print("Processing runs")
     for row in election_and_candidate_rows:
@@ -327,19 +500,7 @@ def build():
                 and date >= r.start_date
                 and (r.end_date is None or date < r.end_date)
             ]
-            if len(matching_ridings) != 1:
-                print(
-                    date,
-                    riding,
-                    province,
-                    candidate.first_name,
-                    candidate.last_name,
-                    len(matching_ridings),
-                )
-                # print(matching_ridings)
-                # for r in matching_ridings:
-                #   print(r.name, r.province, r.start_date, r.end_date)
-                continue
+
             assert len(matching_ridings) == 1
 
             run = Run(
@@ -363,6 +524,7 @@ def build():
     print("Writing JSON files")
     for cls, instances in data.items():
         obj = {}
+        json_file = WEB_ARTIFACT_DIR / f"{cls.__name__.lower()}.json"
         for instance in instances:
             if instance.id() in obj:
                 if (
@@ -375,6 +537,6 @@ def build():
                 else:
                     assert False, "Hash collision!"
             obj[instance.id()] = instance.to_json()
-        json_file = ARTIFACT_DIR / f"{cls.__name__.lower()}.json"
+        print(f"Writing {json_file}")
         with open(json_file, "w", encoding="utf-8") as f:
-            json.dump(obj, f, indent=4, ensure_ascii=False)
+            json.dump(obj, f, ensure_ascii=False)

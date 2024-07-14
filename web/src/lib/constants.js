@@ -43,6 +43,50 @@ export const MONTHS = {
     12: "December",
 };
 
+export const DETAIL_VIEWS = {
+    "ST_JOHNS": "St. John's",
+    "PEI": "P.E.I.",
+    "MONCTON": "Moncton",
+    "HALIFAX": "Halifax",
+    "MONTREAL": "Montréal",
+    "QUEBEC_CITY": "Québec",
+    "SOUTHERN_QUEBEC": "Southern Québec",
+    "TROIS_RIVIERES": "Trois-Rivières",
+    "OTTAWA": "Ottawa",
+    "TORONTO": "Toronto",
+    "GOLDEN_HORSESHOE": "Golden Horseshoe",
+    "LONDON": "London",
+    "REGINA": "Regina",
+    "WINNIPEG": "Winnipeg",
+    "ESSEX": "Essex",
+    "SASKATOON": "Saskatoon",
+    "CALGARY": "Calgary",
+    "EDMONTON": "Edmonton",
+    "VANCOUVER": "Vancouver",
+    "VICTORIA": "Victoria",
+}
+
+export const RO_YEARS = [
+    1867,
+    1872,
+    1882,
+    1892,
+    1903,
+    1905,
+    1914,
+    1924,
+    1933,
+    1947,
+    1952,
+    1966,
+    1976,
+    1987,
+    1996,
+    1999,
+    2003,
+    2013
+]
+
 export const PARTIES = {
     "ABOLITIONIST_PARTY_OF_CANADA": "Abolitionist Party of Canada",
     "ACCOUNTABILITY_COMPETENCY_AND_TRANSPARENCY": "Accountability, Competency and Transparency",
