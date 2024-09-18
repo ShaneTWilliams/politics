@@ -3,5 +3,5 @@ export function formatNumber(x) {
 }
 
 export function formatString(x) {
-    return x.toString().replace("--", "–");
+    return x.toString().replaceAll("--", "–");
 }

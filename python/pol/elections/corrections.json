@@ -66,8 +66,8 @@
     },
     "186724041": {
         "geo_name": "Ottawa",
-        "name": "Ottawa (City of)",
-        "province": "Ontario"
+        "name": "Ottawa (County of)",
+        "province": "Quebec"
     },
     "186724044": {
         "geo_name": "Québec (Comté)",
@@ -130,9 +130,9 @@
         "province": "Ontario"
     },
     "186735052": {
-        "geo_name": "Ottawa (is the ID a mistake? Has the Ontario prefix)",
-        "name": "Ottawa (County of)",
-        "province": "Quebec"
+        "geo_name": "Ottawa",
+        "name": "Ottawa (City of)",
+        "province": "Ontario"
     },
     "186759001": {
         "geo_name": "Cariboo",
@@ -471,6 +471,16 @@
         "name": "Victoria",
         "province": "British Columbia"
     },
+    "188261001": {
+        "geo_name": "Alberta",
+        "name": "Alberta (Provisional District)",
+        "province": "Northwest Territories"
+    },
+    "188261004": {
+        "geo_name": "Saskatchewan",
+        "name": "Saskatchewan (Provisional District)",
+        "province": "Northwest Territories"
+    },
     "189211002": {
         "geo_name": "East Queens",
         "name": "East Queen's",
@@ -631,6 +641,16 @@
         "name": "Victoria",
         "province": "British Columbia"
     },
+    "189261001": {
+        "geo_name": "Alberta",
+        "name": "Alberta (Provisional District)",
+        "province": "Northwest Territories"
+    },
+    "189261004": {
+        "geo_name": "Saskatchewan",
+        "name": "Saskatchewan (Provisional District)",
+        "province": "Northwest Territories"
+    },
     "190311001": {
         "geo_name": "Kings (P.E.I.)",
         "name": "King's",
@@ -779,12 +799,12 @@
     "190361001": {
         "geo_name": "Alberta",
         "name": "Alberta (Provisional District)",
-        "province": "Alberta"
+        "province": "Northwest Territories"
     },
     "190361009": {
         "geo_name": "Saskatchewan",
         "name": "Saskatchewan (Provisional District)",
-        "province": "Saskatchewan"
+        "province": "Northwest Territories"
     },
     "190511001": {
         "geo_name": "Kings (P.E.I.)",
@@ -1491,11 +1511,18 @@
         "name": "Kent",
         "province": "New Brunswick"
     },
-    "195213004": {
-        "geo_name": "Northumberland (N.B.)",
-        "name": "Northumberland--Miramichi",
-        "province": "New Brunswick"
-    },
+    "195213004": [
+        {
+            "geo_name": "Northumberland (N.B.)",
+            "name": "Northumberland",
+            "province": "New Brunswick"
+        },
+        {
+            "geo_name": "Northumberland (N.B.)",
+            "name": "Northumberland--Miramichi",
+            "province": "New Brunswick"
+        }
+    ],
     "195213007": {
         "geo_name": "Saint John--Albert",
         "name": "St. John--Albert",
@@ -1781,6 +1808,11 @@
         "name": "Hull--Aylmer",
         "province": "Quebec"
     },
+    "197624033": {
+        "geo_name": "La Prairie",
+        "name": "Laprairie",
+        "province": "Quebec"
+    },
     "197624041": {
         "geo_name": "Hochelaga--Maisonneuve  TODO",
         "name": "Maisonneuve",
@@ -1953,6 +1985,16 @@
         "name": "Fredericton",
         "province": "New Brunswick"
     },
+    "198713005": {
+        "geo_name": "Acadie-Bathurst",
+        "name": "Gloucester",
+        "province": "New Brunswick"
+    },
+    "198713009": {
+        "geo_name": "Restigouche-Chaleur",
+        "name": "Restigouche",
+        "province": "New Brunswick"
+    },
     "198724003": {
         "geo_name": "Anjou-RiviÃÂ¨re-des-Prairies",
         "name": "Anjou--Rivière-des-Prairies",
@@ -1980,11 +2022,18 @@
         "name": "Châteauguay",
         "province": "Quebec"
     },
-    "198724021": {
-        "geo_name": "Laval-Est (East)",
-        "name": "Laval East",
-        "province": "Quebec"
-    },
+    "198724021": [
+        {
+            "geo_name": "Laval-Est (East)",
+            "name": "Laval East",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Laval-Est (East)",
+            "name": "Duvernay",
+            "province": "Quebec"
+        }
+    ],
     "198724023": {
         "geo_name": "GaspÃÂ©",
         "name": "Gaspé",
@@ -2000,26 +2049,47 @@
         "name": "Kamouraska--Rivière-du-Loup",
         "province": "Quebec"
     },
-    "198724031": {
-        "geo_name": "QuÃÂ©bec",
-        "name": "Québec",
-        "province": "Quebec"
-    },
+    "198724031": [
+        {
+            "geo_name": "QuÃÂ©bec",
+            "name": "Langelier",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "QuÃÂ©bec",
+            "name": "Québec",
+            "province": "Quebec"
+        }
+    ],
     "198724033": {
         "geo_name": "LaSalle-Ãâ°mard",
         "name": "LaSalle--Émard",
         "province": "Quebec"
     },
-    "198724036": {
-        "geo_name": "Laval-Ouest (West)",
-        "name": "Laval West",
-        "province": "Quebec"
-    },
-    "198724037": {
-        "geo_name": "Laval-Centre (Center)",
-        "name": "Laval Centre",
-        "province": "Quebec"
-    },
+    "198724036": [
+        {
+            "geo_name": "Laval-Ouest (West)",
+            "name": "Laval West",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Laval-Ouest (West)",
+            "name": "Laval",
+            "province": "Quebec"
+        }
+    ],
+    "198724037": [
+        {
+            "geo_name": "Laval-Centre (Center)",
+            "name": "Laval Centre",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Laval-Centre (Center)",
+            "name": "Laval-des-Rapides",
+            "province": "Quebec"
+        }
+    ],
     "198724038": {
         "geo_name": "LÃÂ©vis",
         "name": "Lévis",
@@ -2045,11 +2115,18 @@
         "name": "Mégantic--Compton--Stanstead",
         "province": "Quebec"
     },
-    "198724046": {
-        "geo_name": "Beauport-Montmorency-OrlÃÂ©ans",
-        "name": "Beauport--Montmorency--Orléans",
-        "province": "Quebec"
-    },
+    "198724046": [
+        {
+            "geo_name": "Beauport-Montmorency-OrlÃÂ©ans",
+            "name": "Beauport--Montmorency--Orléans",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Beauport-Montmorency-OrlÃÂ©ans",
+            "name": "Montmorency--Orléans",
+            "province": "Quebec"
+        }
+    ],
     "198724047": {
         "geo_name": "Mont-Royal (Mount Royal)",
         "name": "Mount Royal",
@@ -2113,6 +2190,11 @@
     "198735015": {
         "geo_name": "Don Valley West (Ouest)",
         "name": "Don Valley West",
+        "province": "Ontario"
+    },
+    "198735018": {
+        "geo_name": "Elgin-Norfolk",
+        "name": "Elgin",
         "province": "Ontario"
     },
     "198735024": {
@@ -2432,6 +2514,11 @@
         "name": "Beauséjour--Petitcodiac",
         "province": "New Brunswick"
     },
+    "199613003": {
+        "geo_name": "New Brunswick Southwest/Nouveau-Brunswick-Sud-Ouest",
+        "name": "Charlotte",
+        "province": "New Brunswick"
+    },
     "199613005": {
         "geo_name": "Fundy3Royal",
         "name": "Fundy--Royal",
@@ -2442,11 +2529,18 @@
         "name": "Madawaska--Restigouche",
         "province": "New Brunswick"
     },
-    "199613008": {
-        "geo_name": "Moncton0RiverviewuDieppe",
-        "name": "Moncton--Riverview--Dieppe",
-        "province": "New Brunswick"
-    },
+    "199613008": [
+        {
+            "geo_name": "Moncton0RiverviewuDieppe",
+            "name": "Moncton--Riverview--Dieppe",
+            "province": "New Brunswick"
+        },
+        {
+            "geo_name": "Moncton0RiverviewuDieppe",
+            "name": "Moncton",
+            "province": "New Brunswick"
+        }
+    ],
     "199613010": {
         "geo_name": "Tobique0Mactaquac",
         "name": "Tobique--Mactaquac",
@@ -2479,11 +2573,18 @@
         "name": "Beauharnois--Salaberry",
         "province": "Quebec"
     },
-    "199624007": {
-        "geo_name": "Beauport6MontmorencyyCrte-de-Beauprntrle-d'Orllans",
-        "name": "Beauport--Montmorency--Côte-de-Beaupré--Île-d'Orléans",
-        "province": "Quebec"
-    },
+    "199624007": [
+        {
+            "geo_name": "Beauport6MontmorencyyCrte-de-Beauprntrle-d'Orllans",
+            "name": "Beauport--Montmorency--Côte-de-Beaupré--Île-d'Orléans",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Beauport6MontmorencyyCrte-de-Beauprntrle-d'Orllans",
+            "name": "Beauport--Montmorency--Orléans",
+            "province": "Quebec"
+        }
+    ],
     "199624008": {
         "geo_name": "BellechassenEtcheminsCMontmagnyaL'Islet",
         "name": "Bellechasse--Etchemins--Montmagny--L'Islet",
@@ -2595,11 +2696,18 @@
         "name": "Laval West",
         "province": "Quebec"
     },
-    "199624038": {
-        "geo_name": "L9vis-et-Chutes-de-la-Chaudi-re",
-        "name": "Lévis-et-Chutes-de-la-Chaudière",
-        "province": "Quebec"
-    },
+    "199624038": [
+        {
+            "geo_name": "L9vis-et-Chutes-de-la-Chaudi-re",
+            "name": "Lévis-et-Chutes-de-la-Chaudière",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "L9vis-et-Chutes-de-la-Chaudi-re",
+            "name": "Lévis",
+            "province": "Quebec"
+        }
+    ],
     "199624040": {
         "geo_name": "Lotbini3re",
         "name": "Lotbinière",
@@ -2645,11 +2753,18 @@
         "name": "Québec East",
         "province": "Quebec"
     },
-    "199624054": {
-        "geo_name": "Bas-RichelieueNicolettBecancour",
-        "name": "Bas-Richelieu--Nicolet--Bécancour",
-        "province": "Quebec"
-    },
+    "199624054": [
+        {
+            "geo_name": "Bas-RichelieueNicolettBecancour",
+            "name": "Bas-Richelieu--Nicolet--Bécancour",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Bas-RichelieueNicolettBecancour",
+            "name": "Richelieu",
+            "province": "Quebec"
+        }
+    ],
     "199624055": {
         "geo_name": "Richmond4Arthabaska",
         "name": "Richmond--Arthabaska",
@@ -2721,11 +2836,18 @@
         "name": "Vaudreuil--Soulanges",
         "province": "Quebec"
     },
-    "199624073": {
-        "geo_name": "Verch4res",
-        "name": "Verchères--Les Patriotes",
-        "province": "Quebec"
-    },
+    "199624073": [
+        {
+            "geo_name": "Verch4res",
+            "name": "Verchères--Les Patriotes",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Verch4res",
+            "name": "Verchères",
+            "province": "Quebec"
+        }
+    ],
     "199624074": {
         "geo_name": "Verdun0Saint-Henri",
         "name": "Verdun--Saint-Henri",
@@ -2751,11 +2873,18 @@
         "name": "Beaches--East York",
         "province": "Ontario"
     },
-    "199635004": {
-        "geo_name": "Bramalea3GoreYMaltonrSpringdale",
-        "name": "Bramalea--Gore--Malton--Springdale",
-        "province": "Ontario"
-    },
+    "199635004": [
+        {
+            "geo_name": "Bramalea3GoreYMaltonrSpringdale",
+            "name": "Bramalea--Gore--Malton--Springdale",
+            "province": "Ontario"
+        },
+        {
+            "geo_name": "Bramalea3GoreYMaltonrSpringdale",
+            "name": "Bramalea--Gore--Malton",
+            "province": "Ontario"
+        }
+    ],
     "199635006": {
         "geo_name": "Brampton WestrMississauga/Brampton-Ouest.Mississauga",
         "name": "Brampton West--Mississauga",
@@ -2850,6 +2979,11 @@
             "province": "Ontario"
         }
     ],
+    "199635038": {
+        "geo_name": "Kitchener",
+        "name": "Kitchener--Waterloo",
+        "province": "Ontario"
+    },
     "199635039": {
         "geo_name": "Lambton3KenttMiddlesex",
         "name": "Lambton--Kent--Middlesex",
@@ -2950,11 +3084,18 @@
         "name": "Thunder Bay--Atikokan",
         "province": "Ontario"
     },
-    "199635087": {
-        "geo_name": "Thunder BaynSuperior North/Thunder BayOSuperior-Nord",
-        "name": "Thunder Bay--Superior North",
-        "province": "Ontario"
-    },
+    "199635087": [
+        {
+            "geo_name": "Thunder BaynSuperior North/Thunder BayOSuperior-Nord",
+            "name": "Thunder Bay--Superior North",
+            "province": "Ontario"
+        },
+        {
+            "geo_name": "Thunder BaynSuperior North/Thunder BayOSuperior-Nord",
+            "name": "Thunder Bay--Nipigon",
+            "province": "Ontario"
+        }
+    ],
     "199635088": {
         "geo_name": "TimiskamingnCochrane",
         "name": "Timiskaming--Cochrane",
@@ -2987,11 +3128,18 @@
             "province": "Ontario"
         }
     ],
-    "199635093": {
-        "geo_name": "HaliburtonnVictoria",
-        "name": "Haliburton--Victoria--Brock",
-        "province": "Ontario"
-    },
+    "199635093": [
+        {
+            "geo_name": "HaliburtonnVictoria",
+            "name": "Haliburton--Victoria--Brock",
+            "province": "Ontario"
+        },
+        {
+            "geo_name": "HaliburtonnVictoria",
+            "name": "Victoria--Haliburton",
+            "province": "Ontario"
+        }
+    ],
     "199635094": {
         "geo_name": "Waterloo3Wellington",
         "name": "Waterloo--Wellington",
@@ -3172,6 +3320,11 @@
         "name": "Esquimalt--Juan de Fuca",
         "province": "British Columbia"
     },
+    "199659007": {
+        "geo_name": "Kamloops, Thompson and Highland Valleys",
+        "name": "Kamloops",
+        "province": "British Columbia"
+    },
     "199659009": {
         "geo_name": "Kootenay8Columbia",
         "name": "Kootenay--Columbia",
@@ -3221,11 +3374,18 @@
         "name": "Okanagan--Coquihalla",
         "province": "British Columbia"
     },
-    "199659017": {
-        "geo_name": "Port MoodyoCoquitlamiPort Coquitlam",
-        "name": "Port Moody--Coquitlam--Port Coquitlam",
-        "province": "British Columbia"
-    },
+    "199659017": [
+        {
+            "geo_name": "Port MoodyoCoquitlamiPort Coquitlam",
+            "name": "Port Moody--Coquitlam--Port Coquitlam",
+            "province": "British Columbia"
+        },
+        {
+            "geo_name": "Port MoodyoCoquitlamiPort Coquitlam",
+            "name": "Port Moody--Coquitlam",
+            "province": "British Columbia"
+        }
+    ],
     "199659018": {
         "geo_name": "Prince GeorgeqBulkley Valley",
         "name": "Prince George--Bulkley Valley",
@@ -3711,6 +3871,11 @@
     "199935035": {
         "geo_name": "Chatham3Kent Essex",
         "name": "Chatham-Kent--Essex",
+        "province": "Ontario"
+    },
+    "199935038": {
+        "geo_name": "Kitchener",
+        "name": "Kitchener--Waterloo",
         "province": "Ontario"
     },
     "199935039": {
@@ -5470,7 +5635,7 @@
             "province": "British Columbia"
         },
         {
-            "name": "British Colombia Southern Interior",
+            "name": "British Columbia Southern Interior",
             "province": "British Columbia"
         }
     ],
@@ -5524,10 +5689,16 @@
         "name": "Yukon",
         "province": "Yukon"
     },
-    "200361001": {
-        "name": "Northwest Territories",
-        "province": "Northwest Territories"
-    },
+    "200361001": [
+        {
+            "name": "Northwest Territories",
+            "province": "Northwest Territories"
+        },
+        {
+            "name": "Western Arctic",
+            "province": "Northwest Territories"
+        }
+    ],
     "200362001": {
         "name": "Nunavut",
         "province": "Nunavut"

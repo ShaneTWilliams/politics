@@ -12,3 +12,13 @@
     theme("colors.sol-light3") 10px
     );
 }
+
+.dark-diagonal-lines {
+    background: repeating-linear-gradient(
+    45deg,
+    theme("colors.sol-dark1"),
+    theme("colors.sol-dark1") 5px,
+    theme("colors.sol-dark3") 5px,
+    theme("colors.sol-dark3") 10px
+    );
+}

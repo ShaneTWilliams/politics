@@ -28,28 +28,7 @@ PARTY_COLORS = {
 }
 
 GEOMETRY_DIR = SOURCES_DIR / "geometry/fedshapes_cbf_20221003"
-RIDING_YEARS = sorted([int(f.stem[6:10]) for f in GEOMETRY_DIR.glob("*.shp")])
-RO_YEARS = [
-    1867,
-    1872,
-    1882,
-    1892,
-    1903,
-    1905,
-    1914,
-    1924,
-    1933,
-    1947,
-    1952,
-    1966,
-    1976,
-    1987,
-    1996,
-    1999,
-    2003,
-    2013,
-]
-
+RO_YEARS = sorted([int(f.stem[6:10]) for f in GEOMETRY_DIR.glob("*.shp")])
 
 DETAIL_MAP_BOUNDS = {
     DetailViewName.ST_JOHNS: {
@@ -206,7 +185,7 @@ class Geometry:
         svg.attrib["d"] = " ".join(new_d)
 
     def to_svg(self, tolerance) -> str:
-        simple_geometry = self.geometry.simplify(tolerance, preserve_topology=False)
+        simple_geometry = self.shape.simplify(tolerance, preserve_topology=False)
         svg = simple_geometry.svg()
         xml_svg = xml.etree.ElementTree.fromstring(svg)
         self.process_svg(xml_svg)
@@ -236,9 +215,9 @@ def get_cached_xlsx(xlsx_path, json_path):
 
 
 def load_geo_ridings():
-    ridings = {year: [] for year in RIDING_YEARS}
+    ridings = {year: [] for year in RO_YEARS}
 
-    for year in RIDING_YEARS:
+    for year in RO_YEARS:
         gdf = geopandas.read_file(
             SOURCES_DIR / f"geometry/fedshapes_cbf_20221003/CBF_RO{year}_CSRS.shp",
             engine="pyogrio",
@@ -267,7 +246,11 @@ def load_geo_ridings():
             else:
                 raise RuntimeError(f"Unhandled year: {year}")
 
-            ridings[year].append(Geometry(name, id, geometry))
+            geometry_obj = Geometry(name, id, geometry)
+            ridings[year].append(geometry_obj)
+            if id == "186724041":
+                ridings[1872].append(geometry_obj)
+                ridings[1882].append(geometry_obj)
 
     return ridings
 
@@ -277,14 +260,20 @@ def build():
     CACHE_DIR.mkdir(exist_ok=True)
 
     print("Loading geometry")
-    ridings = load_geo_ridings()
+    geo_ridings = load_geo_ridings()
+    #with open("geo_ridings.json", "w") as f:
+    #    json.dump({year: [[r.name, r.id] for r in ridings] for year, ridings in geo_ridings.items()}, f)
 
     election_and_candidate_rows = get_cached_xlsx(
         SOURCES_DIR / "electionsCandidates.xlsx", CACHE_DIR / "electionsCandidates.json"
     )
     riding_rows = get_cached_xlsx(
-        SOURCES_DIR / "ridings/ParlInfoRidings1.xlsx", CACHE_DIR / f"ridings.json"
+        SOURCES_DIR / "ParlInfoRidings.xlsx", CACHE_DIR / f"ridings.json"
     )
+    parliamentarians_rows = get_cached_xlsx(
+        SOURCES_DIR / "Parliamentarians.xlsx", CACHE_DIR / f"parliamentarians.json"
+    )
+
     with open(PYTHON_PACKAGE_DIR / "elections/corrections.json", "r") as f:
         corrections = json.load(f)
 
@@ -293,14 +282,14 @@ def build():
         Election: [],
         Party: set(),
         Riding: [],
-        Candidate: set(),
+        Candidate: [],
         Run: [],
         DetailView: [],
     }
 
     print("Processing ridings")
     riding_by_detail_view = {
-        view_name: {year: [] for year in RIDING_YEARS}
+        view_name: {year: [] for year in RO_YEARS}
         for view_name in DETAIL_MAP_BOUNDS.keys()
     }
     for row in riding_rows:
@@ -341,7 +330,7 @@ def build():
             continue
 
         ro_years = []
-        for year in RIDING_YEARS[::-1]:
+        for year in RO_YEARS[::-1]:
             if end_date_obj is None or year <= end_date_obj.year:
                 ro_years.append(year)
             if year <= start_date_obj.year:
@@ -349,9 +338,9 @@ def build():
 
         geo_riding_by_year = {}
         for ro_year in ro_years:
-            is_duplicate = len([r for r in ridings[ro_year] if r.name == name]) > 1
+            is_duplicate = len([r for r in geo_ridings[ro_year] if r.name == name]) > 1
             matched_geo_riding = None
-            for geo_riding in ridings[ro_year]:
+            for geo_riding in geo_ridings[ro_year]:
                 if (
                     not is_duplicate
                     and geo_riding.name
@@ -377,25 +366,15 @@ def build():
                         break
 
             if matched_geo_riding is None:
-                if name in (
-                    "Kitchener--Waterloo",
-                    "Fort Nelson--Peace River",
-                    "Charlotte",
-                    "British Columbia Southern Interior",
-                    "Barrie--Simcoe",
-                    "Assiniboia East",  # https://en.wikipedia.org/wiki/Assiniboia_East
-                    "Assiniboia West",
-                    "Alberta (Provisional District)",
-                    "Alberta",
-                    "Ottawa (County of)",
-                    "Western Arctic",
-                ):
-                    continue
 
                 if end_date_obj is None:
                     assert False, f"Could not find {name} in {ro_year}"
             else:
                 geo_riding_by_year[ro_year] = matched_geo_riding
+
+        if len(geo_riding_by_year) == 0:
+            print(f"Could not find {name} in {ro_years}")
+            continue
 
         riding = Riding(
             name,
@@ -403,6 +382,10 @@ def build():
             start_date_obj,
             end_date_obj,
             {year: geo_riding.area for year, geo_riding in geo_riding_by_year.items()},
+            center=(
+                sum([r.shape.centroid.x for r in geo_riding_by_year.values()]) / len(geo_riding_by_year) / 1000,
+                sum([r.shape.centroid.y for r in geo_riding_by_year.values()]) / len(geo_riding_by_year) / 1000,
+            ),
         )
         data[Riding].append(riding)
 
@@ -435,6 +418,8 @@ def build():
         )
 
     print("Processing runs")
+    candidates = {}
+    runs_by_candidate = {}
     for row in election_and_candidate_rows:
         (
             picture_or_heading,
@@ -469,16 +454,6 @@ def build():
             party = Party(party)
             data[Party].add(party)
 
-            split_name = candidate.split(", ")
-            last = split_name[0]
-            first = "".join(split_name[1:])
-            if first.isupper():
-                first = first.title()
-            if last.isupper():
-                last = last.title()
-            candidate = Candidate(first, last, gender, occupation)
-            data[Candidate].add(candidate)
-
             if (date, riding) == (datetime.date(2004, 6, 28), "Laurier--Sainte-Marie"):
                 # https://en.wikipedia.org/wiki/Laurier%E2%80%94Sainte-Marie
                 # Laurier—Sainte-Marie was abolished in 2003, then redistributed into Laurier and Holcheaga,
@@ -500,18 +475,77 @@ def build():
                 and date >= r.start_date
                 and (r.end_date is None or date < r.end_date)
             ]
+            if len(matching_ridings) != 1:
+                print(matching_ridings)
+                print(f"Could not find {riding} in {province} on {date}")
 
             assert len(matching_ridings) == 1
+            riding_obj = matching_ridings[0]
+fix duplicate candidates, see william mcdougall
+            split_name = candidate.split(", ")
+            last = split_name[0]
+            first = "".join(split_name[1:])
+            if first.isupper():
+                first = first.title()
+            if last.isupper():
+                last = last.title()
+            if (first, last, gender, occupation) == ("Chris", "d'Entremont", "Man", "Parliamentarian"):
+                party = Party("Conservative Party of Canada")
+                result = "Elected"
+            elif (first, last, gender, occupation) == ("Chris", "d'Entremont", "Man", "Unemployed"):
+                first = "Scott"
+                last = "Spidle"
+                party = Party("People's Party of Canada")
+                result = "Defeated"
+            elif (first, last, gender, occupation) == ("Joël", "Lightbound", "Man", "Sports Manager"):
+                first = "Gilles"
+                last = "Lépine"
+                party = Party("Conservative Party of Canada")
+                result = "Defeated"
+            elif (first, last, gender, occupation) == ("Joël", "Lightbound", "Man", "Parliamentarian"):
+                result = "Elected"
+
+            candidate = Candidate(first, last, Gender.from_string(gender))
+            first_first_name = first.split(" ")[0]
+            key = (first_first_name, last)
+
+            if key in candidates and candidates[key] != candidate:
+                potential_match = candidates[key]
+                potential_match_runs = runs_by_candidate[potential_match.id()]
+                min_run_date = min([run.election.date for run in potential_match_runs])
+                max_run_date = max([run.election.date for run in potential_match_runs])
+
+                dates_match = date >= min_run_date and date <= max_run_date
+                if date < min_run_date and min_run_date.year - date.year < 10:
+                    dates_match = True
+                elif date > max_run_date and date.year - max_run_date.year < 10:
+                    dates_match = True
+
+                potential_match_centers = [run.riding.center for run in potential_match_runs]
+                average_center = (
+                    sum([c[0] for c in potential_match_centers]) / len(potential_match_centers),
+                    sum([c[1] for c in potential_match_centers]) / len(potential_match_centers),
+                )
+                distance = ((average_center[0] - riding_obj.center[0]) ** 2 + (average_center[1] - riding_obj.center[1]) ** 2) ** 0.5
+
+                if distance < 40 and dates_match:
+                    # Matched existing candidate!
+                    candidate = candidates[key]
+
+            candidates[key] = candidate
 
             run = Run(
                 data[Election][-1],
-                matching_ridings[0],
+                riding_obj,
                 candidate,
                 party,
                 ElectionResult.from_string(result),
                 int(votes),
+                occupation,
             )
+            data[Candidate].append(candidate)
             data[Run].append(run)
+            runs_by_candidate.setdefault(candidate.id(), []).append(run)
 
             for election in data[Election]:
                 if election.date == date:
@@ -520,6 +554,43 @@ def build():
 
         else:
             raise RuntimeError(f"Bad row: {row}")
+
+    data[Candidate] = set(data[Candidate])
+
+    for parliamentarian_row in parliamentarians_rows:
+        name, record, _, _, riding, province, gender, party = parliamentarian_row
+        if name.startswith("Count: "):
+            continue
+        last_name, first_name = name.split(", ")
+        first_year, last_year = None, None
+        for record_segment in record.split("\n"):
+            if record_segment == "":
+                continue
+
+            parliamentarian_type, date_range = record_segment.split(" (")
+            parliamentarian_type = ParliamentarianType.from_string(parliamentarian_type)
+
+            date_range = date_range[:-1].split(" - ")
+            start_date = date_range[0].split("/")
+            end_date = date_range[1].split("/") if record_segment[1] else None
+            start_date = datetime.date(int(start_date[0]), int(start_date[1]), int(start_date[2]))
+            if end_date is not None:
+                if len(end_date) == 1:
+                    if end_date[0] == "":
+                        end_date = None
+                    else:
+                        end_date = datetime.date(int(end_date[0]), 1, 1)
+                else:
+                    end_date = datetime.date(int(end_date[0]), int(end_date[1]), int(end_date[2]))
+
+            if first_year is None or start_date.year < first_year:
+                first_year = start_date.year
+            if end_date is not None and (last_year is None or end_date.year > last_year):
+                last_year = end_date.year
+
+
+    for run in data[Run]:
+        run.candidate.runs.append(run.id())
 
     print("Writing JSON files")
     for cls, instances in data.items():

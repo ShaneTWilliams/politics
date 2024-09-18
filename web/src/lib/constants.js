@@ -1,4 +1,9 @@
-export const FILL_COLORS = {
+export const ELECTION_TYPE = {
+    "GENERAL": "General Election",
+    "BYELECTION": "By-Election",
+};
+
+export const FILL_COLOURS = {
     "RED":      "fill-sol-red bg-sol-red",
     "ORANGE":   "fill-sol-orange bg-sol-orange",
     "YELLOW":   "fill-sol-yellow bg-sol-yellow",
@@ -7,8 +12,8 @@ export const FILL_COLORS = {
     "PURPLE":   "fill-sol-violet bg-sol-violet",
     "PINK":     "fill-sol-magenta bg-sol-magenta",
     "GREY":     "fill-sol-dark1 bg-sol-dark1",
-    "BLACK":    "fill-sol-dark3 bg-sol-dark3",
-    "WHITE":    "fill-sol-light3 bg-sol-light3",
+    "BLACK":    "fill-sol-dark3 bg-sol-dark3 dark:fill-sol-dark1 dark:bg-sol-dark1",
+    "WHITE":    "fill-sol-light3 bg-sol-light2 dark:fill-sol-light2 dark:bg-sol-light2",
     "CYAN":     "fill-sol-cyan bg-sol-cyan"
 };
 

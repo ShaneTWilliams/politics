@@ -15,6 +15,17 @@ class ElectionType(enum.Enum):
     GENERAL = 1
     BYELECTION = 2
 
+class ParliamentarianType(enum.Enum):
+    MP = 1
+    SENATOR = 2
+
+    @staticmethod
+    def from_string(s: str):
+        return {
+            "MP": ParliamentarianType.MP,
+            "Senator": ParliamentarianType.SENATOR,
+        }[s]
+
 
 class ElectionResult(enum.Enum):
     ELECTED = 1
@@ -37,6 +48,15 @@ class Gender(enum.Enum):
     MALE = 2
     OTHER = 3
     UNKNOWN = 4
+
+    @staticmethod
+    def from_string(s: str):
+        return {
+            "Man": Gender.MALE,
+            "Woman": Gender.FEMALE,
+            "Another Gender": Gender.OTHER,
+            "Data unavailable": Gender.UNKNOWN,
+        }[s]
 
 
 class DetailViewName(enum.Enum):
@@ -414,7 +434,7 @@ class PartyName(enum.Enum):
             PartyName.CANADIAN_LABOUR: Color.BLACK,
             PartyName.CANADIAN_NATIONALIST_PARTY: Color.BLACK,
             PartyName.CANADIAN_PARTY: Color.BLACK,
-            PartyName.CANADIAN_REFORM_CONSERVATIVE_ALLIANCE: Color.BLACK,
+            PartyName.CANADIAN_REFORM_CONSERVATIVE_ALLIANCE: Color.GREEN,
             PartyName.CANDIDATE_OF_THE_ELECTORS: Color.BLACK,
             PartyName.CAPITAL_FAMILIAL: Color.BLACK,
             PartyName.CENTRIST_PARTY_OF_CANADA: Color.BLACK,
@@ -463,7 +483,7 @@ class PartyName(enum.Enum):
             PartyName.NATIONAL_CITIZENS_ALLIANCE: Color.BLACK,
             PartyName.NATIONAL_CITIZENS_ALLIANCE_OF_CANADA: Color.BLACK,
             PartyName.NATIONAL_CREDIT_CONTROL: Color.BLACK,
-            PartyName.NATIONAL_GOVERNMENT: Color.BLACK,
+            PartyName.NATIONAL_GOVERNMENT: Color.BLUE,
             PartyName.NATIONAL_LABOUR: Color.BLACK,
             PartyName.NATIONAL_LIBERAL_PROGRESSIVE: Color.BLACK,
             PartyName.NATIONAL_LIBERAL_AND_CONSERVATIVE_PARTY_1921: Color.BLACK,
@@ -481,7 +501,7 @@ class PartyName(enum.Enum):
             PartyName.NEWFOUNDLAND_AND_LABRADOR_FIRST_PARTY: Color.BLACK,
             PartyName.NO_AFFILIATION_TO_A_RECOGNISED_PARTY: Color.BLACK,
             PartyName.NON_PARTISAN_LEAGUE: Color.BLACK,
-            PartyName.OPPOSITION: Color.BLACK,
+            PartyName.OPPOSITION: Color.RED,
             PartyName.OPPOSITION_LABOUR: Color.BLACK,
             PartyName.PARTI_HUMAIN_FAMILIAL: Color.BLACK,
             PartyName.PARTI_NATIONALISTE_DU_QUÉBEC: Color.BLACK,
@@ -494,7 +514,7 @@ class PartyName(enum.Enum):
             PartyName.PEOPLES_PARTY_OF_CANADA: Color.PURPLE,
             PartyName.PEOPLES_POLITICAL_POWER_PARTY_OF_CANADA: Color.BLACK,
             PartyName.PIRATE_PARTY_OF_CANADA: Color.BLACK,
-            PartyName.PROGRESSIVE: Color.BLACK,
+            PartyName.PROGRESSIVE: Color.GREEN,
             PartyName.PROGRESSIVE_CANADIAN_PARTY: Color.BLACK,
             PartyName.PROGRESSIVE_CONSERVATIVE_PARTY: Color.BLUE,
             PartyName.PROGRESSIVE_WORKERS_MOVEMENT: Color.BLACK,
@@ -505,7 +525,7 @@ class PartyName(enum.Enum):
             PartyName.RALLIEMENT_DES_CRÉDITISTES: Color.BLACK,
             PartyName.RECONSTRUCTION_PARTY: Color.BLACK,
             PartyName.REFORM: Color.BLACK,
-            PartyName.REFORM_PARTY_OF_CANADA: Color.BLACK,
+            PartyName.REFORM_PARTY_OF_CANADA: Color.GREEN,
             PartyName.REPUBLICAN: Color.BLACK,
             PartyName.REPUBLICAN_PARTY: Color.BLACK,
             PartyName.RHINOCEROS_PARTY: Color.BLACK,
@@ -522,8 +542,8 @@ class PartyName(enum.Enum):
             PartyName.TRADES_UNION: Color.BLACK,
             PartyName.UNION_POPULAIRE: Color.BLACK,
             PartyName.UNION_OF_ELECTORS: Color.BLACK,
-            PartyName.UNIONIST: Color.BLACK,
-            PartyName.UNIONIST_LIBERAL: Color.BLACK,
+            PartyName.UNIONIST: Color.BLUE,
+            PartyName.UNIONIST_LIBERAL: Color.ORANGE,
             PartyName.UNITED_FARMERS: Color.BLACK,
             PartyName.UNITED_FARMERS_OF_ALBERTA: Color.BLACK,
             PartyName.UNITED_FARMERS_OF_ONTARIO: Color.BLACK,
@@ -586,7 +606,6 @@ class Record(abc.ABC):
     def __eq__(self, other):
         return self.id() == other.id()
 
-
 class Party(Record):
     def __init__(self, name: str):
         self.name = PartyName.from_name(name)
@@ -612,12 +631,14 @@ class Riding(Record):
         start_date: datetime.date,
         end_date: datetime.date,
         area_by_year: typing.Dict[int, int],
+        center: typing.Tuple[int, int],
     ):
         self.name = name
         self.province = province
         self.start_date = start_date
         self.end_date = end_date
         self.area_by_year = area_by_year
+        self.center = center
 
     def id(self):
         # Riding geometry changes over time.
@@ -669,17 +690,16 @@ class Election(Record):
 
 class Candidate(Record):
     def __init__(
-        self, first_name: str, last_name: str, gender: Gender, occupation: str
+        self, first_name: str, last_name: str, gender: Gender
     ):
         self.first_name = first_name
         self.last_name = last_name
         self.gender = gender
-        self.occupation = occupation
+        self.runs = []
 
     def id(self):
-        occupation_string = self.occupation if self.occupation is not None else ""
         return hash_string(
-            self.first_name + self.last_name + str(self.gender) + occupation_string
+            self.first_name + self.last_name + str(self.gender)
         )
 
 
@@ -692,6 +712,7 @@ class Run(Record):
         party: Party,
         result: ElectionResult,
         votes: int,
+        occupation: str,
     ):
         self.election = election
         self.riding = riding
@@ -699,6 +720,7 @@ class Run(Record):
         self.party = party
         self.result = result
         self.votes = votes
+        self.occupation = occupation
 
     def id(self):
         return hash_string(
@@ -708,4 +730,5 @@ class Run(Record):
             + self.party.id()
             + str(self.result)
             + str(self.votes)
+            + str(self.occupation)
         )

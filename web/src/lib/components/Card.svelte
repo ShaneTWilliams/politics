@@ -6,8 +6,8 @@
 </script>
 
 <div class="flex flex-row w-full">
-    <a href={link} class="rounded-lg bg-sol-light2 grow flex flex-col p-4 m-4 text-left space-y-1">
-        <div class="flex flex-row items-center justify-center bg-sol-light3 rounded w-full h-48 opacity-80 mb-2 p-2">
+    <a href={link} class="rounded-lg bg-sol-light2 grow flex flex-col py-4 px-6 text-left space-y-1">
+        <div class="flex flex-row items-center justify-center rounded w-full h-48 opacity-80 mb-2 p-2">
             <slot />
         </div>
         <p class="text-xl font-black">

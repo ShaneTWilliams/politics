@@ -10,21 +10,17 @@
     import { PARTIES, PROVINCES } from "$lib/constants.js"
     import HorizontalBar from "./HorizontalBar.svelte"
     import { formatString } from "$lib/utils.js"
+	import { onMount } from "svelte";
+    import { afterUpdate } from "svelte";
+    import { browser } from '$app/environment';
 
     export let electionId;
     let election = elections[electionId];
 
     let hoveredRiding = null;
     let selectedRiding = null;
-    let detail_view_ids = [
+    let BIG_DETAIL_VIEW_IDS = [
         [
-            "ST_JOHNS",
-            "PEI",
-            "MONCTON",
-            "HALIFAX",
-            "QUEBEC_CITY",
-            "LONDON",
-        ], [
             "MONTREAL",
             "SOUTHERN_QUEBEC",
             "TORONTO",
@@ -34,6 +30,16 @@
             "CALGARY",
             "EDMONTON",
             "VANCOUVER",
+        ]
+    ];
+    let SMALL_DETAIL_VIEW_IDS = [
+        [
+            "ST_JOHNS",
+            "PEI",
+            "MONCTON",
+            "HALIFAX",
+            "QUEBEC_CITY",
+            "LONDON",
         ], [
             "TROIS_RIVIERES",
             "REGINA",
@@ -59,11 +65,31 @@
             }
         }
     }
+
+    // Determine if we're stuck to the bottom of the screen.
+    let stickyElement, stuck;
+    $: if (browser && stickyElement) {
+        const observer = new IntersectionObserver(
+            ([e]) => stuck = e.intersectionRatio < 1,
+            {threshold: [1]}
+        );
+        observer.observe(stickyElement)
+    }
 </script>
 
 <div>
+    <Map
+        bind:selectedRiding={selectedRiding}
+        bind:hoveredRiding={hoveredRiding}
+        {electionId}
+        detail={false}
+        viewId={null}
+        clickable={true}
+    />
+
+    {#if election.type == "GENERAL"}
     <div class="flex flex-col space-y-2 mb-4">
-        {#each detail_view_ids.slice(0, 2) as row}
+        {#each BIG_DETAIL_VIEW_IDS as row}
         <div class="flex flex-row space-x-2">
             {#each row as viewId}
                 <Map
@@ -72,22 +98,14 @@
                     {electionId}
                     detail={true}
                     {viewId}
+                    clickable={true}
                 />
             {/each}
         </div>
         {/each}
     </div>
-
-    <Map
-        bind:selectedRiding={selectedRiding}
-        bind:hoveredRiding={hoveredRiding}
-        {electionId}
-        detail={false}
-        viewId={null}
-    />
-
     <div class="flex flex-col space-y-2">
-        {#each detail_view_ids.slice(2) as row}
+        {#each SMALL_DETAIL_VIEW_IDS as row}
         <div class="flex flex-row space-x-2">
             {#each row as viewId}
                 <Map
@@ -96,15 +114,17 @@
                 {electionId}
                 detail={true}
                 {viewId}
+                clickable={true}
                 />
             {/each}
         </div>
         {/each}
     </div>
+    {/if}
 
     {#if selectedRiding}
-    <div class="py-4 sticky bottom-0">
-        <div class="flex flex-col items-center bg-sol-light2 p-2 rounded-lg w-full shadow-md">
+    <div class="pb-4 mt-8 sticky -bottom-[1px]" bind:this={stickyElement}>
+        <div class={`flex flex-col items-center bg-sol-light2 dark:bg-sol-dark2 p-2 rounded-lg w-full ${stuck ? "shadow-lg" : ""}`}>
             <p class="mb-4 font-black">
                 {formatString(ridings[selectedRiding].name)}, {PROVINCES[ridings[selectedRiding].province]}
             </p>
@@ -119,7 +139,7 @@
     </div>
     {:else}
     <div class="">
-        <p class="text-center text-sm italic text-sol-light1 mt-16">
+        <p class="text-center text-sm italic text-sol-light1 dark:text-sol-dark1 mt-16">
             Select a riding to view regional statistics
         </p>
     </div>

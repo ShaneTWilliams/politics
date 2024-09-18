@@ -7,7 +7,7 @@
     import elections from "$lib/artifacts/election.json"
     import detailViews from "$lib/artifacts/detailview.json"
 
-    import { FILL_COLORS, DETAIL_VIEWS } from "$lib/constants.js"
+    import { FILL_COLOURS, DETAIL_VIEWS } from "$lib/constants.js"
 
     const RO_YEARS = [
         1867,
@@ -30,7 +30,7 @@
         2013
     ]
 
-    export let selectedRiding, hoveredRiding, electionId, viewId, detail;
+    export let selectedRiding, hoveredRiding, electionId, viewId, detail, clickable;
 
     let view = viewId === null ? null :  detailViews[viewId];
 
@@ -67,6 +67,8 @@
         }
     }
 
+    const actuallyShowDetail = detail || election.type == "BYELECTION";
+
     for (const runId of election.runs) {
         let run = runs[runId];
         if (view !== null && !view.ridings_by_year[ro_year].includes(run.riding)) {
@@ -74,16 +76,12 @@
         }
         let riding = ridings[run.riding];
         if ((run.result === "ELECTED" || run.result === "ACCLAIMED")) {
-            if (!detail && parseInt(riding.area_by_year[ro_year]) < 100) {
+            if (!actuallyShowDetail && parseInt(riding.area_by_year[ro_year]) < 100) {
                 continue;
-            }
-            let color = parties[run.party].color;
-            if (color === null) {
-                console.log("No color for: " + parties[run.party].name)
             }
             ridingsToShow[run.riding] = {
                 ...riding,
-                color: color,
+                color: parties[run.party].color,
                 victorParty: run.party,
             };
         }
@@ -110,7 +108,7 @@
         let count = 0;
         promiseAllInBatches(
             (id) => fetch(
-                `/src/lib/artifacts/geometry/${id}/${ro_year}/${detail ? "detailed" : "simple"}.svg`
+                `/src/lib/artifacts/geometry/${id}/${ro_year}/${actuallyShowDetail ? "detailed" : "simple"}.svg`
             ).then(
                 (response) => response.text()
             ).then(
@@ -131,28 +129,28 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 
-<div class="flex flex-col w-full">
+<div class={`flex flex-col w-full ${election.type == "BYELECTION" ? "max-h-96" : ""}`}>
     {#if view !== null}
-        <p class="text-xs text-sol-dark2 text-left">
+        <p class="text-xs text-sol-dark2 dark:text-sol-light2 text-left ml-2">
             {DETAIL_VIEWS[view.name]}
         </p>
     {/if}
-    {#if Object.keys(ridingsToShow).length > 1}
+    {#if Object.keys(ridingsToShow).length > 1 || viewId === null}
     <svg
-    xmlns='http://www.w3.org/2000/svg'
-    viewBox={`${x} ${y} ${width} ${height}`}
-    class="rounded-lg"
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox={`${x} ${y} ${width} ${height}`}
+        class="rounded-lg"
     >
         <g transform='scale(1,-1)' bind:this={svgElement}>
             {#each Object.entries(ridingsToShow) as [id, riding]}
             <g
                 class={`
-                        stroke-sol-light3 ${FILL_COLORS[riding.color]}
-                        ${hoveredRiding == id ? "opacity-70" : ""}
+                        stroke-sol-light3 dark:stroke-sol-dark3 ${FILL_COLOURS[riding.color]}
+                        ${hoveredRiding == id && clickable ? "opacity-70" : ""}
                         ${selectedRiding == id ? "opacity-70 animate-pulse" : ""}
                     `}
                 style={`stroke-width: ${Math.pow(Math.min(width, height), 0.8) / 50}`}
-                on:click={() => {selectedRiding = id;}}
+                on:click={() => { if (clickable) {selectedRiding = id;}}}
                 on:mouseenter={() => {hoveredRiding = id;}}
                 on:mouseleave={() => {hoveredRiding = null;}}
                 >
@@ -163,7 +161,7 @@
     </svg>
     {:else}
     <div
-        class="diagonal-lines w-full h-full rounded-lg border border-sol-light2 hover:border-sol-light3"
+        class="diagonal-lines dark:dark-diagonal-lines w-full h-full rounded-lg border border-sol-light2"
         title="No ridings to show for this date"
     />
     {/if}
