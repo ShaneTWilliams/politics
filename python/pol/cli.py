@@ -10,10 +10,9 @@ def cli():
 
 
 def main():
-    cli.add_command(scratch)
     cli.add_command(build)
-    cli.add_command(serve_web)
     cli.add_command(format_code, "format")
+    cli.add_command(clean)
 
     try:
         ctx = cli.make_context("cli", sys.argv[1:])

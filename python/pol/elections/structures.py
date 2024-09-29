@@ -22,8 +22,9 @@ class ElectionType(enum.Enum):
     def from_string(s: str):
         return {
             "By-Election": ElectionType.BYELECTION,
-            "General": ElectionType.GENERAL
+            "General": ElectionType.GENERAL,
         }[s]
+
 
 class ParliamentarianType(enum.Enum):
     MP = 1
@@ -626,6 +627,7 @@ class Record(abc.ABC):
     def __eq__(self, other):
         return self.id() == other.id()
 
+
 class Party(Record):
     def __init__(self, name: str):
         self.name = PartyName.from_name(name)
@@ -714,10 +716,7 @@ class Riding(Record):
 
     def id(self):
         return hash_string(
-            self.name
-            + str(self.province)
-            + str(self.start_date)
-            + str(self.end_date)
+            self.name + str(self.province) + str(self.start_date) + str(self.end_date)
         )
 
 
@@ -748,7 +747,7 @@ class Election(Record):
         date: datetime.date,
         type: ElectionType,
         parliament: Parliament,
-        riding: Riding|None = None
+        riding: Riding | None = None,
     ):
         self.date = date
         self.type = type
@@ -758,12 +757,14 @@ class Election(Record):
 
     def id(self):
         riding_str = self.riding.id() if self.riding is not None else ""
-        return hash_string(str(self.date) + str(self.type) + self.parliament.id() + riding_str)
+        return hash_string(
+            str(self.date) + str(self.type) + self.parliament.id() + riding_str
+        )
 
 
 class Candidate(Record):
     def __init__(
-        self, first_name: str, last_name: str, gender: Gender, index: int=-1
+        self, first_name: str, last_name: str, gender: Gender, index: int = -1
     ):
         self.first_name = first_name
         self.last_name = last_name

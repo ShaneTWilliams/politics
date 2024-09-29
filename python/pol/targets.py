@@ -1,9 +1,14 @@
-import shutil
 import subprocess
 import sys
 
 import click
-from pol.paths import ARTIFACT_DIR, PYTHON_PACKAGE_DIR, ROOT_DIR, WEB_ARTIFACT_DIR
+from pol.paths import (
+    PYTHON_PACKAGE_DIR,
+    WEB_DIR,
+    WEB_ARTIFACT_DIR,
+    ARTIFACT_DIR,
+    PYTHON_DIR,
+)
 
 
 def run_cmd(cmd, error, cwd=None):
@@ -24,28 +29,24 @@ def run_cmd(cmd, error, cwd=None):
             sys.exit(1)
 
 
-# web target should be:
-# bun run build -- --watch
-
-
 @click.command()
-def build():
-    from pol.elections.build import build
+@click.option("--target", type=click.Choice(['json', 'web', 'all']))
+def build(target):
+    if target == "json" or target == "all":
+        from pol.elections.build import build as json_build
+        json_build()
 
-    build()
-
-
-@click.command()
-def scratch():
-    print(ROOT_DIR)
-
-
-@click.command()
-def serve_web():
-    server_address = ("", 8000)
-    # httpd = SimpleHTTPServer(server_address, BaseHTTPRequestHandler)
-    # httpd.serve_forever()
-
+    if target == "web" or target == "all":
+        run_cmd(
+            ["npm", "install"],
+            "Failed to install web dependencies",
+            cwd=WEB_DIR,
+        )
+        run_cmd(
+            ["npm", "run", "build"],
+            "Failed to build web artifacts",
+            cwd=WEB_DIR,
+        )
 
 @click.command()
 def format_code():
@@ -55,3 +56,24 @@ def format_code():
     )
     run_cmd(["black", PYTHON_PACKAGE_DIR], "Failed to format Python code")
     click.secho("Successfully formatted Python code", bold=True, fg="green")
+
+
+@click.command()
+def clean():
+    for dir in [
+        ARTIFACT_DIR,
+        PYTHON_DIR / "pol.egg-info",
+        PYTHON_PACKAGE_DIR / "__pycache__",
+        WEB_ARTIFACT_DIR,
+        WEB_DIR / "build",
+        WEB_DIR / "node_modules",
+        WEB_DIR / ".vercel",
+        WEB_DIR / ".svelte-kit",
+
+    ]:
+        run_cmd(
+            ["rm", "-rf", dir],
+            f"Failed to clean {dir}",
+        )
+
+    click.secho("Successfully cleaned artifacts", bold=True, fg="green")

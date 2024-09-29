@@ -4,33 +4,35 @@ import pickle
 
 import geopandas
 import openpyxl
-from shapely.geometry import Polygon
 from alive_progress import alive_bar
-
-from pol.elections.structures import *
 from pol.elections.constants import DETAIL_MAP_BOUNDS
 from pol.elections.patches import (
+    CANDIDATE_INFO_PATCHES,
     CANDIDATE_SPLIT_EXCEPTIONS,
     GEOMETRY_TO_RIDING_METADATA,
-    CANDIDATE_INFO_PATCHES,
-    RIDING_NAME_PATCHES
+    RIDING_NAME_PATCHES,
 )
+from pol.elections.structures import *
 from pol.paths import (
     ARTIFACT_DIR,
     CACHE_DIR,
+    GEOMETRY_DIR,
     PYTHON_PACKAGE_DIR,
     SOURCES_DIR,
     WEB_ARTIFACT_DIR,
-    GEOMETRY_DIR
 )
+from shapely.geometry import Polygon
 
 RO_YEARS = sorted([int(f.stem[6:10]) for f in GEOMETRY_DIR.glob("*.shp")])
 
 __unique_id = 0
+
+
 def get_uid():
     global __unique_id
     __unique_id += 1
     return __unique_id
+
 
 def get_cached_xlsx(xlsx_path, json_path):
     if not json_path.exists():
@@ -133,7 +135,12 @@ def generate_ridings(riding_rows, geometry_by_year):
         elif (name, start_date_obj) == ("Provencher", datetime.date(1871, 5, 1)):
             start_date_obj = datetime.date(1871, 3, 3)  # This one was a day late?
 
-        if (start_date_obj.month == 1 and start_date_obj.day == 1 and end_date_obj.month == 1 and end_date_obj.day == 1):
+        if (
+            start_date_obj.month == 1
+            and start_date_obj.day == 1
+            and end_date_obj.month == 1
+            and end_date_obj.day == 1
+        ):
             continue
 
         ro_years = []
@@ -163,11 +170,16 @@ def generate_ridings(riding_rows, geometry_by_year):
             # Otherwise, try to find a match using a manual patch table
             if match is None:
                 for geometry in geometry_by_year[ro_year]:
-                    manual_matches = GEOMETRY_TO_RIDING_METADATA.get(int(geometry.id_num), [])
+                    manual_matches = GEOMETRY_TO_RIDING_METADATA.get(
+                        int(geometry.id_num), []
+                    )
                     if not isinstance(manual_matches, list):
                         manual_matches = [manual_matches]
                     for manual_match in manual_matches:
-                        if manual_match["name"] == name and manual_match["province"] == province:
+                        if (
+                            manual_match["name"] == name
+                            and manual_match["province"] == province
+                        ):
                             match = geometry
                             break
 
@@ -177,7 +189,15 @@ def generate_ridings(riding_rows, geometry_by_year):
 
             riding_geometry_by_year[ro_year] = match
 
-        ridings.append(Riding(name, Province.from_name(province), start_date_obj, end_date_obj, riding_geometry_by_year))
+        ridings.append(
+            Riding(
+                name,
+                Province.from_name(province),
+                start_date_obj,
+                end_date_obj,
+                riding_geometry_by_year,
+            )
+        )
 
     return ridings
 
@@ -194,12 +214,14 @@ def generate_detail_views(ridings):
             bounds["height"],
         )
         for riding in ridings:
-            polygon = Polygon([
-                (bounds["x"], bounds["y"]),
-                (bounds["x"] + bounds["width"], bounds["y"]),
-                (bounds["x"] + bounds["width"], bounds["y"] - bounds["height"]),
-                (bounds["x"], bounds["y"] - bounds["height"]),
-            ])
+            polygon = Polygon(
+                [
+                    (bounds["x"], bounds["y"]),
+                    (bounds["x"] + bounds["width"], bounds["y"]),
+                    (bounds["x"] + bounds["width"], bounds["y"] - bounds["height"]),
+                    (bounds["x"], bounds["y"] - bounds["height"]),
+                ]
+            )
             for year, geometry in riding.geometry_by_year.items():
                 if geometry.shape.intersects(polygon):
                     detail_view.ridings_by_year.setdefault(year, []).append(riding)
@@ -218,13 +240,12 @@ def split_candidates_by_year(candidates_by_id):
         if (candidate.first_name, candidate.last_name) in CANDIDATE_SPLIT_EXCEPTIONS:
             continue
 
-        sorted_runs = sorted(
-            candidate.runs,
-            key=lambda run: run.election.date
-        )
+        sorted_runs = sorted(candidate.runs, key=lambda run: run.election.date)
         should_be_split = False
         for i in range(1, len(sorted_runs)):
-            if (sorted_runs[i].election.date - sorted_runs[i - 1].election.date) > SPLIT_THRESHOLD:
+            if (
+                sorted_runs[i].election.date - sorted_runs[i - 1].election.date
+            ) > SPLIT_THRESHOLD:
                 should_be_split = True
                 break
 
@@ -233,7 +254,11 @@ def split_candidates_by_year(candidates_by_id):
 
         candidate_run_groups = []
         for run in sorted_runs:
-            if not candidate_run_groups or run.election.date - candidate_run_groups[-1][-1].election.date > SPLIT_THRESHOLD:
+            if (
+                not candidate_run_groups
+                or run.election.date - candidate_run_groups[-1][-1].election.date
+                > SPLIT_THRESHOLD
+            ):
                 candidate_run_groups.append([])
             candidate_run_groups[-1].append(run)
 
@@ -339,7 +364,9 @@ def generate_runs(election_and_candidate_rows, ridings):
             riding_obj = matching_ridings[0]
 
             if election_type == ElectionType.BYELECTION and current_riding != riding:
-                elections.append(Election(date, election_type, parliaments[-1], riding=riding_obj))  # By-election
+                elections.append(
+                    Election(date, election_type, parliaments[-1], riding=riding_obj)
+                )  # By-election
                 current_riding = riding
 
             split_name = candidate.split(", ")
@@ -427,8 +454,8 @@ def build():
     data[DetailView] = generate_detail_views(data[Riding])
 
     print("Processing runs")
-    data[Run], data[Candidate], data[Parliament], data[Election], data[Party] = generate_runs(
-        election_and_candidate_rows, data[Riding]
+    data[Run], data[Candidate], data[Parliament], data[Election], data[Party] = (
+        generate_runs(election_and_candidate_rows, data[Riding])
     )
 
     print("Processing parliamentarians")
@@ -444,21 +471,37 @@ def build():
         elif (first_name, last_name) == ("John G.", "Williams"):
             first_name = "John Glass"
 
-        matching_candidates = [c for c in data[Candidate] if c.first_name == first_name and c.last_name == last_name]
+        matching_candidates = [
+            c
+            for c in data[Candidate]
+            if c.first_name == first_name and c.last_name == last_name
+        ]
 
         if len(matching_candidates) > 1:
             for c in matching_candidates:
                 match_provinces = set([r.riding.province for r in c.runs])
                 parl_provinces = set([Province.from_name(province.split("\n")[0])])
-                if len(match_provinces) == 1 and len(parl_provinces) == 1 and match_provinces.pop() == parl_provinces.pop():
+                if (
+                    len(match_provinces) == 1
+                    and len(parl_provinces) == 1
+                    and match_provinces.pop() == parl_provinces.pop()
+                ):
                     matching_candidates = [c]
                     break
 
             if len(matching_candidates) > 1:
                 if (first_name, last_name) == ("John", "Herron"):
-                    matching_candidates = [c for c in matching_candidates if c.runs[0].election.date.year == 1904]
+                    matching_candidates = [
+                        c
+                        for c in matching_candidates
+                        if c.runs[0].election.date.year == 1904
+                    ]
                 elif (first_name, last_name) == ("William Dell", "Perley"):
-                    matching_candidates = [c for c in matching_candidates if c.runs[0].election.date.year == 1887]
+                    matching_candidates = [
+                        c
+                        for c in matching_candidates
+                        if c.runs[0].election.date.year == 1887
+                    ]
 
             if len(matching_candidates) > 1:
                 print(f"Multiple candidates for {first_name} {last_name}")
@@ -487,7 +530,10 @@ def build():
                 if instance.id() in obj:
                     if (
                         isinstance(instance, Run)
-                        and (instance.candidate.first_name, instance.candidate.last_name)
+                        and (
+                            instance.candidate.first_name,
+                            instance.candidate.last_name,
+                        )
                         == ("John Angus", "MacLean")
                         and instance.election.date == datetime.date(1953, 8, 10)
                     ):
