@@ -64,6 +64,7 @@
                 }
             }
         }
+        console.log(selectedRiding)
     }
 
     // Determine if we're stuck to the bottom of the screen.
@@ -88,7 +89,7 @@
     />
 
     {#if election.type == "GENERAL"}
-    <div class="flex flex-col space-y-2 mb-4">
+    <div class="flex flex-col space-y-2 mb-4 px-2">
         {#each BIG_DETAIL_VIEW_IDS as row}
         <div class="flex flex-row space-x-2">
             {#each row as viewId}
@@ -104,7 +105,7 @@
         </div>
         {/each}
     </div>
-    <div class="flex flex-col space-y-2">
+    <div class="flex flex-col space-y-2 px-2">
         {#each SMALL_DETAIL_VIEW_IDS as row}
         <div class="flex flex-row space-x-2">
             {#each row as viewId}
@@ -125,12 +126,14 @@
     {#if selectedRiding}
     <div class="pb-4 mt-8 sticky -bottom-[1px]" bind:this={stickyElement}>
         <div class={`flex flex-col items-center bg-sol-light2 dark:bg-sol-dark2 p-2 rounded-lg w-full ${stuck ? "shadow-lg" : ""}`}>
-            <p class="mb-4 font-black">
+            <a class="mb-4 font-black hover:underline decoration-dashed" href={`/elections/ridings/${selectedRiding}`}>
                 {formatString(ridings[selectedRiding].name)}, {PROVINCES[ridings[selectedRiding].province]}
-            </p>
+            </a>
             <HorizontalBar
                 primaryLabels={relevant_runs.map(run => candidates[run.candidate].first_name + ' ' + candidates[run.candidate].last_name)}
+                primaryLinks={relevant_runs.map(run => `/elections/candidates/${run.candidate}`)}
                 secondaryLabels={relevant_runs.map(run => PARTIES[parties[run.party].name])}
+                secondaryLinks={relevant_runs.map(run => `/elections/parties/${run.party}`)}
                 counts={relevant_runs.map(run => run.result == "ACCLAIMED" ? "Acclaimed" : run.votes)}
                 colors={relevant_runs.map(run => parties[run.party].color)}
                 showTotal={relevant_runs.length > 1}

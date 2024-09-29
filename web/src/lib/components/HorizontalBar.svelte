@@ -2,7 +2,7 @@
     import { FILL_COLOURS } from "$lib/constants.js";
     import { formatNumber } from "$lib/utils.js";
 
-    export let primaryLabels, secondaryLabels, counts, colors, showTotal, minimumPercent = 0;
+    export let primaryLabels, secondaryLabels, counts, colors, showTotal, minimumPercent = 0, primaryLinks = null, secondaryLinks=null;
 
     let max_seats, total_seats;
     $: {
@@ -24,20 +24,36 @@
 </script>
 
 <div class="flex flex-col items-end w-full">
-    <div class="flex flex-row space-x-4 w-full">
-        <div class="space-y-1">
-            {#each primaryLabels as label}
-            <p class="flex-none text-right text-sm h-5">
-                {label}
-            </p>
+    <div class="flex flex-row space-x-4 w-full overflow-hidden text-nowrap">
+        <div class="space-y-1 flex flex-col">
+            {#each primaryLabels as label, i}
+                {#if primaryLinks && primaryLinks[i]}
+                <div class="flex flex-row justify-end">
+                    <a href={primaryLinks[i]} class="flex-none text-right text-sm h-5 hover:underline decoration-dashed">
+                        {label}
+                    </a>
+                </div>
+                {:else}
+                <p class="flex-none text-right text-sm h-5">
+                    {label}
+                </p>
+                {/if}
             {/each}
         </div>
         {#if secondaryLabels.length > 0}
-        <div class="space-y-1">
-            {#each secondaryLabels as label}
+        <div class="space-y-1 flex flex-col">
+            {#each secondaryLabels as label, i}
+            {#if secondaryLinks && secondaryLinks[i]}
+            <div class="flex flex-row justify-end">
+                <a href={secondaryLinks[i]} class="flex-none text-right font-bold text-sm h-5 hover:underline decoration-dashed">
+                    {label}
+                </a>
+            </div>
+            {:else}
             <p class="flex-none text-right font-bold text-sm h-5">
                 {label}
             </p>
+            {/if}
             {/each}
         </div>
         {/if}

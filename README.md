@@ -19,3 +19,4 @@ Good stats:
 - Compare popular vote to seats
 - Mode first and last names
 - Acclamations over time
+- Compare district sizes over time

@@ -2,6 +2,9 @@ import elections from '$lib/artifacts/election.json';
 import runs from '$lib/artifacts/run.json';
 import ridings from '$lib/artifacts/riding.json';
 import candidates from '$lib/artifacts/candidate.json';
+import parties from '$lib/artifacts/party.json';
+
+import { PARTIES_THAT_ARENT_PARTIES, OCCUPATIONS_THAT_ARENT_OCCUPATIONS } from '$lib/constants';
 
 export function getClosestRidingInElection(electionId, closest) {
     let winners = {};
@@ -130,6 +133,9 @@ export function getElectionCandidatesByGender(electionId) {
     for (const runId of elections[electionId].runs) {
         const run = runs[runId];
         const candidate = candidates[run.candidate];
+        if (candidate === undefined) {
+            console.log(runId, run);
+        }
         candidatesByGender[candidate.gender] += 1;
     }
     return candidatesByGender;
@@ -165,4 +171,12 @@ export function getSortedElectionsFromRiding(ridingId) {
     }
     electionsFromRiding.sort((a, b) => elections[a].date.year - elections[b].date.year);
     return electionsFromRiding;
+}
+
+export function isRealParty(partyId) {
+    return !PARTIES_THAT_ARENT_PARTIES.includes(parties[partyId].name);
+}
+
+export function isRealOccupation(occupation) {
+    return !OCCUPATIONS_THAT_ARENT_OCCUPATIONS.includes(occupation);
 }

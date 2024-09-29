@@ -12,3 +12,7 @@ PYTHON_PACKAGE_DIR = PYTHON_DIR / "pol"
 WEB_ARTIFACT_DIR = WEB_DIR / "src/lib/artifacts"
 
 CACHE_DIR = ARTIFACT_DIR / "cache"
+JSON_CACHE_DIR = CACHE_DIR / "json"
+GEO_CACHE_DIR = CACHE_DIR / "geo"
+
+GEOMETRY_DIR = SOURCES_DIR / "geometry/fedshapes_cbf_20221003"

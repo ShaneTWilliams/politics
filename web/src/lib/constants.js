@@ -92,6 +92,17 @@ export const RO_YEARS = [
     2013
 ]
 
+export const PARTIES_THAT_ARENT_PARTIES = [
+    "NO_AFFILIATION_TO_A_RECOGNISED_PARTY",
+    "INDEPENDENT",
+    "UNKNOWN",
+]
+
+export const OCCUPATIONS_THAT_ARENT_OCCUPATIONS = [
+    null,
+    "Unknown",
+]
+
 export const PARTIES = {
     "ABOLITIONIST_PARTY_OF_CANADA": "Abolitionist Party of Canada",
     "ACCOUNTABILITY_COMPETENCY_AND_TRANSPARENCY": "Accountability, Competency and Transparency",
@@ -108,6 +119,7 @@ export const PARTIES = {
     "CANADAS_FOURTH_FRONT": "Canada's Fourth Front",
     "CANADIAN_ACTION_PARTY": "Canadian Action Party",
     "CANADIAN_DEMOCRAT": "Canadian Democrat",
+    "CANADIAN_FUTURE_PARTY": "Canadian Future Party",
     "CANADIAN_LABOUR": "Canadian Labour",
     "CANADIAN_NATIONALIST_PARTY": "Canadian Nationalist Party",
     "CANADIAN_PARTY": "Canadian Party",
@@ -176,7 +188,7 @@ export const PARTIES = {
     "NEW_DEMOCRATIC_PARTY": "New Democratic Party",
     "NEW_PARTY": "New Party",
     "NEWFOUNDLAND_AND_LABRADOR_FIRST_PARTY": "Newfoundland and Labrador First Party",
-    "NO_AFFILIATION_TO_A_RECOGNISED_PARTY": "No affiliation to a recognised party",
+    "NO_AFFILIATION_TO_A_RECOGNISED_PARTY": "No affiliation",
     "NON_PARTISAN_LEAGUE": "Non-Partisan League",
     "OPPOSITION": "Opposition",
     "OPPOSITION_LABOUR": "Opposition-Labour",

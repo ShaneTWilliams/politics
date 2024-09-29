@@ -1,5 +1,7 @@
 <script>
     import Page from '$lib/components/Page.svelte';
+    import List from '$lib/components/List.svelte';
+    import Title from '$lib/components/Title.svelte';
 
     import candidates from '$lib/artifacts/candidate.json';
     import parties from '$lib/artifacts/party.json';
@@ -7,12 +9,19 @@
 
     import { PARTIES } from '$lib/constants.js';
 
-    let searchBarContents = '';
+    let searchBarContents = "";
     let partyFilterContent = '';
+
     $: sortedCandidates = Object.entries(candidates).filter(
         ([candidateId, candidate]) => {
             const combined = candidate.first_name + ' ' + candidate.last_name;
-            return combined.toLowerCase().includes(searchBarContents.toLowerCase());
+            let match = true;
+            for (const token of searchBarContents.split(' ')) {
+                if (!combined.toLowerCase().includes(token.toLowerCase())) {
+                    match = false;
+                }
+            }
+            return match;
         }
     ).filter(
         ([candidateId, candidate]) => {
@@ -25,14 +34,21 @@
             return false;
         }
     ).sort((a, b) => {
-        if (a[1].last_name < b[1].last_name) {
-            return -1;
+        if (a[1].last_name == b[1].last_name) {
+            return a[1].first_name < b[1].first_name ? -1 : 1;
         }
-        if (a[1].last_name > b[1].last_name) {
-            return 1;
-        }
-        return 0;
+        return a[1].last_name < b[1].last_name ? -1 : 1;
     });
+
+    $: listData = sortedCandidates ? sortedCandidates.map(([candidateId, candidate]) => {
+        return {
+            link: `/elections/candidates/${candidateId}`,
+            title: `${candidate.last_name}, ${candidate.first_name}`,
+            subtitle: "",
+            category: ""
+        };
+    }) : [];
+
     const sortedParties = Object.entries(parties).sort((a, b) => {
         if (a[1].name < b[1].name) {
             return -1;
@@ -49,31 +65,21 @@
 </svelte:head>
 
 <Page>
-    <p class="mt-6 mb-2 font-bold text-2xl text-sol-dark3">Federal Electoral Candidates</p>
-    <div class="flex flex-col items-center">
-        <div class="flex flex-row space-x-2 mb-4 items-start px-5 py-3 w-full">
+    <Title text="Federal Election Candidates" />
+    <List data={listData} page=0 emptyText="No matching candidates found">
+        <div class="flex flex-row space-x-2 items-start px-5 py-3 w-full">
             <input
-                class="rounded-lg w-48 text-sm px-3 py-1 bg-sol-light2"
+                class="rounded-lg w-48 text-sm px-3 py-1 bg-sol-light2 dark:bg-sol-dark2"
                 type="text"
                 placeholder="Candidate Name"
                 bind:value={searchBarContents}
             />
-            <select class="text-sm px-3 py-1 rounded-lg w-48 bg-sol-light2" bind:value={partyFilterContent}>
+            <select class="text-sm px-3 py-1 rounded-lg w-48 bg-sol-light2 dark:bg-sol-dark2" bind:value={partyFilterContent}>
                 <option value={""} selected>{"Any Party"}</option>
                 {#each sortedParties as [partyId, party]}
                 <option value={partyId}>{PARTIES[party.name]}</option>
                 {/each}
             </select>
         </div>
-        <div class="flex flex-col w-full">
-            {#each sortedCandidates.slice(0, 20) as [candidateId, candidate]}
-                <a
-                    class="flex flex-row items-center px-4 py-3 hover:cursor-pointer border-sol-light1 border-t border-sol-light2 hover:bg-sol-light2"
-                    href={`/elections/candidates/${candidateId}`}
-                >
-                    <p class="font-black text-sol-dark3 text-sm mr-6">{candidate.last_name}, {candidate.first_name}</p>
-                </a>
-            {/each}
-        </div>
-    </div>
+    </List>
 </Page>

@@ -5,6 +5,7 @@
     import runs from "$lib/artifacts/run.json"
     import parties from "$lib/artifacts/party.json"
     import elections from "$lib/artifacts/election.json"
+    import geometries from "$lib/artifacts/geometry.json"
     import detailViews from "$lib/artifacts/detailview.json"
 
     import { FILL_COLOURS, DETAIL_VIEWS } from "$lib/constants.js"
@@ -30,9 +31,9 @@
         2013
     ]
 
-    export let selectedRiding, hoveredRiding, electionId, viewId, detail, clickable;
+    export let selectedRiding=null, hoveredRiding=null, electionId, viewId, detail, clickable;
 
-    let view = viewId === null ? null :  detailViews[viewId];
+    let view = viewId === null ? null : detailViews[viewId];
 
     let svgElement;
     let x = 0;
@@ -75,12 +76,15 @@
             continue;
         }
         let riding = ridings[run.riding];
+        const geometryId = riding.geometry_by_year[ro_year];
+        const geometry = geometries[geometryId];
         if ((run.result === "ELECTED" || run.result === "ACCLAIMED")) {
-            if (!actuallyShowDetail && parseInt(riding.area_by_year[ro_year]) < 100) {
+            if (!actuallyShowDetail && parseInt(geometry.area) < 100) {
                 continue;
             }
             ridingsToShow[run.riding] = {
                 ...riding,
+                geometry_id: geometryId,
                 color: parties[run.party].color,
                 victorParty: run.party,
             };
@@ -105,17 +109,20 @@
             return results;
         }
 
-        let count = 0;
+
         promiseAllInBatches(
-            (id) => fetch(
-                `/src/lib/artifacts/geometry/${id}/${ro_year}/${actuallyShowDetail ? "detailed" : "simple"}.svg`
-            ).then(
-                (response) => response.text()
-            ).then(
-                (response) => {
-                    ridingsToShow[id].geometry = response;
-                }
-            ),
+            (id) => {
+                const geometryId = ridingsToShow[id].geometry_id;
+                return fetch(
+                    `/src/lib/artifacts/geometry/${geometryId}/${actuallyShowDetail ? "detailed" : "simple"}.svg`
+                ).then(
+                    (response) => response.text()
+                ).then(
+                    (response) => {
+                        ridingsToShow[id].geometry = response;
+                    }
+                )
+            },
             Object.keys(ridingsToShow),
             10
         ).then(

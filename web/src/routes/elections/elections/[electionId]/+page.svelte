@@ -13,8 +13,11 @@
     import HorizontalBar from '$lib/components/HorizontalBar.svelte';
     import LargeCard from '$lib/components/LargeCard.svelte';
     import SmallStat from '$lib/components/SmallStat.svelte';
+    import Title from '$lib/components/Title.svelte';
+    import Subtitle from '$lib/components/Subtitle.svelte';
+    import Heading from '$lib/components/Heading.svelte';
 
-    import { MONTHS, PARTIES, PROVINCES, ELECTION_TYPE } from '$lib/constants.js';
+    import { MONTHS, PARTIES, PROVINCES, ELECTION_TYPE, PARTIES_THAT_ARENT_PARTIES } from '$lib/constants.js';
     import {
         getClosestRidingInElection,
         getRunsInRiding,
@@ -25,8 +28,9 @@
         getNumberOfCandidatesByParty,
         getElectionCandidatesByGender,
         getElectionWinnersByGender,
+        isRealParty,
      } from '$lib/stats.js';
-    import { formatNumber } from '$lib/utils.js';
+    import { formatNumber, formatString } from '$lib/utils.js';
 
     let election = elections[$page.params.electionId];
 
@@ -74,19 +78,15 @@
 </svelte:head>
 
 <Page>
-    <div class="mt-8">
-        <p class="font-bold text-4xl text-sol-dark3 dark:text-sol-light3">
-            {ELECTION_TYPE[election.type]}
-        </p>
-        <p class="text-xl text-sol-light1 dark:text-sol-light1 font-semibold">
-            {MONTHS[election.date.month]} {election.date.day}, {election.date.year}
-        </p>
-    </div>
+    <Title text={(election.type == "BYELECTION" ? formatString(ridings[election.riding].name) + " " : "") + ELECTION_TYPE[election.type]} />
+    <Subtitle text={`${MONTHS[election.date.month]} ${election.date.day}, ${election.date.year}`} />
+
     {#if election.type == "GENERAL"}
-    <p class="text-2xl font-bold mt-12 mb-4">Results</p>
+    <Heading text="Results" />
     <LargeCard title="Seats by party">
         <HorizontalBar
             primaryLabels={party_results_sorted.map(([partyId, result]) => PARTIES[parties[partyId].name])}
+            primaryLinks={party_results_sorted.map(([partyId, result]) => isRealParty(partyId) ? `/elections/parties/${partyId}` : null)}
             secondaryLabels={[]}
             counts={party_results_sorted.map(([partyId, result]) => result.count)}
             colors={party_results_sorted.map(([partyId, result]) => result.color)}
@@ -95,36 +95,56 @@
     </LargeCard>
     {/if}
 
-    <p class="text-2xl font-bold mt-8 mb-2">Maps</p>
+    {#if election.type == "GENERAL"}
+    <Heading text="Maps" />
     <CanadaMap electionId={$page.params.electionId}/>
+    {/if}
 
-    <p class="text-2xl font-bold mt-8 mb-4">Statistics</p>
-    <div class="space-y-12 pt-8">
-        <div class="flex flex-row justify-center space-x-6 w-full">
+    <Heading text="Statistics" />
+    <div class="space-y-12">
+        <div class="flex flex-row space-x-6 w-full">
             <SmallStat name="Total valid ballots" value={ formatNumber(totalVotesCast) } />
             <SmallStat name="Number of candidates" value={ formatNumber(numberOfCandidates) } />
+            {#if election.type == "GENERAL"}
             <SmallStat name="Number of ridings" value={ formatNumber(numberOfRidings) } />
+            {/if}
         </div>
 
         <LargeCard title="Popular Vote">
+            {#if election.type == "GENERAL"}
             <HorizontalBar
                 primaryLabels={votesByParty.map(([partyId, votes]) => PARTIES[parties[partyId].name])}
+                primaryLinks={votesByParty.map(([partyId, votes]) => isRealParty(partyId) ? `/elections/parties/${partyId}` : null)}
                 secondaryLabels={[]}
                 counts={votesByParty.map(([partyId, votes]) => votes == 0 ? "Acclaimed" : votes)}
                 colors={votesByParty.map(([partyId, votes]) => parties[partyId].color)}
                 showTotal={votesByParty.length > 1}
             />
+            {:else}
+            <HorizontalBar
+                primaryLabels={election.runs.map(run => candidates[runs[run].candidate].first_name + ' ' + candidates[runs[run].candidate].last_name)}
+                primaryLinks={election.runs.map(run => `/elections/candidates/${runs[run].candidate}`)}
+                secondaryLabels={election.runs.map(run => PARTIES[parties[runs[run].party].name])}
+                secondaryLinks={election.runs.map(run => PARTIES_THAT_ARENT_PARTIES.includes(parties[runs[run].party].name) ? null : `/elections/parties/${runs[run].party}`)}
+                counts={election.runs.map(run => runs[run].votes)}
+                colors={election.runs.map(run => parties[runs[run].party].color)}
+                showTotal={votesByParty.length > 1}
+            />
+            {/if}
         </LargeCard>
 
+        {#if election.type == "GENERAL"}
         <LargeCard title="Candidates by Party">
             <HorizontalBar
                 primaryLabels={numberOfCandidatesByParty.map(([partyId, numCandidates]) => PARTIES[parties[partyId].name])}
+                primaryLinks={numberOfCandidatesByParty.map(([partyId, numCandidates]) => isRealParty(partyId) ? `/elections/parties/${partyId}` : null)}
                 secondaryLabels={[]}
                 counts={numberOfCandidatesByParty.map(([partyId, numCandidates]) => numCandidates)}
                 colors={numberOfCandidatesByParty.map(([partyId, numCandidates]) => parties[partyId].color)}
                 showTotal={true}
             />
         </LargeCard>
+        {/if}
 
         {#if election.type == "GENERAL" && closestRiding && blowoutRiding}
         <LargeCard
@@ -133,7 +153,9 @@
         >
             <HorizontalBar
                 primaryLabels={closestRidingRuns.map(run => candidates[run.candidate].first_name + ' ' + candidates[run.candidate].last_name)}
+                primaryLinks={closestRidingRuns.map(run => `/elections/candidates/${run.candidate}`)}
                 secondaryLabels={closestRidingRuns.map(run => PARTIES[parties[run.party].name])}
+                secondaryLinks={closestRidingRuns.map(run => PARTIES_THAT_ARENT_PARTIES.includes(parties[run.party].name) ? null : `/elections/parties/${run.party}`)}
                 counts={closestRidingRuns.map(run => run.votes)}
                 colors={closestRidingRuns.map(run => parties[run.party].color)}
                 showTotal={false}
@@ -145,7 +167,9 @@
         >
             <HorizontalBar
                 primaryLabels={blowoutRidingRuns.map(run => candidates[run.candidate].first_name + ' ' + candidates[run.candidate].last_name)}
+                primaryLinks={blowoutRidingRuns.map(run => `/elections/candidates/${run.candidate}`)}
                 secondaryLabels={blowoutRidingRuns.map(run => PARTIES[parties[run.party].name])}
+                secondaryLinks={blowoutRidingRuns.map(run => PARTIES_THAT_ARENT_PARTIES.includes(parties[run.party].name) ? null : `/elections/parties/${run.party}`)}
                 counts={blowoutRidingRuns.map(run => run.votes)}
                 colors={blowoutRidingRuns.map(run => parties[run.party].color)}
                 showTotal={false}

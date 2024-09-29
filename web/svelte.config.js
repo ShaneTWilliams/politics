@@ -7,6 +7,9 @@ export default {
 		adapter: adapter({
 
 		}),
+		alias: {
+			$static: 'src/static',
+		}
 	},
 	onwarn: (warning, handler) => {
 		if (warning.code === 'a11y-click-events-have-key-events') return

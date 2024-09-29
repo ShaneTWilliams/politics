@@ -4,6 +4,9 @@ import datetime
 import enum
 import hashlib
 import typing
+import xml
+
+from shapely.geometry import Polygon
 
 
 def hash_string(s: str):
@@ -14,6 +17,13 @@ def hash_string(s: str):
 class ElectionType(enum.Enum):
     GENERAL = 1
     BYELECTION = 2
+
+    @staticmethod
+    def from_string(s: str):
+        return {
+            "By-Election": ElectionType.BYELECTION,
+            "General": ElectionType.GENERAL
+        }[s]
 
 class ParliamentarianType(enum.Enum):
     MP = 1
@@ -133,6 +143,7 @@ class PartyName(enum.Enum):
     CANADAS_FOURTH_FRONT = enum.auto()
     CANADIAN_ACTION_PARTY = enum.auto()
     CANADIAN_DEMOCRAT = enum.auto()
+    CANADIAN_FUTURE_PARTY = enum.auto()
     CANADIAN_LABOUR = enum.auto()
     CANADIAN_NATIONALIST_PARTY = enum.auto()
     CANADIAN_PARTY = enum.auto()
@@ -281,6 +292,7 @@ class PartyName(enum.Enum):
             "Canada's Fourth Front": PartyName.CANADAS_FOURTH_FRONT,
             "Canadian Action Party": PartyName.CANADIAN_ACTION_PARTY,
             "Canadian Democrat": PartyName.CANADIAN_DEMOCRAT,
+            "Canadian Future Party": PartyName.CANADIAN_FUTURE_PARTY,
             "Canadian Labour": PartyName.CANADIAN_LABOUR,
             "Canadian Nationalist Party": PartyName.CANADIAN_NATIONALIST_PARTY,
             "Canadian Party": PartyName.CANADIAN_PARTY,
@@ -431,6 +443,7 @@ class PartyName(enum.Enum):
             PartyName.CANADAS_FOURTH_FRONT: Color.BLACK,
             PartyName.CANADIAN_ACTION_PARTY: Color.BLACK,
             PartyName.CANADIAN_DEMOCRAT: Color.BLACK,
+            PartyName.CANADIAN_FUTURE_PARTY: Color.BLACK,
             PartyName.CANADIAN_LABOUR: Color.BLACK,
             PartyName.CANADIAN_NATIONALIST_PARTY: Color.BLACK,
             PartyName.CANADIAN_PARTY: Color.BLACK,
@@ -594,7 +607,14 @@ class Record(abc.ABC):
                     if isinstance(v2, list):
                         if len(v2) > 0 and isinstance(v2[0], Record):
                             v[k2] = [v3.id() for v3 in v2]
+                    elif isinstance(v2, Record):
+                        v[k2] = v2.id()
                 ret[k] = v
+            elif isinstance(v, list):
+                if len(v) > 0 and isinstance(v[0], Record):
+                    ret[k] = [v2.id() for v2 in v]
+                else:
+                    ret[k] = v
             else:
                 ret[k] = v
 
@@ -623,6 +643,60 @@ class Parliament(Record):
         return str(self.number)
 
 
+class Geometry(Record):
+    def __init__(self, name: str, id_num: int, shape: Polygon):
+        self.name = name
+        self.id_num = id_num
+        self.shape = shape
+
+    @property
+    def area(self):
+        return int(self.shape.area / 1e6)
+
+    def intersects(self, other):
+        return self.shape.intersects(other)
+
+    @staticmethod
+    def process_svg(svg):
+        for attr_key in ["fill", "stroke", "stroke-width", "opacity"]:
+            svg.attrib.pop(attr_key, None)
+
+        if "d" not in svg.attrib:
+            return
+
+        new_d = []
+        for split1 in svg.attrib["d"].split(" "):
+            new_split1 = []
+            for split2 in split1.split(","):
+                try:
+                    float(split2)
+                except ValueError:
+                    new_split1.append(split2)
+                    continue
+                new_split1.append(f"{float(split2):.0f}")
+            new_d.append(",".join(new_split1))
+        svg.attrib["d"] = " ".join(new_d)
+
+    def to_svg(self, tolerance) -> str:
+        simple_geometry = self.shape.simplify(tolerance, preserve_topology=False)
+        svg = simple_geometry.svg()
+        xml_svg = xml.etree.ElementTree.fromstring(svg)
+        self.process_svg(xml_svg)
+        for child in xml_svg:
+            self.process_svg(child)
+
+        return xml.etree.ElementTree.tostring(xml_svg).decode("utf-8")
+
+    def id(self):
+        return str(self.id_num)
+
+    def to_json(self):
+        return {
+            "name": self.name,
+            "area": self.area,
+        }
+
+
 class Riding(Record):
     def __init__(
         self,
@@ -630,24 +704,20 @@ class Riding(Record):
         province: Province,
         start_date: datetime.date,
         end_date: datetime.date,
-        area_by_year: typing.Dict[int, int],
-        center: typing.Tuple[int, int],
+        geometry_by_year: typing.Dict[int, Geometry],
     ):
         self.name = name
         self.province = province
         self.start_date = start_date
         self.end_date = end_date
-        self.area_by_year = area_by_year
-        self.center = center
+        self.geometry_by_year = geometry_by_year
 
     def id(self):
-        # Riding geometry changes over time.
         return hash_string(
             self.name
             + str(self.province)
             + str(self.start_date)
             + str(self.end_date)
-            + str(self.area_by_year)
         )
 
 
@@ -678,28 +748,33 @@ class Election(Record):
         date: datetime.date,
         type: ElectionType,
         parliament: Parliament,
+        riding: Riding|None = None
     ):
         self.date = date
         self.type = type
         self.parliament = parliament
         self.runs = []
+        self.riding = riding
 
     def id(self):
-        return hash_string(str(self.date))
+        riding_str = self.riding.id() if self.riding is not None else ""
+        return hash_string(str(self.date) + str(self.type) + self.parliament.id() + riding_str)
 
 
 class Candidate(Record):
     def __init__(
-        self, first_name: str, last_name: str, gender: Gender
+        self, first_name: str, last_name: str, gender: Gender, index: int=-1
     ):
         self.first_name = first_name
         self.last_name = last_name
         self.gender = gender
         self.runs = []
+        self.record = {}
+        self.index = index
 
     def id(self):
         return hash_string(
-            self.first_name + self.last_name + str(self.gender)
+            self.first_name + self.last_name + str(self.gender) + str(self.index)
         )
 
 

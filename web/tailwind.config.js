@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'sol-dark3': '#002b36',
+        'sol-dark3': '#002027',
         'sol-dark2': '#073642',
         'sol-dark1': '#586e75',
         'sol-dark0': '#657b83',
