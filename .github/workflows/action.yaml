@@ -6,6 +6,8 @@ on: push
 jobs:
   install:
     runs-on: ubuntu-latest
+    outputs:
+      pypath: ${{ steps.pypathstep.outputs.PYPATH }}
     steps:
       - uses: actions/checkout@v4
       - name: Install Node.js
@@ -18,24 +20,26 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install Python dependencies
+      - name: Install Python package
         run: pip install -e python/
-      - name: Install Pol CLI
+      - name: Pol echo
         run: pol echo
-      - name: a
-        run: echo "$(dirname $(which pol))" >> $GITHUB_PATH
-      - name: l
-        run: echo "$(dirname $(which pol))"
+      - name: Write path to action output
+        id: pypathstep
+        run: echo "PYPATH=$(dirname $(which pol))" >> $GITHUB_OUTPUT
 
 
   build:
-    needs: install
+    needs: [install]
     runs-on: ubuntu-latest
+    env:
+      PYPATH: ${{ needs.install.outputs.pypath }}
     steps:
-      - name: l
-        run: cat $GITHUB_PATH
+      - uses: actions/checkout@v4
+      - name: Add pol to PATH
+        run: echo $PYPATH >> $GITHUB_PATH
       - name: Build JSON data
-        run: pol echo
+        run: pol build --target=json
 
   deploy:
     needs: build

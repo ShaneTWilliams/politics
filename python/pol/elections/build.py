@@ -63,7 +63,7 @@ def load_geo_ridings():
                 gdf = pickle.load(f)
         else:
             gdf = geopandas.read_file(
-                SOURCES_DIR / f"geometry/fedshapes_cbf_20221003/CBF_RO{year}_CSRS.shp",
+                GEOMETRY_DIR / f"CBF_RO{year}_CSRS.shp",
                 engine="pyogrio",
             )
             with open(geo_cache_file, "wb") as f:
