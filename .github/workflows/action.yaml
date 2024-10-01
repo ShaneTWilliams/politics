@@ -25,7 +25,7 @@ jobs:
       - name: a
         run: echo "$(dirname $(which pol))" >> $GITHUB_PATH
       - name: l
-        run: echo $GITHUB_PATH
+        run: echo "$(dirname $(which pol))"
 
 
   build:
