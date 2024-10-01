@@ -77,3 +77,8 @@ def clean():
         )
 
     click.secho("Successfully cleaned artifacts", bold=True, fg="green")
+
+
+@click.command()
+def echo():
+    click.echo(f"Politics!")

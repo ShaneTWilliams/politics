@@ -8,11 +8,11 @@ from pol.targets import *
 def cli():
     pass
 
-
 def main():
     cli.add_command(build)
     cli.add_command(format_code, "format")
     cli.add_command(clean)
+    cli.add_command(echo)
 
     try:
         ctx = cli.make_context("cli", sys.argv[1:])
