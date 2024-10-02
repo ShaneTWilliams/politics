@@ -36,10 +36,14 @@ jobs:
       PYPATH: ${{ needs.install.outputs.pypath }}
     steps:
       - uses: actions/checkout@v4
+      - name: test
+        run: echo $PYPATH
       - name: Add pol to PATH
         run: echo $PYPATH >> $GITHUB_PATH
       - name: Build JSON data
         run: pol build --target=json
+      - name: Build Web Application
+        run: pol build --target=web
 
   deploy:
     needs: build

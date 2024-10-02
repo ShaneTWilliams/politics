@@ -426,7 +426,7 @@ def build():
         SOURCES_DIR / "electionsCandidates.xlsx", CACHE_DIR / "electionsCandidates.json"
     )
     riding_rows = get_cached_xlsx(
-        SOURCES_DIR / "ParlInfoRidings.xlsx", CACHE_DIR / f"ridings.json"
+        SOURCES_DIR / "ParlinfoRidings.xlsx", CACHE_DIR / f"ridings.json"
     )
     parliamentarians_rows = get_cached_xlsx(
         SOURCES_DIR / "Parliamentarians.xlsx", CACHE_DIR / f"parliamentarians.json"
