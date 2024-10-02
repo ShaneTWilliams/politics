@@ -8,37 +8,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-          cache: 'pip'
-          cache-dependency-path: python/setup.py
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '20'
       - name: Install web dependencies
         run: cd web && npm install
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      - name: Create Python Virtual Environment
+        run: python -m venv .venv
       - name: Install Python package
-        run: pip install -e python/
+        run: source .venv/bin/activate && pip install -e python/
       - name: Pol echo
-        run: pol echo
-
+        run: source .venv/bin/activate && pol echo
+      - uses: actions/cache/save@v4
+        id: cache
+        with:
+          path: .venv/
+          key: ${{ runner.os }}-${{ hashFiles('python/setup.py') }}
 
   build:
     needs: [install]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - uses: actions/cache/restore@v4
+        id: cache
         with:
-          python-version: '3.12'
-          cache: 'pip'
-          cache-dependency-path: python/setup.py
+          path: .venv/
+          key: ${{ runner.os }}-${{ hashFiles('python/setup.py') }}
+      - name: echo
+        run: source .venv/bin/activate && pol echo
       - name: Build JSON data
         run: pol build --target=json
       - name: Build Web Application
@@ -52,7 +51,7 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: cd web && vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
