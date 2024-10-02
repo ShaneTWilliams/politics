@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: test
-        run: echo $PYPATH
+        run: ls $PYPATH
       - name: Add pol to PATH
         run: echo $PYPATH >> $GITHUB_PATH
       - name: Build JSON data
