@@ -1,6 +1,7 @@
 import datetime
 import json
 import pickle
+import os
 
 import geopandas
 import openpyxl
@@ -313,6 +314,7 @@ def split_candidates_by_province(candidates_by_id):
 
 
 def generate_runs(election_and_candidate_rows, ridings):
+    maclean_found = False  # lol
     parliaments, elections, runs = [], [], []
     parties = set()
     candidates_by_id = {}
@@ -389,6 +391,9 @@ def generate_runs(election_and_candidate_rows, ridings):
                 candidate_obj = candidates_by_id[candidate_obj.id()]
             else:
                 candidates_by_id[candidate_obj.id()] = candidate_obj
+
+            if not maclean_found and candidate_obj == Candidate("John Angus", "MacLean", Gender.MALE) and date == datetime.date(1953, 8, 10):
+                continue
 
             run = Run(
                 elections[-1],
@@ -520,27 +525,19 @@ def build():
                 f.write(geometry.to_svg(100))
 
     print("Writing JSON files")
+    WEB_ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
     with alive_bar(len(data), elapsed=False, stats=False) as bar:
         for cls, instances in data.items():
-            obj = {}
             json_file = WEB_ARTIFACT_DIR / f"{cls.__name__.lower()}.json"
-            bar.text(json_file.name)
+
             bar()
+            bar.text(json_file.name)
+
+            obj = {}
             for instance in instances:
                 if instance.id() in obj:
-                    if (
-                        isinstance(instance, Run)
-                        and (
-                            instance.candidate.first_name,
-                            instance.candidate.last_name,
-                        )
-                        == ("John Angus", "MacLean")
-                        and instance.election.date == datetime.date(1953, 8, 10)
-                    ):
-                        continue
-                    else:
-                        print(instance.id(), instance, instance.to_json())
-                        assert False, "Hash collision!"
+                    print(instance.id(), instance, instance.to_json())
+                    assert False, "Hash collision!"
                 obj[instance.id()] = instance.to_json()
 
             with open(json_file, "w", encoding="utf-8") as f:

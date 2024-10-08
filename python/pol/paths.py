@@ -9,7 +9,7 @@ SOURCES_DIR = ROOT_DIR / "sources"
 
 PYTHON_PACKAGE_DIR = PYTHON_DIR / "pol"
 
-GEOMETRY_ARTIFACT_DIR = WEB_DIR / "public/geometry"
+GEOMETRY_ARTIFACT_DIR = WEB_DIR / "static/geometry"
 WEB_ARTIFACT_DIR = WEB_DIR / "src/lib/artifacts"
 
 CACHE_DIR = ARTIFACT_DIR / "cache"

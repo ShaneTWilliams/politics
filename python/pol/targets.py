@@ -8,6 +8,7 @@ from pol.paths import (
     WEB_ARTIFACT_DIR,
     ARTIFACT_DIR,
     PYTHON_DIR,
+    GEOMETRY_ARTIFACT_DIR,
 )
 
 
@@ -69,7 +70,7 @@ def clean():
         WEB_DIR / "node_modules",
         WEB_DIR / ".vercel",
         WEB_DIR / ".svelte-kit",
-
+        GEOMETRY_ARTIFACT_DIR,
     ]:
         run_cmd(
             ["rm", "-rf", dir],
