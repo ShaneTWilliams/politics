@@ -17,7 +17,7 @@ from pol.paths import (
     ARTIFACT_DIR,
     CACHE_DIR,
     GEOMETRY_DIR,
-    PYTHON_PACKAGE_DIR,
+    GEOMETRY_ARTIFACT_DIR,
     SOURCES_DIR,
     WEB_ARTIFACT_DIR,
 )
@@ -509,7 +509,7 @@ def build():
 
     print("Writing geometry")
     for geometry in data[Geometry]:
-        svg_dir = WEB_ARTIFACT_DIR / f"geometry/{geometry.id()}"
+        svg_dir = GEOMETRY_ARTIFACT_DIR / f"{geometry.id()}"
         svg_dir.mkdir(parents=True, exist_ok=True)
 
         if not (svg_dir / "simple.svg").exists():

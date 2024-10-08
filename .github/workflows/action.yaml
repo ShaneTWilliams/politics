@@ -4,7 +4,7 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on: push
 jobs:
-  install:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,39 +17,12 @@ jobs:
       - name: Create Python Virtual Environment
         run: python -m venv .venv
       - name: Install Python package
-        run: source .venv/bin/activate && pip install -e python/
-      - name: Pol echo
-        run: source .venv/bin/activate && pol echo
-      - uses: actions/cache/save@v4
-        id: cache
-        with:
-          path: .venv/
-          key: ${{ runner.os }}-${{ hashFiles('python/setup.py') }}
-
-  build:
-    needs: [install]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/cache/restore@v4
-        id: cache
-        with:
-          path: .venv/
-          key: ${{ runner.os }}-${{ hashFiles('python/setup.py') }}
-      - name: echo2
-        run: source .venv/bin/activate && which pip && which pol
-      - name: echo
-        run: source .venv/bin/activate && pol echo
+        run: pip install -e python/
       - name: Build JSON data
         run: pol build --target=json
       - name: Build Web Application
         run: pol build --target=web
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       - name: Pull Vercel Environment Information
@@ -57,4 +30,4 @@ jobs:
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --archive=tgz

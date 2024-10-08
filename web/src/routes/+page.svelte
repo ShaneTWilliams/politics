@@ -17,10 +17,10 @@
         <div class="w-full flex flex-row justify-center">
             <div class="w-[600px]">
                 <Map
-                electionId={latestGeneralElectionId}
-                detail={false}
-                viewId={null}
-                clickable={false}
+                    electionId={latestGeneralElectionId}
+                    detail={false}
+                    viewId={null}
+                    clickable={false}
                 />
             </div>
         </div>

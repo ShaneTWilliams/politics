@@ -18,7 +18,7 @@
     let labradorGeometry = null;
     onMount(() => {
         fetch(
-            `/src/lib/artifacts/geometry/${labradorGeometryId}/simple.svg`
+            `/geometry/${labradorGeometryId}/simple.svg`
         ).then(
             (response) => response.text()
         ).then(

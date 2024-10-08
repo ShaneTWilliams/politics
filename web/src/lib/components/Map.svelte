@@ -114,7 +114,7 @@
             (id) => {
                 const geometryId = ridingsToShow[id].geometry_id;
                 return fetch(
-                    `/src/lib/artifacts/geometry/${geometryId}/${actuallyShowDetail ? "detailed" : "simple"}.svg`
+                    `/geometry/${geometryId}/${actuallyShowDetail ? "detailed" : "simple"}.svg`
                 ).then(
                     (response) => response.text()
                 ).then(
