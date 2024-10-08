@@ -2,8 +2,8 @@
     import Page from '$lib/components/Page.svelte';
     import Card from '$lib/components/Card.svelte';
 
-    import Labrador from '$lib/components/icons/Labrador.svelte';
     import Ballot from '$lib/components/icons/Ballot.svelte';
+    import Labrador from '$lib/components/icons/Labrador.svelte';
     import Sign from '$lib/components/icons/Sign.svelte';
     import Silhouette from '$lib/components/icons/Silhouette.svelte';
     import Seating from '$lib/components/icons/SeatingChart.svelte';
