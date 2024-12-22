@@ -10,15 +10,13 @@
     import { PARTIES, PROVINCES } from "$lib/constants.js"
     import HorizontalBar from "./HorizontalBar.svelte"
     import { formatString } from "$lib/utils.js"
-	import { onMount } from "svelte";
-    import { afterUpdate } from "svelte";
     import { browser } from '$app/environment';
 
-    export let electionId;
-    let election = elections[electionId];
+    export let electionId, focusParty=null;
+    $: election = elections[electionId];
 
-    let hoveredRiding = null;
-    let selectedRiding = null;
+    $: hoveredRiding = null;
+    $: selectedRiding = null;
     let BIG_DETAIL_VIEW_IDS = [
         [
             "MONTREAL",
@@ -50,8 +48,8 @@
         ]
     ];
 
-    let relevant_runs = [];
-    let max_votes = 0;
+    $: relevant_runs = [];
+    $: max_votes = 0;
     $: if (selectedRiding !== null) {
         relevant_runs = [];
         max_votes = 0;
@@ -64,8 +62,19 @@
                 }
             }
         }
-        console.log(selectedRiding)
     }
+    $: relevantRunsBarData = relevant_runs.map(
+        (run) => {
+            return {
+                primaryLabel: candidates[run.candidate].first_name + ' ' + candidates[run.candidate].last_name,
+                primaryLink: `/elections/candidates/${run.candidate}`,
+                secondaryLabel: PARTIES[parties[run.party].name],
+                secondaryLink: `/elections/parties/${run.party}`,
+                count: run.result == "ACCLAIMED" ? "Acclaimed" : run.votes,
+                color: parties[run.party].color,
+            };
+        }
+    );
 
     // Determine if we're stuck to the bottom of the screen.
     let stickyElement, stuck;
@@ -78,7 +87,7 @@
     }
 </script>
 
-<div>
+<div class="w-full">
     <Map
         bind:selectedRiding={selectedRiding}
         bind:hoveredRiding={hoveredRiding}
@@ -86,10 +95,11 @@
         detail={false}
         viewId={null}
         clickable={true}
+        {focusParty}
     />
 
     {#if election.type == "GENERAL"}
-    <div class="flex flex-col space-y-2 mb-4 px-2">
+    <div class="flex flex-col space-y-2 mb-4 px-2 overflow-none">
         {#each BIG_DETAIL_VIEW_IDS as row}
         <div class="flex flex-row space-x-2">
             {#each row as viewId}
@@ -100,6 +110,7 @@
                     detail={true}
                     {viewId}
                     clickable={true}
+                    {focusParty}
                 />
             {/each}
         </div>
@@ -107,15 +118,16 @@
     </div>
     <div class="flex flex-col space-y-2 px-2">
         {#each SMALL_DETAIL_VIEW_IDS as row}
-        <div class="flex flex-row space-x-2">
+        <div class="flex flex-row space-x-2 w-full">
             {#each row as viewId}
                 <Map
-                bind:selectedRiding={selectedRiding}
-                bind:hoveredRiding={hoveredRiding}
-                {electionId}
-                detail={true}
-                {viewId}
-                clickable={true}
+                    bind:selectedRiding={selectedRiding}
+                    bind:hoveredRiding={hoveredRiding}
+                    {electionId}
+                    detail={true}
+                    {viewId}
+                    clickable={true}
+                    {focusParty}
                 />
             {/each}
         </div>
@@ -125,19 +137,11 @@
 
     {#if selectedRiding}
     <div class="pb-4 mt-8 sticky -bottom-[1px]" bind:this={stickyElement}>
-        <div class={`flex flex-col items-center bg-sol-light2 dark:bg-sol-dark2 p-2 rounded-lg w-full ${stuck ? "shadow-lg" : ""}`}>
+        <div class={`flex flex-col items-center bg-sol-light2 dark:bg-sol-dark2 p-2 rounded-lg w-full ${stuck ? "shadow-[rgba(0,0,0,0.1)_0px_0px_25px_5px]" : ""}`}>
             <a class="mb-4 font-black hover:underline decoration-dashed" href={`/elections/ridings/${selectedRiding}`}>
                 {formatString(ridings[selectedRiding].name)}, {PROVINCES[ridings[selectedRiding].province]}
             </a>
-            <HorizontalBar
-                primaryLabels={relevant_runs.map(run => candidates[run.candidate].first_name + ' ' + candidates[run.candidate].last_name)}
-                primaryLinks={relevant_runs.map(run => `/elections/candidates/${run.candidate}`)}
-                secondaryLabels={relevant_runs.map(run => PARTIES[parties[run.party].name])}
-                secondaryLinks={relevant_runs.map(run => `/elections/parties/${run.party}`)}
-                counts={relevant_runs.map(run => run.result == "ACCLAIMED" ? "Acclaimed" : run.votes)}
-                colors={relevant_runs.map(run => parties[run.party].color)}
-                showTotal={relevant_runs.length > 1}
-            />
+            <HorizontalBar data={relevantRunsBarData} showTotal={relevant_runs.length > 1} />
         </div>
     </div>
     {:else}

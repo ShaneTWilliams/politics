@@ -8,9 +8,16 @@
     import HorizontalBar from '$lib/components/HorizontalBar.svelte';
     import SmallStat from '$lib/components/SmallStat.svelte';
     import Title from '$lib/components/Title.svelte';
+    import Heading from '$lib/components/Heading.svelte';
     import PartySquare from '$lib/components/PartySquare.svelte';
+    import CanadaMap from '$lib/components/CanadaMap.svelte';
 
-    import { getRunsInRiding } from '$lib/stats.js';
+    import {
+        getPartyLifetimeVotes,
+        getPartyLifetimeRuns,
+        getMostRecentGeneralElectionId,
+        getPartyWinsInElection
+    } from '$lib/stats.js';
     import { formatString, formatNumber } from '$lib/utils.js';
     import { PARTIES, PROVINCES, ELECTION_TYPE, FILL_COLOURS } from '$lib/constants.js';
 
@@ -22,6 +29,10 @@
 
     $: party = parties[$page.params.partyId];
 
+    $: mostRecentElection = getMostRecentGeneralElectionId();
+    $: mostRecentElectionWins = getPartyWinsInElection($page.params.partyId, mostRecentElection);
+    $: lifetimeVotes = getPartyLifetimeVotes($page.params.partyId);
+    $: lifetimeRuns = getPartyLifetimeRuns($page.params.partyId);
 </script>
 
 <svelte:head>
@@ -30,4 +41,16 @@
 
 <Page>
     <Title text={PARTIES[party.name]} />
+
+    <Heading text="Statistics" />
+    <div class="flex flex-row space-x-6 mb-2 overflow-x-scroll py-2">
+        <SmallStat name="Lifetime Votes" value={ formatNumber(lifetimeVotes) } />
+        <SmallStat name="Lifetime Runs" value={ formatNumber(lifetimeRuns) } />
+        <SmallStat name="Current MPs" value={ formatNumber(mostRecentElectionWins) } />
+    </div>
+
+    {#if mostRecentElectionWins > 5}
+    <Heading text={"2021 Election Performance"} />
+    <CanadaMap electionId={mostRecentElection} focusParty={$page.params.partyId} />
+    {/if}
 </Page>

@@ -8,6 +8,7 @@ from pol.targets import *
 def cli():
     pass
 
+
 def main():
     cli.add_command(build)
     cli.add_command(format_code, "format")

@@ -4,7 +4,7 @@
     export let title, subtitle = null;
 </script>
 
-<div>
+<div class="flex flex-col">
     <div class="flex flex-row">
         <div class="flex flex-col rounded-t-lg bg-sol-light3 dark:bg-sol-dark3 mb-1 ml-4">
             <p class="font-black text-md mr-3">

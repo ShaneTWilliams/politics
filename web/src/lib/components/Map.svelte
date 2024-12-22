@@ -9,6 +9,7 @@
     import detailViews from "$lib/artifacts/detailview.json"
 
     import { FILL_COLOURS, DETAIL_VIEWS } from "$lib/constants.js"
+    import { getCandidateVoteProportion } from "$lib/stats.js"
 
     const RO_YEARS = [
         1867,
@@ -31,7 +32,7 @@
         2013
     ]
 
-    export let selectedRiding=null, hoveredRiding=null, electionId, viewId, detail, clickable;
+    export let selectedRiding=null, hoveredRiding=null, electionId, viewId, detail, clickable, focusParty;
 
     let view = viewId === null ? null : detailViews[viewId];
 
@@ -72,20 +73,32 @@
 
     for (const runId of election.runs) {
         let run = runs[runId];
-        if (view !== null && !view.ridings_by_year[ro_year].includes(run.riding)) {
+        if ((view !== null && view.ridings_by_year[ro_year] === undefined) ||
+            (view !== null && !view.ridings_by_year[ro_year].includes(run.riding))) {
             continue;
         }
         let riding = ridings[run.riding];
         const geometryId = riding.geometry_by_year[ro_year];
         const geometry = geometries[geometryId];
+        console.log(geometryId, geometry, ro_year, riding)
         if ((run.result === "ELECTED" || run.result === "ACCLAIMED")) {
             if (!actuallyShowDetail && parseInt(geometry.area) < 100) {
                 continue;
             }
+            let color = parties[run.party].color;
+            let opacity = 100;
+            if (focusParty != undefined) {
+                if (run.party != focusParty) {
+                    color = "BACKGROUND";
+                } else {
+                    opacity = Math.min(100, 300 * Math.pow(getCandidateVoteProportion(runId), 2));
+                }
+            }
             ridingsToShow[run.riding] = {
                 ...riding,
                 geometry_id: geometryId,
-                color: parties[run.party].color,
+                color: color,
+                opacity: opacity,
                 victorParty: run.party,
             };
         }
@@ -136,9 +149,9 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 
-<div class={`flex flex-col w-full ${election.type == "BYELECTION" ? "max-h-96" : ""}`}>
+<div class={`flex flex-col w-full truncate ${election.type == "BYELECTION" ? "max-h-96" : ""}`}>
     {#if view !== null}
-        <p class="text-xs text-sol-dark2 dark:text-sol-light2 text-left ml-2">
+        <p class="text-xs sm:visible invisible text-sol-dark2 dark:text-sol-light2 text-left ml-2">
             {DETAIL_VIEWS[view.name]}
         </p>
     {/if}
@@ -152,11 +165,13 @@
             {#each Object.entries(ridingsToShow) as [id, riding]}
             <g
                 class={`
-                        stroke-sol-light3 dark:stroke-sol-dark3 ${FILL_COLOURS[riding.color]}
-                        ${hoveredRiding == id && clickable ? "opacity-70" : ""}
-                        ${selectedRiding == id ? "opacity-70 animate-pulse" : ""}
-                    `}
-                style={`stroke-width: ${Math.pow(Math.min(width, height), 0.8) / 50}`}
+                    stroke-sol-light3 dark:stroke-sol-dark3 ${FILL_COLOURS[riding.color]}
+                    ${selectedRiding == id ? "animate-pulse" : ""}
+                `}
+                style={`
+                    stroke-width: ${Math.pow(Math.min(width, height), 0.8) / 50};
+                    opacity: ${clickable && (hoveredRiding == id || selectedRiding == id) ? Math.max(0, riding.opacity - 20) : riding.opacity}%
+                `}
                 on:click={() => { if (clickable) {selectedRiding = id;}}}
                 on:mouseenter={() => {hoveredRiding = id;}}
                 on:mouseleave={() => {hoveredRiding = null;}}

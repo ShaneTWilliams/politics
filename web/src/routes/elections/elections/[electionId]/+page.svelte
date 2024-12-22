@@ -51,26 +51,135 @@
             }
         }
     }
-    let party_results_sorted = Object.entries(party_results).sort((a, b) => b[1].count - a[1].count);
+    let party_results_sorted = Object.entries(
+        party_results
+    ).sort(
+        (a, b) => b[1].count - a[1].count
+    ).map(([partyId, result]) => {
+        return {
+            primaryLabel: PARTIES[parties[partyId].name],
+            primaryLink: isRealParty(partyId) ? `/elections/parties/${partyId}` : null,
+            count: result.count,
+            color: result.color
+        };
+    });
 
     const closestRidingId = getClosestRidingInElection($page.params.electionId, true);
-    const closestRidingRuns = getRunsInRiding($page.params.electionId, closestRidingId);
+    const closestRidingRuns = getRunsInRiding($page.params.electionId, closestRidingId).map(
+        (run) => {
+            return {
+                primaryLabel: candidates[run.candidate].first_name + ' ' + candidates[run.candidate].last_name,
+                primaryLink: `/elections/candidates/${run.candidate}`,
+                secondaryLabel: PARTIES[parties[run.party].name],
+                secondaryLink: PARTIES_THAT_ARENT_PARTIES.includes(parties[run.party].name) ? null : `/elections/parties/${run.party}`,
+                count: run.votes,
+                color: parties[run.party].color,
+            };
+        }
+    );
     const closestRiding = ridings[closestRidingId];
 
     const blowoutRidingId = getClosestRidingInElection($page.params.electionId, false);
-    const blowoutRidingRuns = getRunsInRiding($page.params.electionId, blowoutRidingId);
+    const blowoutRidingRuns = getRunsInRiding($page.params.electionId, blowoutRidingId).map(
+        (run) => {
+            return {
+                primaryLabel: candidates[run.candidate].first_name + ' ' + candidates[run.candidate].last_name,
+                primaryLink: `/elections/candidates/${run.candidate}`,
+                secondaryLabel: PARTIES[parties[run.party].name],
+                secondaryLink: PARTIES_THAT_ARENT_PARTIES.includes(parties[run.party].name) ? null : `/elections/parties/${run.party}`,
+                count: run.votes,
+                color: parties[run.party].color,
+            };
+        }
+    );
     const blowoutRiding = ridings[blowoutRidingId];
 
-    const votesByParty = getVotesByParty($page.params.electionId);
+    const votesByParty = getVotesByParty($page.params.electionId).map(
+        ([partyId, votes]) => {
+            return {
+                primaryLabel: PARTIES[parties[partyId].name],
+                primaryLink: isRealParty(partyId) ? `/elections/parties/${partyId}` : null,
+                count: votes == 0 ? "Acclaimed" : votes,
+                color: parties[partyId].color
+            };
+        }
+    );
 
     const totalVotesCast = getTotalElectionVotes($page.params.electionId);
     const numberOfCandidates = getNumberOfCandidates($page.params.electionId);
     const numberOfRidings = getNumberOfRidings($page.params.electionId);
 
-    const numberOfCandidatesByParty = getNumberOfCandidatesByParty($page.params.electionId);
+    const numberOfCandidatesByParty = getNumberOfCandidatesByParty($page.params.electionId).map(
+        ([partyId, numCandidates]) => {
+            return {
+                primaryLabel: PARTIES[parties[partyId].name],
+                primaryLink: isRealParty(partyId) ? `/elections/parties/${partyId}` : null,
+                count: numCandidates,
+                color: parties[partyId].color,
+            };
+        }
+    );
 
     const candidatesByGender = getElectionCandidatesByGender($page.params.electionId);
     const winnersByGender = getElectionWinnersByGender($page.params.electionId);
+
+    const candidatesByGenderBarData = [
+        {
+            primaryLabel: "Male",
+            count: candidatesByGender["MALE"],
+            color: "BLUE"
+        },
+        {
+            primaryLabel: "Female",
+            count: candidatesByGender["FEMALE"],
+            color: "PINK"
+        },
+        {
+            primaryLabel: "Other",
+            count: candidatesByGender["OTHER"],
+            color: "GREEN"
+        },
+        {
+            primaryLabel: "Unknown",
+            count: candidatesByGender["UNKNOWN"],
+            color: "GREY"
+        }
+    ]
+
+    const winnersByGenderBarData = [
+        {
+            primaryLabel: "Male",
+            count: winnersByGender["MALE"],
+            color: "BLUE"
+        },
+        {
+            primaryLabel: "Female",
+            count: winnersByGender["FEMALE"],
+            color: "PINK"
+        },
+        {
+            primaryLabel: "Other",
+            count: winnersByGender["OTHER"],
+            color: "GREEN"
+        },
+        {
+            primaryLabel: "Unknown",
+            count: winnersByGender["UNKNOWN"],
+            color: "GREY"
+        }
+    ]
+
+
+    const electionRuns = election.runs.map((run) => {
+        return {
+            primaryLabel: candidates[runs[run].candidate].first_name + ' ' + candidates[runs[run].candidate].last_name,
+            primaryLinks: `/elections/candidates/${runs[run].candidate}`,
+            secondaryLabel: PARTIES[parties[runs[run].party].name],
+            secondaryLink: PARTIES_THAT_ARENT_PARTIES.includes(parties[runs[run].party].name) ? null : `/elections/parties/${runs[run].party}`,
+            count: runs[run].votes,
+            color: parties[runs[run].party].color
+        };
+    });
 </script>
 
 <svelte:head>
@@ -84,14 +193,7 @@
     {#if election.type == "GENERAL"}
     <Heading text="Results" />
     <LargeCard title="Seats by party">
-        <HorizontalBar
-            primaryLabels={party_results_sorted.map(([partyId, result]) => PARTIES[parties[partyId].name])}
-            primaryLinks={party_results_sorted.map(([partyId, result]) => isRealParty(partyId) ? `/elections/parties/${partyId}` : null)}
-            secondaryLabels={[]}
-            counts={party_results_sorted.map(([partyId, result]) => result.count)}
-            colors={party_results_sorted.map(([partyId, result]) => result.color)}
-            showTotal={true}
-        />
+        <HorizontalBar data={party_results_sorted} showTotal={true} />
     </LargeCard>
     {/if}
 
@@ -102,7 +204,7 @@
 
     <Heading text="Statistics" />
     <div class="space-y-12">
-        <div class="flex flex-row space-x-6 w-full">
+        <div class="flex flex-row space-x-6 w-full overflow-x-scroll py-2">
             <SmallStat name="Total valid ballots" value={ formatNumber(totalVotesCast) } />
             <SmallStat name="Number of candidates" value={ formatNumber(numberOfCandidates) } />
             {#if election.type == "GENERAL"}
@@ -112,37 +214,15 @@
 
         <LargeCard title="Popular Vote">
             {#if election.type == "GENERAL"}
-            <HorizontalBar
-                primaryLabels={votesByParty.map(([partyId, votes]) => PARTIES[parties[partyId].name])}
-                primaryLinks={votesByParty.map(([partyId, votes]) => isRealParty(partyId) ? `/elections/parties/${partyId}` : null)}
-                secondaryLabels={[]}
-                counts={votesByParty.map(([partyId, votes]) => votes == 0 ? "Acclaimed" : votes)}
-                colors={votesByParty.map(([partyId, votes]) => parties[partyId].color)}
-                showTotal={votesByParty.length > 1}
-            />
+            <HorizontalBar data={votesByParty} showTotal={votesByParty.length > 1} />
             {:else}
-            <HorizontalBar
-                primaryLabels={election.runs.map(run => candidates[runs[run].candidate].first_name + ' ' + candidates[runs[run].candidate].last_name)}
-                primaryLinks={election.runs.map(run => `/elections/candidates/${runs[run].candidate}`)}
-                secondaryLabels={election.runs.map(run => PARTIES[parties[runs[run].party].name])}
-                secondaryLinks={election.runs.map(run => PARTIES_THAT_ARENT_PARTIES.includes(parties[runs[run].party].name) ? null : `/elections/parties/${runs[run].party}`)}
-                counts={election.runs.map(run => runs[run].votes)}
-                colors={election.runs.map(run => parties[runs[run].party].color)}
-                showTotal={votesByParty.length > 1}
-            />
+            <HorizontalBar data={electionRuns} showTotal={votesByParty.length > 1} />
             {/if}
         </LargeCard>
 
         {#if election.type == "GENERAL"}
         <LargeCard title="Candidates by Party">
-            <HorizontalBar
-                primaryLabels={numberOfCandidatesByParty.map(([partyId, numCandidates]) => PARTIES[parties[partyId].name])}
-                primaryLinks={numberOfCandidatesByParty.map(([partyId, numCandidates]) => isRealParty(partyId) ? `/elections/parties/${partyId}` : null)}
-                secondaryLabels={[]}
-                counts={numberOfCandidatesByParty.map(([partyId, numCandidates]) => numCandidates)}
-                colors={numberOfCandidatesByParty.map(([partyId, numCandidates]) => parties[partyId].color)}
-                showTotal={true}
-            />
+            <HorizontalBar data={numberOfCandidatesByParty} showTotal={true} />
         </LargeCard>
         {/if}
 
@@ -151,47 +231,19 @@
             title="Closest Race"
             subtitle={closestRiding.name + ", " + PROVINCES[closestRiding.province]}
         >
-            <HorizontalBar
-                primaryLabels={closestRidingRuns.map(run => candidates[run.candidate].first_name + ' ' + candidates[run.candidate].last_name)}
-                primaryLinks={closestRidingRuns.map(run => `/elections/candidates/${run.candidate}`)}
-                secondaryLabels={closestRidingRuns.map(run => PARTIES[parties[run.party].name])}
-                secondaryLinks={closestRidingRuns.map(run => PARTIES_THAT_ARENT_PARTIES.includes(parties[run.party].name) ? null : `/elections/parties/${run.party}`)}
-                counts={closestRidingRuns.map(run => run.votes)}
-                colors={closestRidingRuns.map(run => parties[run.party].color)}
-                showTotal={false}
-            />
+            <HorizontalBar data={closestRidingRuns} showTotal={false} />
         </LargeCard>
         <LargeCard
             title="Biggest Blowout"
             subtitle={blowoutRiding.name + ", " + PROVINCES[blowoutRiding.province]}
         >
-            <HorizontalBar
-                primaryLabels={blowoutRidingRuns.map(run => candidates[run.candidate].first_name + ' ' + candidates[run.candidate].last_name)}
-                primaryLinks={blowoutRidingRuns.map(run => `/elections/candidates/${run.candidate}`)}
-                secondaryLabels={blowoutRidingRuns.map(run => PARTIES[parties[run.party].name])}
-                secondaryLinks={blowoutRidingRuns.map(run => PARTIES_THAT_ARENT_PARTIES.includes(parties[run.party].name) ? null : `/elections/parties/${run.party}`)}
-                counts={blowoutRidingRuns.map(run => run.votes)}
-                colors={blowoutRidingRuns.map(run => parties[run.party].color)}
-                showTotal={false}
-            />
+            <HorizontalBar data={blowoutRidingRuns} showTotal={false} />
         </LargeCard>
         <LargeCard title="Candidates by Gender">
-            <HorizontalBar
-                primaryLabels={["Male", "Female", "Other", "Unknown"]}
-                secondaryLabels={[]}
-                counts={[candidatesByGender["MALE"], candidatesByGender["FEMALE"], candidatesByGender["OTHER"], candidatesByGender["UNKNOWN"]]}
-                colors={["BLUE", "PINK", "GREEN", "GREY"]}
-                showTotal={false}
-            />
+            <HorizontalBar data={candidatesByGenderBarData} showTotal={false} />
         </LargeCard>
         <LargeCard title="Seats by Gender">
-            <HorizontalBar
-                primaryLabels={["Male", "Female", "Other", "Unknown"]}
-                secondaryLabels={[]}
-                counts={[winnersByGender["MALE"], winnersByGender["FEMALE"], winnersByGender["OTHER"], winnersByGender["UNKNOWN"]]}
-                colors={["BLUE", "PINK", "GREEN", "GREY"]}
-                showTotal={false}
-            />
+            <HorizontalBar data={winnersByGenderBarData} showTotal={false} />
         </LargeCard>
         {/if}
     </div>

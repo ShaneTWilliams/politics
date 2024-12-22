@@ -14,7 +14,8 @@ export const FILL_COLOURS = {
     "GREY":     "fill-sol-dark1 bg-sol-dark1",
     "BLACK":    "fill-sol-dark3 bg-sol-dark3 dark:fill-sol-dark1 dark:bg-sol-dark1",
     "WHITE":    "fill-sol-light3 bg-sol-light2 dark:fill-sol-light2 dark:bg-sol-light2",
-    "CYAN":     "fill-sol-cyan bg-sol-cyan"
+    "CYAN":     "fill-sol-cyan bg-sol-cyan",
+    "BACKGROUND": "fill-sol-light2 bg-sol-light2 dark:fill-sol-dark2 dark:bg-sol-dark2"
 };
 
 export const PROVINCES = {

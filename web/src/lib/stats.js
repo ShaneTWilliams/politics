@@ -6,6 +6,27 @@ import parties from '$lib/artifacts/party.json';
 
 import { PARTIES_THAT_ARENT_PARTIES, OCCUPATIONS_THAT_ARENT_OCCUPATIONS } from '$lib/constants';
 
+function dateLaterThan(a, b) {
+    if (a.year > b.year) {
+        return true;
+    } else if (a.year < b.year) {
+        return false;
+    }
+
+    if (a.month > b.month) {
+        return true;
+    } else if (a.month < b.month) {
+        return false;
+    }
+
+    if (a.day > b.day) {
+        return true;
+    } else if (a.day < b.day) {
+        return false;
+    }
+    return false;
+}
+
 export function getClosestRidingInElection(electionId, closest) {
     let winners = {};
     let seconds = {};
@@ -133,9 +154,6 @@ export function getElectionCandidatesByGender(electionId) {
     for (const runId of elections[electionId].runs) {
         const run = runs[runId];
         const candidate = candidates[run.candidate];
-        if (candidate === undefined) {
-            console.log(runId, run);
-        }
         candidatesByGender[candidate.gender] += 1;
     }
     return candidatesByGender;
@@ -179,4 +197,83 @@ export function isRealParty(partyId) {
 
 export function isRealOccupation(occupation) {
     return !OCCUPATIONS_THAT_ARENT_OCCUPATIONS.includes(occupation);
+}
+
+export function getPartyLifetimeVotes(partyId) {
+    let votes = 0;
+    for (const [runId, run] of Object.entries(runs)) {
+        if (run.party == partyId) {
+            votes += run.votes;
+        }
+    }
+    return votes;
+}
+
+export function getPartyLifetimeRuns(partyId) {
+    let runCount = 0;
+    for (const [runId, run] of Object.entries(runs)) {
+        if (run.party == partyId) {
+            runCount += 1;
+        }
+    }
+    return runCount;
+}
+
+export function getPartyWinsInElection(partyId, electionId) {
+    let count = 0;
+    for (const runId of elections[electionId].runs) {
+        const run = runs[runId];
+        if (run.party == partyId && (run.result == "ACCLAIMED" || run.result == "ELECTED")) {
+            count += 1;
+        }
+    }
+    return count;
+}
+
+export function getMostRecentGeneralElectionId() {
+    let mostRecentId = null;
+    let mostRecentYear = 0;
+    for (const [electionId, election] of Object.entries(elections)) {
+        if (election.date.year > mostRecentYear && election.type == "GENERAL") {
+            mostRecentId = electionId;
+            mostRecentYear = election.date.year;
+        }
+    }
+    return mostRecentId;
+}
+
+export function getCandidateVoteProportion(runId) {
+    const run = runs[runId];
+    let totalVotes = 0;
+    for (const otherRunId of elections[run.election].runs) {
+        const otherRun = runs[otherRunId];
+        if (run.riding == otherRun.riding) {
+            totalVotes += otherRun.votes;
+        }
+    }
+    return run.votes / totalVotes;
+}
+
+export function getPartyNumberOfMPsCurrently(partyId) {
+    const electionId = getMostRecentGeneralElectionId();
+    const generalElectionDate = elections[electionId].date;
+    let heldRidings = Set()
+    for (const runId of elections[electionId].runs) {
+        const run = runs[runId];
+        if (run.party == partyId && (run.result == "ACCLAIMED" || run.result == "ELECTED")) {
+            count += 1;
+            heldRidings.add(run.riding);
+        }
+    }
+
+    for (const [electionId, election] of Object.entries(elections)) {
+        if (dateLaterThan(election.date > generalElectionDate) && election.type == "BYELECTION") {
+            for (const runId of election.runs) {
+                const run = runs[runId];
+                if (run.party == partyId && (run.result == "ACCLAIMED" || run.result == "ELECTED")) {
+                    heldRidings.add(run.riding);
+                }
+            }
+        }
+    }
 }

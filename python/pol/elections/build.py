@@ -1,7 +1,7 @@
 import datetime
 import json
-import pickle
 import os
+import pickle
 
 import geopandas
 import openpyxl
@@ -11,14 +11,15 @@ from pol.elections.patches import (
     CANDIDATE_INFO_PATCHES,
     CANDIDATE_SPLIT_EXCEPTIONS,
     GEOMETRY_TO_RIDING_METADATA,
+    RIDING_NAME_CHANGES_BY_DATE,
     RIDING_NAME_PATCHES,
 )
 from pol.elections.structures import *
 from pol.paths import (
     ARTIFACT_DIR,
     CACHE_DIR,
-    GEOMETRY_DIR,
     GEOMETRY_ARTIFACT_DIR,
+    GEOMETRY_DIR,
     SOURCES_DIR,
     WEB_ARTIFACT_DIR,
 )
@@ -108,7 +109,7 @@ def generate_ridings(riding_rows, geometry_by_year):
     for row in riding_rows:
         name, province, region, start_date, end_date, status = row
         if name == "Barrie--Simcoe":
-            # Data error
+            # Data error TODO
             continue
 
         if start_date == "":
@@ -199,6 +200,27 @@ def generate_ridings(riding_rows, geometry_by_year):
                 riding_geometry_by_year,
             )
         )
+
+    for riding in sorted(ridings, key=lambda r: r.start_date, reverse=True):
+        if riding.end_date in RIDING_NAME_CHANGES_BY_DATE:
+            rename_start_date = riding.end_date + datetime.timedelta(days=1)
+            rename_name = RIDING_NAME_CHANGES_BY_DATE[riding.end_date][riding.name]
+            rename_start_date = {
+                "Timiskaming--French River": datetime.date(1990, 12, 19),
+                "Berthier--Maskinongé": datetime.date(1975, 3, 13),
+                "Middlesex--London--Lambton": datetime.date(1974, 5, 7),
+                "Nanaimo--Cowichan--The Islands": datetime.date(1962, 4, 18),
+                "Northwest Territories": datetime.date(1962, 3, 23),
+            }.get(rename_name, rename_start_date)
+            renamed_riding = [
+                r
+                for r in ridings
+                if r.name == rename_name and r.start_date == rename_start_date
+            ].pop()
+            rename_ro_year = [y for y in RO_YEARS if y < riding.end_date.year][-1]
+            riding.geometry_by_year[rename_ro_year] = renamed_riding.geometry_by_year[
+                rename_ro_year
+            ]
 
     return ridings
 
@@ -392,7 +414,11 @@ def generate_runs(election_and_candidate_rows, ridings):
             else:
                 candidates_by_id[candidate_obj.id()] = candidate_obj
 
-            if not maclean_found and candidate_obj == Candidate("John Angus", "MacLean", Gender.MALE) and date == datetime.date(1953, 8, 10):
+            if (
+                not maclean_found
+                and candidate_obj == Candidate("John Angus", "MacLean", Gender.MALE)
+                and date == datetime.date(1953, 8, 10)
+            ):
                 continue
 
             run = Run(
