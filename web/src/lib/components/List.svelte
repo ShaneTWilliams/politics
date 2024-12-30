@@ -52,6 +52,7 @@
             <p>{emptyText}</p>
         </div>
     {/if}
+    {#if data.length > ITEMS_PER_PAGE}
     <div class="flex flex-row w-full justify-center mt-8 text-sm">
         <div class="flex flex-row space-x-4 grow justify-center">
             {#each pagesToShow as page}
@@ -64,4 +65,5 @@
             {/each}
         </div>
     </div>
+    {/if}
 </div>
