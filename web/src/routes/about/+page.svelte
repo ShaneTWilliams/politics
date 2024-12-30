@@ -1,6 +1,5 @@
 <script>
     import Page from '$lib/components/Page.svelte';
-    import Title from '$lib/components/Title.svelte'
 
     import headshot from '$lib/static/edited.jpg'
 </script>

@@ -5,6 +5,9 @@ TODO LIST:
 - Get predecessor ridings using geometry overlap
 - Wikis for all ridings
 - Links in wikis
+- Blog post
+- About page
+- Bug reporting page
 
 Cool things:
 - Quebec district is a bellwether for Quebec

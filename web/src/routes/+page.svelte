@@ -12,6 +12,10 @@
     )[0];
 </script>
 
+<svelte:head>
+    <title>Shane Williams</title>
+</svelte:head>
+
 <Page>
     <div class="mt-6 p-6 bg-sol-light2 dark:bg-sol-dark2 rounded-xl flex flex-col items-left">
         <div class="w-full flex flex-row justify-center">
