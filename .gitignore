@@ -1,5 +1,4 @@
 # Pol
-/sources
 /artifacts
 
 # Python
@@ -12,6 +11,9 @@ __pycache__
 /web/.svelte-kit
 /web/build
 /web/src/lib/artifacts
+/web/static/geometry
+/web/.vercel
 
 # OS
 .DS_Store
+.vercel

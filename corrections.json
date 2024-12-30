@@ -1,0 +1,3377 @@
+{
+    "186712011": {
+        "geo_name": "Kings (N.S.)",
+        "name": "Kings",
+        "province": "Nova Scotia"
+    },
+    "186712014": {
+        "geo_name": "Queens",
+        "name": "Queen's",
+        "province": "New Brunswick"
+    },
+    "186712017": {
+        "geo_name": "Victoria (N.S.)",
+        "name": "Victoria",
+        "province": "Nova Scotia"
+    },
+    "186713002": {
+        "geo_name": "Carleton (N.B.)",
+        "name": "Carleton",
+        "province": "New Brunswick"
+    },
+    "186713004": {
+        "geo_name": "City and County of St. John",
+        "name": "St. John (City and County of)",
+        "province": "New Brunswick"
+    },
+    "186713005": {
+        "geo_name": "City of St. John",
+        "name": "St. John (City of )",
+        "province": "New Brunswick"
+    },
+    "186713007": {
+        "geo_name": "Kent (N.B.)",
+        "name": "Kent",
+        "province": "New Brunswick"
+    },
+    "186713008": {
+        "geo_name": "Kings (N.B.)",
+        "name": "King's",
+        "province": "New Brunswick"
+    },
+    "186713010": {
+        "geo_name": "Queens",
+        "name": "Queens",
+        "province": "Nova Scotia"
+    },
+    "186713013": {
+        "geo_name": "Victoria (N.B.)",
+        "name": "Victoria",
+        "province": "New Brunswick"
+    },
+    "186724021": {
+        "geo_name": "Jacques-Cartier",
+        "name": "Jacques Cartier",
+        "province": "Quebec"
+    },
+    "186724037": {
+        "geo_name": "Montreal Est",
+        "name": "Montreal East",
+        "province": "Quebec"
+    },
+    "186724038": {
+        "geo_name": "Montreal Ouest",
+        "name": "Montreal West",
+        "province": "Quebec"
+    },
+    "186724041": {
+        "geo_name": "Ottawa",
+        "name": "Ottawa (City of)",
+        "province": "Ontario"
+    },
+    "186724044": {
+        "geo_name": "Qu\u00e9bec (Comt\u00e9)",
+        "name": "Quebec County",
+        "province": "Quebec"
+    },
+    "186724045": {
+        "geo_name": "Qu\u00e9bec-Est",
+        "name": "Quebec East",
+        "province": "Quebec"
+    },
+    "186724046": {
+        "geo_name": "Qu\u00e9bec-Ouest",
+        "name": "Quebec West",
+        "province": "Quebec"
+    },
+    "186724047": {
+        "geo_name": "Qu\u00e9bec-Centre",
+        "name": "Quebec-Centre",
+        "province": "Quebec"
+    },
+    "186724052": {
+        "geo_name": "Saint-Maurice",
+        "name": "Saint Maurice",
+        "province": "Quebec"
+    },
+    "186724054": {
+        "geo_name": "Sherbrooke",
+        "name": "Sherbrooke (Town of)",
+        "province": "Quebec"
+    },
+    "186724056": {
+        "geo_name": "Saint-Hyacinthe",
+        "name": "St. Hyacinthe",
+        "province": "Quebec"
+    },
+    "186724057": {
+        "geo_name": "Saint-Jean",
+        "name": "St. John's",
+        "province": "Quebec"
+    },
+    "186724061": {
+        "geo_name": "Trois-Rivi\u00e8res",
+        "name": "Three Rivers",
+        "province": "Quebec"
+    },
+    "186724062": {
+        "geo_name": "Deux-Montagnes",
+        "name": "Two Mountains",
+        "province": "Quebec"
+    },
+    "186735010": {
+        "geo_name": "Carleton (Ont.)",
+        "name": "Carleton",
+        "province": "Ontario"
+    },
+    "186735031": {
+        "geo_name": "Kent (Ont.)",
+        "name": "Kent",
+        "province": "Ontario"
+    },
+    "186735052": {
+        "geo_name": "Ottawa (is the ID a mistake? Has the Ontario prefix)",
+        "name": "Ottawa (County of)",
+        "province": "Quebec"
+    },
+    "186759001": {
+        "geo_name": "Cariboo",
+        "name": "Cariboo District",
+        "province": "British Columbia"
+    },
+    "186759002": {
+        "geo_name": "New Westminster",
+        "name": "New Westminster District",
+        "province": "British Columbia"
+    },
+    "186759003": {
+        "geo_name": "Vancouver",
+        "name": "Vancouver Island",
+        "province": "British Columbia"
+    },
+    "186759004": [
+        {
+            "geo_name": "Victoria (B.C.)",
+            "name": "Victoria",
+            "province": "British Columbia"
+        },
+        {
+            "geo_name": "Victoria (B.C.)",
+            "name": "Victoria District",
+            "province": "British Columbia"
+        }
+    ],
+    "186759005": {
+        "geo_name": "Yale",
+        "name": "Yale District",
+        "province": "British Columbia"
+    },
+    "187211001": {
+        "geo_name": "Kings (P.E.I.)",
+        "name": "King's County",
+        "province": "Prince Edward Island"
+    },
+    "187211002": {
+        "geo_name": "Prince",
+        "name": "Prince County",
+        "province": "Prince Edward Island"
+    },
+    "187211003": {
+        "geo_name": "Queens  TODO",
+        "name": "Queen's County",
+        "province": "Prince Edward Island"
+    },
+    "187259004": {
+        "geo_name": "Victoria (B.C.)",
+        "name": "Victoria",
+        "province": "British Columbia"
+    },
+    "189211002": {
+        "geo_name": "East Queens",
+        "name": "East Queen's",
+        "province": "Prince Edward Island"
+    },
+    "189211003": {
+        "geo_name": "Kings (P.E.I.)",
+        "name": "King's",
+        "province": "Prince Edward Island"
+    },
+    "189211005": {
+        "geo_name": "West Queens",
+        "name": "West Queen's",
+        "province": "Prince Edward Island"
+    },
+    "189212015": {
+        "geo_name": "Shelburne and Queens",
+        "name": "Shelburne and Queen's",
+        "province": "Nova Scotia"
+    },
+    "189213011": {
+        "geo_name": "Sunbury--Queens",
+        "name": "Sunbury--Queen's",
+        "province": "New Brunswick"
+    },
+    "189224051": {
+        "geo_name": "Sainte-Anne",
+        "name": "St. Anne",
+        "province": "Quebec"
+    },
+    "189224052": {
+        "geo_name": "Saint-Antoine",
+        "name": "St. Antoine",
+        "province": "Quebec"
+    },
+    "189224054": {
+        "geo_name": "Saint-Jacques",
+        "name": "St. James",
+        "province": "Quebec"
+    },
+    "189224055": {
+        "geo_name": "Saint-Jean--Iberville",
+        "name": "St. Johns--Iberville",
+        "province": "Quebec"
+    },
+    "189224056": {
+        "geo_name": "Saint-Laurent",
+        "name": "St. Lawrence",
+        "province": "Quebec"
+    },
+    "189224057": {
+        "geo_name": "Sainte-Marie",
+        "name": "St. Mary",
+        "province": "Quebec"
+    },
+    "189224061": {
+        "geo_name": "Trois-Rivi\u00e8res et Saint-Maurice",
+        "name": "Three Rivers and St. Maurice",
+        "province": "Quebec"
+    },
+    "190311001": {
+        "geo_name": "Kings (P.E.I.)",
+        "name": "King's",
+        "province": "Prince Edward Island"
+    },
+    "190311003": {
+        "geo_name": "Queens",
+        "name": "Queen's",
+        "province": "Prince Edward Island"
+    },
+    "190312013": {
+        "geo_name": "Victoria and Cape Breton North",
+        "name": "North Cape Breton and Victoria",
+        "province": "Nova Scotia"
+    },
+    "190313007": {
+        "geo_name": "Kings and Albert",
+        "name": "King's and Albert",
+        "province": "New Brunswick"
+    },
+    "190335075": {
+        "geo_name": "Victoria (Ont.)",
+        "name": "Victoria",
+        "province": "Ontario"
+    },
+    "190548007": {
+        "geo_name": "Victoria (Alta.)",
+        "name": "Victoria",
+        "province": "Alberta"
+    },
+    "191413007": {
+        "geo_name": "Saint John--Albert",
+        "name": "St. John--Albert",
+        "province": "New Brunswick"
+    },
+    "191424018": {
+        "geo_name": "George-\u00c9tienne-Cartier",
+        "name": "George-\u00c9tienne Cartier",
+        "province": "Quebec"
+    },
+    "191424029": {
+        "geo_name": "Laval--Deux-Montagnes",
+        "name": "Laval--Two Mountains",
+        "province": "Quebec"
+    },
+    "191424043": {
+        "geo_name": "Qu\u00e9bec-Sud",
+        "name": "Quebec South",
+        "province": "Quebec"
+    },
+    "191424050": {
+        "geo_name": "Sainte-Anne",
+        "name": "St. Ann",
+        "province": "Quebec"
+    },
+    "191424052": {
+        "geo_name": "Saint-Denis",
+        "name": "St. Denis",
+        "province": "Quebec"
+    },
+    "191424053": {
+        "geo_name": "Saint-Hyacinthe--Rouville",
+        "name": "St. Hyacinthe--Rouville",
+        "province": "Quebec"
+    },
+    "191424056": {
+        "geo_name": "Saint-Laurent--Saint-Georges",
+        "name": "St. Lawrence--St. George",
+        "province": "Quebec"
+    },
+    "191424063": {
+        "geo_name": "Westmount--Saint-Henri",
+        "name": "Westmount--St. Henri",
+        "province": "Quebec"
+    },
+    "191435029": {
+        "geo_name": "Kent (Ont.)",
+        "name": "Kent",
+        "province": "Ontario"
+    },
+    "191435043": {
+        "geo_name": "Northumberland (Ont.)",
+        "name": "Northumberland",
+        "province": "Ontario"
+    },
+    "191448004": {
+        "geo_name": "Calgary East",
+        "name": "East Calgary",
+        "province": "Alberta"
+    },
+    "191459007": {
+        "geo_name": "New Westminster",
+        "name": "Westminster District",
+        "province": "British Columbia"
+    },
+    "192424027": {
+        "geo_name": "Lac-Saint-Jean",
+        "name": "Lake St. John",
+        "province": "Quebec"
+    },
+    "192424053": {
+        "geo_name": "Saint-Henri",
+        "name": "St. Henri",
+        "province": "Quebec"
+    },
+    "192424062": {
+        "geo_name": "Trois-Rivi\u00e8res--Saint-Maurice",
+        "name": "Three Rivers--St. Maurice",
+        "province": "Quebec"
+    },
+    "192459013": {
+        "geo_name": "Victoria (B.C.)",
+        "name": "Victoria",
+        "province": "British Columbia"
+    },
+    "193324022": {
+        "geo_name": "Lac-Saint-Jean--Roberval",
+        "name": "Lake St-John--Roberval",
+        "province": "Quebec"
+    },
+    "193324028": {
+        "geo_name": "Montmagny--L'Islet",
+        "name": "Montmagny--l'Islet",
+        "province": "Quebec"
+    },
+    "193324034": {
+        "geo_name": "Qu\u00e9bec-Ouest-et-Sud",
+        "name": "Quebec West and South",
+        "province": "Quebec"
+    },
+    "193324039": {
+        "geo_name": "Saint-Hyacinthe--Bagot",
+        "name": "St. Hyacinthe--Bagot",
+        "province": "Quebec"
+    },
+    "193324040": {
+        "geo_name": "Saint-Jean--Iberville--Napierville",
+        "name": "St. Johns--Iberville--Napierville",
+        "province": "Quebec"
+    },
+    "193324041": {
+        "geo_name": "Saint-Maurice--Lafl\u00e8che",
+        "name": "St-Maurice--Lafl\u00e8che",
+        "province": "Quebec"
+    },
+    "193324047": {
+        "geo_name": "Trois-Rivi\u00e8res",
+        "name": "Three Rivers",
+        "province": "Quebec"
+    },
+    "193324059": {
+        "geo_name": "Saint-Antoine--Westmount",
+        "name": "St. Antoine--Westmount",
+        "province": "Quebec"
+    },
+    "193324060": {
+        "geo_name": "Saint-Denis",
+        "name": "St. Denis",
+        "province": "Quebec"
+    },
+    "193324061": {
+        "geo_name": "Saint-Henri",
+        "name": "St. Henry",
+        "province": "Quebec"
+    },
+    "194724035": {
+        "geo_name": "Qu\u00e9bec-Ouest",
+        "name": "Quebec West",
+        "province": "Quebec"
+    },
+    "194724064": {
+        "geo_name": "Outremont--Saint-Jean",
+        "name": "Outremont--St-Jean",
+        "province": "Quebec"
+    },
+    "194724066": {
+        "geo_name": "Sainte-Anne",
+        "name": "St. Ann",
+        "province": "Quebec"
+    },
+    "194724067": {
+        "geo_name": "Saint-Antoine--Westmount",
+        "name": "St. Antoine--Westmount",
+        "province": "Quebec"
+    },
+    "194724068": {
+        "geo_name": "Saint-Denis",
+        "name": "St-Denis",
+        "province": "Quebec"
+    },
+    "194724069": {
+        "geo_name": "Saint-Henri",
+        "name": "St-Henri",
+        "province": "Quebec"
+    },
+    "194724070": {
+        "geo_name": "Saint-Jacques",
+        "name": "St. James",
+        "province": "Quebec"
+    },
+    "194724071": {
+        "geo_name": "Saint-Laurent--Saint-Georges",
+        "name": "St. Lawrence--St. George",
+        "province": "Quebec"
+    },
+    "194724072": {
+        "geo_name": "Sainte-Marie",
+        "name": "St. Mary",
+        "province": "Quebec"
+    },
+    "194724073": {
+        "geo_name": "Verdun--LaSalle",
+        "name": "Verdun--La Salle",
+        "province": "Quebec"
+    },
+    "195213004": {
+        "geo_name": "Northumberland (N.B.)",
+        "name": "Northumberland--Miramichi",
+        "province": "New Brunswick"
+    },
+    "195224005": {
+        "geo_name": "Berthier--Maskinong\u00e9--Delanaudi\u00e8re",
+        "name": "Berthier--Maskinong\u00e9--de Lanaudi\u00e8re",
+        "province": "Quebec"
+    },
+    "195224050": {
+        "geo_name": "T\u00e9miscouata",
+        "name": "Rivi\u00e8re-du-Loup--T\u00e9miscouata",
+        "province": "Quebec"
+    },
+    "195224068": {
+        "geo_name": "Sainte-Anne",
+        "name": "St. Ann",
+        "province": "Quebec"
+    },
+    "195224073": {
+        "geo_name": "Saint-Laurent--Saint-Georges",
+        "name": "St. Lawrence--St. George",
+        "province": "Quebec"
+    },
+    "195247002": {
+        "geo_name": "Humboldt--Melfort",
+        "name": "Humboldt--Melfort--Tisdale",
+        "province": "Saskatchewan"
+    },
+    "195259011": {
+        "geo_name": "Nanaimo",
+        "name": "Nanaimo--Cowichan--The Islands",
+        "province": "British Columbia"
+    },
+    "195259013": {
+        "geo_name": "Okanagan--Boundary",
+        "name": "Okanagan Boundary",
+        "province": "British Columbia"
+    },
+    "195259019": {
+        "geo_name": "Vancouver--Kingsway",
+        "name": "Vancouver Kingsway",
+        "province": "British Columbia"
+    },
+    "195261001": {
+        "geo_name": "Mackenzie River",
+        "name": "Northwest Territories",
+        "province": "Northwest Territories"
+    },
+    "196624003": {
+        "geo_name": "Argenteuil",
+        "name": "Argenteuil--Deux-Montagnes",
+        "province": "Quebec"
+    },
+    "196624005": {
+        "geo_name": "Beauharnois",
+        "name": "Beauharnois--Salaberry",
+        "province": "Quebec"
+    },
+    "196624007": {
+        "geo_name": "Berthier",
+        "name": "Berthier--Maskinong\u00e9",
+        "province": "Quebec"
+    },
+    "196624008": {
+        "geo_name": "Bonaventure",
+        "name": "Bonaventure--\u00celes-de-la-Madeleine",
+        "province": "Quebec"
+    },
+    "196624009": {
+        "geo_name": "Bourassa  TODO",
+        "name": "Montreal--Bourassa",
+        "province": "Quebec"
+    },
+    "196624027": {
+        "geo_name": "Lachine",
+        "name": "Lachine--Lakeshore",
+        "province": "Quebec"
+    },
+    "196624029": {
+        "geo_name": "Lafontaine",
+        "name": "Lafontaine--Rosemont",
+        "province": "Quebec"
+    },
+    "196624033": {
+        "geo_name": "Lasalle",
+        "name": "Lasalle--\u00c9mard--C\u00f4te Saint-Paul",
+        "province": "Quebec"
+    },
+    "196624040": {
+        "geo_name": "Maisonneuve  TODO",
+        "name": "Maisonneuve--Rosemont",
+        "province": "Quebec"
+    },
+    "196624044": {
+        "geo_name": "Missisquoi",
+        "name": "Brome--Missisquoi",
+        "province": "Quebec"
+    },
+    "196624068": {
+        "geo_name": "T\u00e9miscouata",
+        "name": "Rivi\u00e8re-du-Loup--T\u00e9miscouata",
+        "province": "Quebec"
+    },
+    "196624070": {
+        "geo_name": "Trois-Rivi\u00e8res",
+        "name": "Trois-Rivi\u00e8res M\u00e9tropolitain",
+        "province": "Quebec"
+    },
+    "196635004": {
+        "geo_name": "Bruce",
+        "name": "Bruce--Grey",
+        "province": "Ontario"
+    },
+    "196635010": {
+        "geo_name": "Essex",
+        "name": "Essex--Windsor",
+        "province": "Ontario"
+    },
+    "196635014": {
+        "geo_name": "Glengarry--Prescott",
+        "name": "Glengarry--Prescott--Russell",
+        "province": "Ontario"
+    },
+    "196635025": {
+        "geo_name": "High Park",
+        "name": "High Park--Humber Valley",
+        "province": "Ontario"
+    },
+    "196635026": {
+        "geo_name": "Huron",
+        "name": "Huron--Middlesex",
+        "province": "Ontario"
+    },
+    "196635031": {
+        "geo_name": "Lakeshore",
+        "name": "Toronto--Lakeshore",
+        "province": "Ontario"
+    },
+    "196635033": {
+        "geo_name": "Lanark And Renfrew",
+        "name": "Lanark--Renfrew--Carleton",
+        "province": "Ontario"
+    },
+    "196635038": {
+        "geo_name": "Middlesex",
+        "name": "Middlesex--London--Lambton",
+        "province": "Ontario"
+    },
+    "196635045": {
+        "geo_name": "Oshawa--Whitby",
+        "name": "Oshawa",
+        "province": "Ontario"
+    },
+    "196635048": {
+        "geo_name": "Ottawa East",
+        "name": "Ottawa--Vanier",
+        "province": "Ontario"
+    },
+    "196635053": {
+        "geo_name": "Peel--Dufferin--Simcoe",
+        "name": "Peel--Dufferin",
+        "province": "Ontario"
+    },
+    "196635054": {
+        "geo_name": "Peel South",
+        "name": "Mississauga",
+        "province": "Ontario"
+    },
+    "196635055": {
+        "geo_name": "Perth",
+        "name": "Perth--Wilmot",
+        "province": "Ontario"
+    },
+    "196635059": {
+        "geo_name": "Renfrew North",
+        "name": "Renfrew North--Nipissing East",
+        "province": "Ontario"
+    },
+    "196635061": {
+        "geo_name": "Sarnia",
+        "name": "Sarnia--Lambton",
+        "province": "Ontario"
+    },
+    "196635076": {
+        "geo_name": "Waterloo",
+        "name": "Waterloo--Cambridge",
+        "province": "Ontario"
+    },
+    "196635079": {
+        "geo_name": "Wellington--Grey",
+        "name": "Wellington--Grey--Dufferin--Waterloo",
+        "province": "Ontario"
+    },
+    "196659001": {
+        "geo_name": "Burnaby--Richmond",
+        "name": "Burnaby--Richmond--Delta",
+        "province": "British Columbia"
+    },
+    "196659017": {
+        "geo_name": "Surrey",
+        "name": "Surrey--White Rock",
+        "province": "British Columbia"
+    },
+    "197610005": {
+        "geo_name": "Humber--Port Au Port--St. Barbe",
+        "name": "Humber--St. Barbe",
+        "province": "Newfoundland and Labrador"
+    },
+    "197624002": {
+        "geo_name": "Argenteuil",
+        "name": "Argenteuil--Papineau",
+        "province": "Quebec"
+    },
+    "197624006": {
+        "geo_name": "Berthier--Maskinong\u00e9",
+        "name": "Berthier--Maskinong\u00e9--Lanaudi\u00e8re",
+        "province": "Quebec"
+    },
+    "197624016": {
+        "geo_name": "Blainville--Deux-Montagnes",
+        "name": "Deux-Montagnes",
+        "province": "Quebec"
+    },
+    "197624024": {
+        "geo_name": "Sainte-Marie  TODO",
+        "name": "Montreal--Sainte Marie",
+        "province": "Quebec"
+    },
+    "197624025": {
+        "geo_name": "Hull",
+        "name": "Hull--Aylmer",
+        "province": "Quebec"
+    },
+    "197624041": {
+        "geo_name": "Hochelaga--Maisonneuve  TODO",
+        "name": "Maisonneuve",
+        "province": "Quebec"
+    },
+    "197624044": {
+        "geo_name": "Mercier  TODO",
+        "name": "Montreal--Mercier",
+        "province": "Quebec"
+    },
+    "197624045": {
+        "geo_name": "Laval",
+        "name": "Mille-Iles",
+        "province": "Quebec"
+    },
+    "197624046": {
+        "geo_name": "Missisquoi",
+        "name": "Brome--Missisquoi",
+        "province": "Quebec"
+    },
+    "197624047": {
+        "geo_name": "Montmorency",
+        "name": "Montmorency--Orl\u00e9ans",
+        "province": "Quebec"
+    },
+    "197624049": {
+        "geo_name": "Notre-Dame-De-Gr\u00e2ce",
+        "name": "Notre-Dame-de-Gr\u00e2ce--Lachine East",
+        "province": "Quebec"
+    },
+    "197624056": {
+        "geo_name": "Richmond",
+        "name": "Richmond--Wolfe",
+        "province": "Quebec"
+    },
+    "197624057": {
+        "geo_name": "Rimouski",
+        "name": "Rimouski--T\u00e9miscouata",
+        "province": "Quebec"
+    },
+    "197624061": {
+        "geo_name": "Saint-Hyacinthe",
+        "name": "Saint-Hyacinthe--Bagot",
+        "province": "Quebec"
+    },
+    "197624064": {
+        "geo_name": "Saint-L\u00e9onard--Anjou",
+        "name": "Saint-L\u00e9onard",
+        "province": "Quebec"
+    },
+    "197624066": {
+        "geo_name": "Saint-Michel",
+        "name": "Saint-Michel--Ahuntsic",
+        "province": "Quebec"
+    },
+    "197624074": {
+        "geo_name": "Verdun",
+        "name": "Verdun--Saint-Paul",
+        "province": "Quebec"
+    },
+    "197635009": [
+        {
+            "geo_name": "Cochrane",
+            "name": "Cochrane--Superior",
+            "province": "Ontario"
+        },
+        {
+            "geo_name": "Cochrane",
+            "name": "Cochrane North",
+            "province": "Ontario"
+        }
+    ],
+    "197635013": {
+        "geo_name": "Wellington--Dufferin--Simcoe",
+        "name": "Dufferin--Wellington",
+        "province": "Ontario"
+    },
+    "197635032": {
+        "geo_name": "Hastings--Frontenac",
+        "name": "Hastings--Frontenac--Lennox and Addington",
+        "province": "Ontario"
+    },
+    "197635033": {
+        "geo_name": "Huron--Bruce",
+        "name": "Huron",
+        "province": "Ontario"
+    },
+    "197635044": {
+        "geo_name": "London--Middlesex",
+        "name": "Middlesex East",
+        "province": "Ontario"
+    },
+    "197635063": {
+        "geo_name": "Prince Edward--Hastings",
+        "name": "Prince Edward",
+        "province": "Ontario"
+    },
+    "197635068": {
+        "geo_name": "Sarnia",
+        "name": "Sarnia--Lambton",
+        "province": "Ontario"
+    },
+    "197646003": {
+        "geo_name": "Dauphin",
+        "name": "Dauphin--Swan River",
+        "province": "Manitoba"
+    },
+    "197659007": {
+        "geo_name": "Prince George--Bulkley Valley  TODO",
+        "name": "Prince George--Bulkley Valley",
+        "province": "British Columbia"
+    },
+    "197659011": {
+        "geo_name": "Kootenay East--Revelstoke",
+        "name": "Kootenay East",
+        "province": "British Columbia"
+    },
+    "197659019": {
+        "geo_name": "Prince George--Bulkley Valley  TODO",
+        "name": "Prince George--Peace River",
+        "province": "British Columbia"
+    },
+    "198710004": {
+        "geo_name": "Humber-St. Barbe (Sainte-Barbe)-Baie Verte",
+        "name": "Humber--St. Barbe--Baie Verte",
+        "province": "Newfoundland and Labrador"
+    },
+    "198710006": {
+        "geo_name": "St. John's East (Est)",
+        "name": "St. John's East",
+        "province": "Newfoundland and Labrador"
+    },
+    "198710007": {
+        "geo_name": "St. John's West (Ouest)",
+        "name": "St. John's West",
+        "province": "Newfoundland and Labrador"
+    },
+    "198712004": {
+        "geo_name": "Cape Breton (Cap-Breton)-The Sydneys",
+        "name": "Cape Breton--The Sydneys",
+        "province": "Nova Scotia"
+    },
+    "198713001": {
+        "geo_name": "Beaus\u00c3\u0083\u00c2\u00a9jour",
+        "name": "Beaus\u00e9jour",
+        "province": "New Brunswick"
+    },
+    "198713003": {
+        "geo_name": "Fredericton-York-Sunbury",
+        "name": "Fredericton",
+        "province": "New Brunswick"
+    },
+    "198724003": {
+        "geo_name": "Anjou-Rivi\u00c3\u0083\u00c2\u00a8re-des-Prairies",
+        "name": "Anjou--Rivi\u00e8re-des-Prairies",
+        "province": "Quebec"
+    },
+    "198724015": [
+        {
+            "geo_name": "Gatineau-La Li\u00c3\u0083\u00c2\u00a8vre",
+            "name": "Gatineau--La Li\u00e8vre",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Gatineau-La Li\u00c3\u0083\u00c2\u00a8vre",
+            "name": "Chapleau",
+            "province": "Quebec"
+        }
+    ],
+    "198724021": {
+        "geo_name": "Laval-Est (East)",
+        "name": "Laval East",
+        "province": "Quebec"
+    },
+    "198724031": {
+        "geo_name": "Qu\u00c3\u0083\u00c2\u00a9bec",
+        "name": "Qu\u00e9bec",
+        "province": "Quebec"
+    },
+    "198724033": {
+        "geo_name": "LaSalle-\u00c3\u0083\u00e2\u0080\u00b0mard",
+        "name": "LaSalle--\u00c9mard",
+        "province": "Quebec"
+    },
+    "198724036": {
+        "geo_name": "Laval-Ouest (West)",
+        "name": "Laval West",
+        "province": "Quebec"
+    },
+    "198724037": {
+        "geo_name": "Laval-Centre (Center)",
+        "name": "Laval Centre",
+        "province": "Quebec"
+    },
+    "198724046": {
+        "geo_name": "Beauport-Montmorency-Orl\u00c3\u0083\u00c2\u00a9ans",
+        "name": "Beauport--Montmorency--Orl\u00e9ans",
+        "province": "Quebec"
+    },
+    "198724047": {
+        "geo_name": "Mont-Royal (Mount Royal)",
+        "name": "Mount Royal",
+        "province": "Quebec"
+    },
+    "198724048": {
+        "geo_name": "Notre-Dame-de-Gr\u00c3\u0083\u00c2\u00a2ce",
+        "name": "Notre-Dame-de-Gr\u00e2ce",
+        "province": "Quebec"
+    },
+    "198724065": {
+        "geo_name": "Saint-Laurent--Cartierville",
+        "name": "Saint-Laurent",
+        "province": "Quebec"
+    },
+    "198724066": {
+        "geo_name": "Saint-L\u00c3\u0083\u00c2\u00a9onard",
+        "name": "Saint-L\u00e9onard",
+        "province": "Quebec"
+    },
+    "198735004": {
+        "geo_name": "Bramalea-Gore-Malton",
+        "name": "Brampton--Malton",
+        "province": "Ontario"
+    },
+    "198735014": {
+        "geo_name": "Don Valley North (Nord)",
+        "name": "Don Valley North",
+        "province": "Ontario"
+    },
+    "198735046": {
+        "geo_name": "Markham-Whitchurch-Stouffville",
+        "name": "Markham",
+        "province": "Ontario"
+    },
+    "198735047": {
+        "geo_name": "Mississauga East (Est)",
+        "name": "Mississauga East",
+        "province": "Ontario"
+    },
+    "198735049": {
+        "geo_name": "Mississauga West (Ouest)",
+        "name": "Mississauga West",
+        "province": "Ontario"
+    },
+    "198735059": {
+        "geo_name": "Ottawa South (Sud)",
+        "name": "Ottawa South",
+        "province": "Ontario"
+    },
+    "198735068": {
+        "geo_name": "Renfrew-Nipissing-Pembroke",
+        "name": "Renfrew",
+        "province": "Ontario"
+    },
+    "198735085": {
+        "geo_name": "Timiskaming",
+        "name": "Timiskaming--French River",
+        "province": "Ontario"
+    },
+    "198735093": [
+        {
+            "geo_name": "Windsor-St. Clair (Sainte-Claire)",
+            "name": "Windsor--St. Clair",
+            "province": "Ontario"
+        },
+        {
+            "geo_name": "Windsor-St. Clair (Sainte-Claire)",
+            "name": "Windsor--Lake St. Clair",
+            "province": "Ontario"
+        }
+    ],
+    "198746008": {
+        "geo_name": "Selkirk-Red River",
+        "name": "Selkirk",
+        "province": "Manitoba"
+    },
+    "198746012": {
+        "geo_name": "Winnipeg South (Sud)",
+        "name": "Winnipeg South",
+        "province": "Manitoba"
+    },
+    "198746013": {
+        "geo_name": "Winnipeg South Centre (Sud-Centre)",
+        "name": "Winnipeg South Centre",
+        "province": "Manitoba"
+    },
+    "198747004": {
+        "geo_name": "Prince Albert (Prince-Albert)-Churchill River",
+        "name": "Prince Albert--Churchill River",
+        "province": "Saskatchewan"
+    },
+    "198748005": {
+        "geo_name": "Calgary Northeast (Nord-Est)",
+        "name": "Calgary Northeast",
+        "province": "Alberta"
+    },
+    "198748006": {
+        "geo_name": "Calgary Southeast (Sud-Est)",
+        "name": "Calgary Southeast",
+        "province": "Alberta"
+    },
+    "198748007": {
+        "geo_name": "Calgary Southwest (Sud-Ouest)",
+        "name": "Calgary Southwest",
+        "province": "Alberta"
+    },
+    "198748012": {
+        "geo_name": "Edmonton Northwest (Nord-Ouest)",
+        "name": "Edmonton Northwest",
+        "province": "Alberta"
+    },
+    "198748013": {
+        "geo_name": "Edmonton Southeast (Sud-Est)",
+        "name": "Edmonton Southeast",
+        "province": "Alberta"
+    },
+    "198748014": {
+        "geo_name": "Edmonton Southwest (Sud-Ouest)",
+        "name": "Edmonton Southwest",
+        "province": "Alberta"
+    },
+    "198748022": {
+        "geo_name": "St. Albert (St-Albert)",
+        "name": "St. Albert",
+        "province": "Alberta"
+    },
+    "198759010": {
+        "geo_name": "Kootenay East (Est)",
+        "name": "Kootenay East",
+        "province": "British Columbia"
+    },
+    "198759011": {
+        "geo_name": "Kootenay West (Ouest)-Revelstoke",
+        "name": "Kootenay West--Revelstoke",
+        "province": "British Columbia"
+    },
+    "198759013": {
+        "geo_name": "Nanaimo (Nana\u00c3\u00af\u00c2\u00bf\u00c2\u00bdmo)-Cowichan",
+        "name": "Nanaimo--Cowichan",
+        "province": "British Columbia"
+    },
+    "198759026": {
+        "geo_name": "Surrey North (Nord)",
+        "name": "Surrey North",
+        "province": "British Columbia"
+    },
+    "198759027": {
+        "geo_name": "Surrey-White Rock-South Langley",
+        "name": "Surrey--White Rock",
+        "province": "British Columbia"
+    },
+    "199610002": {
+        "geo_name": "Burin0St. George's",
+        "name": "Burin--St. George's",
+        "province": "Newfoundland and Labrador"
+    },
+    "199610004": {
+        "geo_name": "Humber0St. BarbelBaie Verte",
+        "name": "Humber--St. Barbe--Baie Verte",
+        "province": "Newfoundland and Labrador"
+    },
+    "199612001": {
+        "geo_name": "Bras d'Or",
+        "name": "Bras d'Or--Cape Breton",
+        "province": "Nova Scotia"
+    },
+    "199612006": {
+        "geo_name": "Kings2Hants",
+        "name": "Kings--Hants",
+        "province": "Nova Scotia"
+    },
+    "199612007": {
+        "geo_name": "Pictou0AntigonishfGuysborough",
+        "name": "Pictou--Antigonish--Guysborough",
+        "province": "Nova Scotia"
+    },
+    "199612008": {
+        "geo_name": "Sackville",
+        "name": "Sackville--Eastern Shore",
+        "province": "Nova Scotia"
+    },
+    "199612010": {
+        "geo_name": "Sydney0Victoria",
+        "name": "Sydney--Victoria",
+        "province": "Nova Scotia"
+    },
+    "199612011": {
+        "geo_name": "West Nova/Ouest Nova",
+        "name": "West Nova",
+        "province": "Nova Scotia"
+    },
+    "199613002": {
+        "geo_name": "Beaus3jourhPetitcodiac",
+        "name": "Beaus\u00e9jour--Petitcodiac",
+        "province": "New Brunswick"
+    },
+    "199613006": {
+        "geo_name": "Madawaska",
+        "name": "Madawaska--Restigouche",
+        "province": "New Brunswick"
+    },
+    "199613008": {
+        "geo_name": "Moncton0RiverviewuDieppe",
+        "name": "Moncton--Riverview--Dieppe",
+        "province": "New Brunswick"
+    },
+    "199613010": {
+        "geo_name": "Tobique0Mactaquac",
+        "name": "Tobique--Mactaquac",
+        "province": "New Brunswick"
+    },
+    "199624001": {
+        "geo_name": "Abitibi0Baie-JamessNunavik",
+        "name": "Abitibi--Baie-James--Nunavik",
+        "province": "Quebec"
+    },
+    "199624007": {
+        "geo_name": "Beauport6MontmorencyyCrte-de-Beauprntrle-d'Orllans",
+        "name": "Beauport--Montmorency--C\u00f4te-de-Beaupr\u00e9--\u00cele-d'Orl\u00e9ans",
+        "province": "Quebec"
+    },
+    "199624008": {
+        "geo_name": "BellechassenEtcheminsCMontmagnyaL'Islet",
+        "name": "Bellechasse--Etchemins--Montmagny--L'Islet",
+        "province": "Quebec"
+    },
+    "199624012": {
+        "geo_name": "Brossard1La Prairie",
+        "name": "Brossard--La Prairie",
+        "province": "Quebec"
+    },
+    "199624019": {
+        "geo_name": "Compton1Stanstead",
+        "name": "Compton--Stanstead",
+        "province": "Quebec"
+    },
+    "199624021": {
+        "geo_name": "Frontenac",
+        "name": "Frontenac--M\u00e9gantic",
+        "province": "Quebec"
+    },
+    "199624022": [
+        {
+            "geo_name": "BonaventurenGaspic",
+            "name": "Gasp\u00e9--Bonaventure--\u00celes-de-la-Madeleine",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "BonaventurenGaspic",
+            "name": "Bonaventure--Gasp\u00e9--\u00celes-de-la-Madeleine--Pabok",
+            "province": "Quebec"
+        }
+    ],
+    "199624028": [
+        {
+            "geo_name": "KamouraskarRivinre-du-LouplT-miscouatatLes Basques",
+            "name": "Kamouraska--Rivi\u00e8re-du-Loup--T\u00e9miscouata--Les Basques",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "KamouraskarRivinre-du-LouplT-miscouatatLes Basques",
+            "name": "Kamouraska--Rivi\u00e8re-du-Loup--T\u00e9miscouata",
+            "province": "Quebec"
+        }
+    ],
+    "199624029": [
+        {
+            "geo_name": "Notre-Dame-de-GrrcedLachine",
+            "name": "Notre-Dame-de-Gr\u00e2ce--Lachine",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Notre-Dame-de-GrrcedLachine",
+            "name": "Lachine--Notre-Dame-de-Gr\u00e2ce",
+            "province": "Quebec"
+        }
+    ],
+    "199624038": {
+        "geo_name": "L9vis-et-Chutes-de-la-Chaudi-re",
+        "name": "L\u00e9vis-et-Chutes-de-la-Chaudi\u00e8re",
+        "province": "Quebec"
+    },
+    "199624047": {
+        "geo_name": "Papineau6Saint-Denis",
+        "name": "Papineau--Saint-Denis",
+        "province": "Quebec"
+    },
+    "199624052": {
+        "geo_name": "Qu9bec-Est/Quebec East",
+        "name": "Qu\u00e9bec East",
+        "province": "Quebec"
+    },
+    "199624054": {
+        "geo_name": "Bas-RichelieueNicolettBecancour",
+        "name": "Bas-Richelieu--Nicolet--B\u00e9cancour",
+        "province": "Quebec"
+    },
+    "199624055": {
+        "geo_name": "Richmond4Arthabaska",
+        "name": "Richmond--Arthabaska",
+        "province": "Quebec"
+    },
+    "199624056": [
+        {
+            "geo_name": "Rimouski5Mitis",
+            "name": "Rimouski--Mitis",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Rimouski5Mitis",
+            "name": "Rimouski",
+            "province": "Quebec"
+        }
+    ],
+    "199624059": [
+        {
+            "geo_name": "T9miscamingue",
+            "name": "Rouyn-Noranda--T\u00e9miscamingue",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "T9miscamingue",
+            "name": "T\u00e9miscamingue",
+            "province": "Quebec"
+        }
+    ],
+    "199624060": [
+        {
+            "geo_name": "Rivi2re-des-Mille-ales",
+            "name": "Rivi\u00e8re-des-Mille-\u00celes",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Rivi2re-des-Mille-ales",
+            "name": "Saint-Eustache--Sainte-Th\u00e9r\u00e8se",
+            "province": "Quebec"
+        }
+    ],
+    "199624066": {
+        "geo_name": "Saint-L6onard",
+        "name": "Saint-L\u00e9onard--Saint-Michel",
+        "province": "Quebec"
+    },
+    "199624070": {
+        "geo_name": "Terrebonne",
+        "name": "Terrebonne--Blainville",
+        "province": "Quebec"
+    },
+    "199624072": {
+        "geo_name": "Vaudreuil",
+        "name": "Vaudreuil--Soulanges",
+        "province": "Quebec"
+    },
+    "199624073": {
+        "geo_name": "Verch4res",
+        "name": "Verch\u00e8res--Les Patriotes",
+        "province": "Quebec"
+    },
+    "199624074": {
+        "geo_name": "Verdun0Saint-Henri",
+        "name": "Verdun--Saint-Henri",
+        "province": "Quebec"
+    },
+    "199624075": {
+        "geo_name": "Westmount",
+        "name": "Westmount--Ville-Marie",
+        "province": "Quebec"
+    },
+    "199635001": {
+        "geo_name": "Algoma0Manitoulin",
+        "name": "Algoma--Manitoulin",
+        "province": "Ontario"
+    },
+    "199635002": {
+        "geo_name": "Barrie0SimcoeuBradford",
+        "name": "Barrie--Simcoe--Bradford",
+        "province": "Ontario"
+    },
+    "199635003": {
+        "geo_name": "Beaches0East York",
+        "name": "Beaches--East York",
+        "province": "Ontario"
+    },
+    "199635004": {
+        "geo_name": "Bramalea3GoreYMaltonrSpringdale",
+        "name": "Bramalea--Gore--Malton--Springdale",
+        "province": "Ontario"
+    },
+    "199635006": {
+        "geo_name": "Brampton WestrMississauga/Brampton-Ouest.Mississauga",
+        "name": "Brampton West--Mississauga",
+        "province": "Ontario"
+    },
+    "199635015": {
+        "geo_name": "Dufferin4PeelsWellingtoneGrey",
+        "name": "Dufferin--Peel--Wellington--Grey",
+        "province": "Ontario"
+    },
+    "199635018": {
+        "geo_name": "Elgin5MiddlesexcLondon",
+        "name": "Elgin--Middlesex--London",
+        "province": "Ontario"
+    },
+    "199635019": {
+        "geo_name": "Erie3Lincoln",
+        "name": "Erie--Lincoln",
+        "province": "Ontario"
+    },
+    "199635025": [
+        {
+            "geo_name": "Carleton4Gloucester",
+            "name": "Gloucester--Carleton",
+            "province": "Ontario"
+        },
+        {
+            "geo_name": "Carleton4Gloucester",
+            "name": "Carleton--Gloucester",
+            "province": "Ontario"
+        }
+    ],
+    "199635027": {
+        "geo_name": "Haldimand",
+        "name": "Haldimand--Norfolk--Brant",
+        "province": "Ontario"
+    },
+    "199635032": {
+        "geo_name": "Hastings1FrontenaclLennox and Addington",
+        "name": "Hastings--Frontenac--Lennox and Addington",
+        "province": "Ontario"
+    },
+    "199635035": [
+        {
+            "geo_name": "Chatham3Kent Essex",
+            "name": "Kent--Essex",
+            "province": "Ontario"
+        },
+        {
+            "geo_name": "Chatham3Kent Essex",
+            "name": "Chatham-Kent--Essex",
+            "province": "Ontario"
+        }
+    ],
+    "199635039": {
+        "geo_name": "Lambton3KenttMiddlesex",
+        "name": "Lambton--Kent--Middlesex",
+        "province": "Ontario"
+    },
+    "199635042": {
+        "geo_name": "London North Centre/London-Centre-Nord",
+        "name": "London--Adelaide",
+        "province": "Ontario"
+    },
+    "199635043": {
+        "geo_name": "London0Fanshawe",
+        "name": "London--Fanshawe",
+        "province": "Ontario"
+    },
+    "199635050": {
+        "geo_name": "Nepean0Carleton",
+        "name": "Nepean--Carleton",
+        "province": "Ontario"
+    },
+    "199635062": {
+        "geo_name": "Ottawa WesteNepean/Ottawa-OuesteNepean",
+        "name": "Ottawa West--Nepean",
+        "province": "Ontario"
+    },
+    "199635066": {
+        "geo_name": "Perth5Middlesex",
+        "name": "Perth--Middlesex",
+        "province": "Ontario"
+    },
+    "199635068": {
+        "geo_name": "Pickering  TODO",
+        "name": "Pickering--Ajax--Uxbridge",
+        "province": "Ontario"
+    },
+    "199635078": {
+        "geo_name": "Simcoe0Grey",
+        "name": "Simcoe--Grey",
+        "province": "Ontario"
+    },
+    "199635087": {
+        "geo_name": "Thunder BaynSuperior North/Thunder BayOSuperior-Nord",
+        "name": "Thunder Bay--Superior North",
+        "province": "Ontario"
+    },
+    "199635088": {
+        "geo_name": "TimiskamingnCochrane",
+        "name": "Timiskaming--Cochrane",
+        "province": "Ontario"
+    },
+    "199635089": {
+        "geo_name": "Timmins8James Bay/TimminshBaie James",
+        "name": "Timmins--James Bay",
+        "province": "Ontario"
+    },
+    "199635090": {
+        "geo_name": "Toronto CentreBRosedale /Toronto-CentreSRosedale",
+        "name": "Toronto Centre--Rosedale",
+        "province": "Ontario"
+    },
+    "199635092": [
+        {
+            "geo_name": "Vaughan9KingiAurora",
+            "name": "Vaughan--King--Aurora",
+            "province": "Ontario"
+        },
+        {
+            "geo_name": "Vaughan9KingiAurora",
+            "name": "Vaughan--Aurora",
+            "province": "Ontario"
+        }
+    ],
+    "199635093": {
+        "geo_name": "HaliburtonnVictoria",
+        "name": "Haliburton--Victoria--Brock",
+        "province": "Ontario"
+    },
+    "199635094": {
+        "geo_name": "Waterloo3Wellington",
+        "name": "Waterloo--Wellington",
+        "province": "Ontario"
+    },
+    "199635095": {
+        "geo_name": "Wentworth",
+        "name": "Wentworth--Burlington",
+        "province": "Ontario"
+    },
+    "199635096": {
+        "geo_name": "Whitby0Ajax",
+        "name": "Whitby--Ajax",
+        "province": "Ontario"
+    },
+    "199635098": {
+        "geo_name": "Windsor9St. Clair",
+        "name": "Windsor--St. Clair",
+        "province": "Ontario"
+    },
+    "199646002": [
+        {
+            "geo_name": "Charleswood St. James",
+            "name": "Charleswood--Assiniboine",
+            "province": "Manitoba"
+        },
+        {
+            "geo_name": "Charleswood St. James",
+            "name": "Charleswood St. James--Assiniboia",
+            "province": "Manitoba"
+        }
+    ],
+    "199646005": {
+        "geo_name": "Portage0Lisgar",
+        "name": "Portage--Lisgar",
+        "province": "Manitoba"
+    },
+    "199646008": {
+        "geo_name": "Selkirk0Interlake",
+        "name": "Selkirk--Interlake",
+        "province": "Manitoba"
+    },
+    "199646009": {
+        "geo_name": "Winnipeg North Centre/Winnipeg-Centre-Nord",
+        "name": "Winnipeg North Centre",
+        "province": "Manitoba"
+    },
+    "199646010": {
+        "geo_name": "Winnipeg Centre/Winnipeg-Centre",
+        "name": "Winnipeg Centre",
+        "province": "Manitoba"
+    },
+    "199646013": [
+        {
+            "geo_name": "Winnipeg North St. Paul/Winnipeg-Nord-St. Paul",
+            "name": "Winnipeg--St. Paul",
+            "province": "Manitoba"
+        },
+        {
+            "geo_name": "Winnipeg North St. Paul/Winnipeg-Nord-St. Paul",
+            "name": "Winnipeg North--St. Paul",
+            "province": "Manitoba"
+        }
+    ],
+    "199646014": {
+        "geo_name": "Winnipeg3Transcona",
+        "name": "Winnipeg--Transcona",
+        "province": "Manitoba"
+    },
+    "199647001": {
+        "geo_name": "Battlefords",
+        "name": "Battlefords--Lloydminster",
+        "province": "Saskatchewan"
+    },
+    "199647004": {
+        "geo_name": "Cypress HillseGrasslands",
+        "name": "Cypress Hills--Grasslands",
+        "province": "Saskatchewan"
+    },
+    "199647007": [
+        {
+            "geo_name": "Regina0Qu'Appelle",
+            "name": "Qu'Appelle",
+            "province": "Saskatchewan"
+        },
+        {
+            "geo_name": "Regina0Qu'Appelle",
+            "name": "Regina--Qu'Appelle",
+            "province": "Saskatchewan"
+        }
+    ],
+    "199647008": [
+        {
+            "geo_name": "Regina0LumsdenlLake Centre",
+            "name": "Regina--Lumsden--Lake Centre",
+            "province": "Saskatchewan"
+        },
+        {
+            "geo_name": "Regina0LumsdenlLake Centre",
+            "name": "Regina--Arm River",
+            "province": "Saskatchewan"
+        }
+    ],
+    "199647009": {
+        "geo_name": "Saskatoon",
+        "name": "Saskatoon--Rosetown",
+        "province": "Saskatchewan"
+    },
+    "199647010": {
+        "geo_name": "Saskatoon",
+        "name": "Saskatoon--Rosetown--Biggar",
+        "province": "Saskatchewan"
+    },
+    "199648005": {
+        "geo_name": "Calgary0Nose Hill",
+        "name": "Calgary--Nose Hill",
+        "province": "Alberta"
+    },
+    "199659001": {
+        "geo_name": "Burnaby0Douglas",
+        "name": "Burnaby--Douglas",
+        "province": "British Columbia"
+    },
+    "199659003": {
+        "geo_name": "Delta9South Richmond",
+        "name": "Delta--South Richmond",
+        "province": "British Columbia"
+    },
+    "199659004": {
+        "geo_name": "Dewdney0Alouette",
+        "name": "Dewdney--Alouette",
+        "province": "British Columbia"
+    },
+    "199659009": {
+        "geo_name": "Kootenay8Columbia",
+        "name": "Kootenay--Columbia",
+        "province": "British Columbia"
+    },
+    "199659010": [
+        {
+            "geo_name": "Langley0Abbotsford",
+            "name": "Langley--Abbotsford",
+            "province": "British Columbia"
+        },
+        {
+            "geo_name": "Langley0Abbotsford",
+            "name": "Langley--Matsqui",
+            "province": "British Columbia"
+        }
+    ],
+    "199659011": {
+        "geo_name": "Nanaimo1Alberni",
+        "name": "Nanaimo--Alberni",
+        "province": "British Columbia"
+    },
+    "199659013": {
+        "geo_name": "New WestminsternCoquitlamgBurnaby",
+        "name": "New Westminster--Coquitlam--Burnaby",
+        "province": "British Columbia"
+    },
+    "199659014": [
+        {
+            "geo_name": "Okanagan3Shuswap",
+            "name": "Okanagan--Shuswap",
+            "province": "British Columbia"
+        },
+        {
+            "geo_name": "Okanagan3Shuswap",
+            "name": "North Okanagan--Shuswap",
+            "province": "British Columbia"
+        }
+    ],
+    "199659016": {
+        "geo_name": "Okanagan5Coquihalla",
+        "name": "Okanagan--Coquihalla",
+        "province": "British Columbia"
+    },
+    "199659017": {
+        "geo_name": "Port MoodyoCoquitlamiPort Coquitlam",
+        "name": "Port Moody--Coquitlam--Port Coquitlam",
+        "province": "British Columbia"
+    },
+    "199659021": {
+        "geo_name": "Saanich2Gulf Islands",
+        "name": "Saanich--Gulf Islands",
+        "province": "British Columbia"
+    },
+    "199659023": {
+        "geo_name": "South Surrey White RockeLangley",
+        "name": "South Surrey--White Rock--Langley",
+        "province": "British Columbia"
+    },
+    "199659024": {
+        "geo_name": "Surrey Central/Surrey-Centre",
+        "name": "Surrey Central",
+        "province": "British Columbia"
+    },
+    "199659028": {
+        "geo_name": "Vancouver Island North/rle de Vancouver-Nord",
+        "name": "Vancouver Island North",
+        "province": "British Columbia"
+    },
+    "199659031": {
+        "geo_name": "Vancouver SouthaBurnaby/Vancouver-SudeBurnaby",
+        "name": "Vancouver South--Burnaby",
+        "province": "British Columbia"
+    },
+    "199659033": [
+        {
+            "geo_name": "Kootenay2BoundaryuOkanagan",
+            "name": "West Kootenay--Okanagan",
+            "province": "British Columbia"
+        },
+        {
+            "geo_name": "Kootenay2BoundaryuOkanagan",
+            "name": "Kootenay--Boundary--Okanagan",
+            "province": "British Columbia"
+        }
+    ],
+    "199659034": {
+        "geo_name": "West VancouveraSunshine Coast",
+        "name": "West Vancouver--Sunshine Coast",
+        "province": "British Columbia"
+    },
+    "199912008": {
+        "geo_name": "Sackville",
+        "name": "Sackville--Musquodoboit Valley--Eastern Shore",
+        "province": "Nova Scotia"
+    },
+    "199924004": {
+        "geo_name": "ArgenteuiliPapineaurMirabel",
+        "name": "Argenteuil--Papineau--Mirabel",
+        "province": "Quebec"
+    },
+    "199924015": {
+        "geo_name": "Charlesbourg",
+        "name": "Charlesbourg--Jacques-Cartier",
+        "province": "Quebec"
+    },
+    "199924018": {
+        "geo_name": "Chicoutimi",
+        "name": "Chicoutimi--Le Fjord",
+        "province": "Quebec"
+    },
+    "199924030": {
+        "geo_name": "Lac-Saint-Jean",
+        "name": "Lac-Saint-Jean--Saguenay",
+        "province": "Quebec"
+    },
+    "199924040": {
+        "geo_name": "Lotbini3re",
+        "name": "Lotbini\u00e8re--L'\u00c9rable",
+        "province": "Quebec"
+    },
+    "199924056": {
+        "geo_name": "Rimouski5Mitis",
+        "name": "Rimouski-Neigette-et-La Mitis",
+        "province": "Quebec"
+    },
+    "199924058": {
+        "geo_name": "Rosemont",
+        "name": "Rosemont--Petite-Patrie",
+        "province": "Quebec"
+    },
+    "199924074": {
+        "geo_name": "Verdun0Saint-Henri",
+        "name": "Verdun--Saint-Henri--Saint-Paul--Pointe Saint-Charles",
+        "province": "Quebec"
+    },
+    "199935008": {
+        "geo_name": "Broadview",
+        "name": "Toronto--Danforth",
+        "province": "Ontario"
+    },
+    "199935009": {
+        "geo_name": "Bruce5Grey",
+        "name": "Bruce--Grey--Owen Sound",
+        "province": "Ontario"
+    },
+    "199935025": {
+        "geo_name": "Carleton4Gloucester",
+        "name": "Ottawa--Orl\u00e9ans",
+        "province": "Ontario"
+    },
+    "199935083": {
+        "geo_name": "Stormont2DundasmCharlottenburgh",
+        "name": "Stormont--Dundas--Charlottenburgh",
+        "province": "Ontario"
+    },
+    "199935095": {
+        "geo_name": "Wentworth",
+        "name": "Ancaster--Dundas--Flamborough--Aldershot",
+        "province": "Ontario"
+    },
+    "199947012": {
+        "geo_name": "Wanuskewin",
+        "name": "Saskatoon--Wanuskewin",
+        "province": "Saskatchewan"
+    },
+    "199948010": [
+        {
+            "geo_name": "Edmonton East/Edmonton-Est",
+            "name": "Edmonton East",
+            "province": "Alberta"
+        },
+        {
+            "geo_name": "Edmonton East/Edmonton-Est",
+            "name": "Edmonton Centre-East",
+            "province": "Alberta"
+        }
+    ],
+    "200310001": {
+        "name": "Avalon",
+        "province": "Newfoundland and Labrador"
+    },
+    "200310002": [
+        {
+            "name": "Bonavista--Exploits",
+            "province": "Newfoundland and Labrador"
+        },
+        {
+            "name": "Bonavista--Gander--Grand Falls--Windsor",
+            "province": "Newfoundland and Labrador"
+        }
+    ],
+    "200310003": {
+        "name": "Humber--St. Barbe--Baie Verte",
+        "province": "Newfoundland and Labrador"
+    },
+    "200310004": {
+        "name": "Labrador",
+        "province": "Newfoundland and Labrador"
+    },
+    "200310005": {
+        "name": "Random--Burin--St. George's",
+        "province": "Newfoundland and Labrador"
+    },
+    "200310006": [
+        {
+            "name": "St. John's North",
+            "province": "Newfoundland and Labrador"
+        },
+        {
+            "name": "St. John's East",
+            "province": "Newfoundland and Labrador"
+        }
+    ],
+    "200310007": [
+        {
+            "name": "St. John's South",
+            "province": "Newfoundland and Labrador"
+        },
+        {
+            "name": "St. John's South--Mount Pearl",
+            "province": "Newfoundland and Labrador"
+        }
+    ],
+    "200311001": {
+        "name": "Cardigan",
+        "province": "Prince Edward Island"
+    },
+    "200311002": {
+        "name": "Charlottetown",
+        "province": "Prince Edward Island"
+    },
+    "200311003": {
+        "name": "Egmont",
+        "province": "Prince Edward Island"
+    },
+    "200311004": {
+        "name": "Malpeque",
+        "province": "Prince Edward Island"
+    },
+    "200312001": {
+        "name": "Cape Breton--Canso",
+        "province": "Nova Scotia"
+    },
+    "200312002": {
+        "name": "Central Nova",
+        "province": "Nova Scotia"
+    },
+    "200312003": {
+        "name": "Dartmouth--Cole Harbour",
+        "province": "Nova Scotia"
+    },
+    "200312004": {
+        "name": "Halifax",
+        "province": "Nova Scotia"
+    },
+    "200312005": {
+        "name": "Halifax West",
+        "province": "Nova Scotia"
+    },
+    "200312006": {
+        "name": "Kings--Hants",
+        "province": "Nova Scotia"
+    },
+    "200312007": [
+        {
+            "name": "North Nova",
+            "province": "Nova Scotia"
+        },
+        {
+            "name": "Cumberland--Colchester--Musquodoboit Valley",
+            "province": "Nova Scotia"
+        }
+    ],
+    "200312008": {
+        "name": "Sackville--Eastern Shore",
+        "province": "Nova Scotia"
+    },
+    "200312009": {
+        "name": "South Shore--St. Margaret's",
+        "province": "Nova Scotia"
+    },
+    "200312010": {
+        "name": "Sydney--Victoria",
+        "province": "Nova Scotia"
+    },
+    "200312011": {
+        "name": "West Nova",
+        "province": "Nova Scotia"
+    },
+    "200313001": {
+        "name": "Acadie--Bathurst",
+        "province": "New Brunswick"
+    },
+    "200313002": {
+        "name": "Beaus\u00e9jour",
+        "province": "New Brunswick"
+    },
+    "200313003": {
+        "name": "Fredericton",
+        "province": "New Brunswick"
+    },
+    "200313004": [
+        {
+            "name": "Fundy",
+            "province": "New Brunswick"
+        },
+        {
+            "name": "Fundy Royal",
+            "province": "New Brunswick"
+        }
+    ],
+    "200313005": {
+        "name": "Madawaska--Restigouche",
+        "province": "New Brunswick"
+    },
+    "200313006": {
+        "name": "Miramichi",
+        "province": "New Brunswick"
+    },
+    "200313007": {
+        "name": "Moncton--Riverview--Dieppe",
+        "province": "New Brunswick"
+    },
+    "200313008": [
+        {
+            "name": "St. Croix--Belleisle",
+            "province": "New Brunswick"
+        },
+        {
+            "name": "New Brunswick Southwest",
+            "province": "New Brunswick"
+        }
+    ],
+    "200313009": {
+        "name": "Saint John",
+        "province": "New Brunswick"
+    },
+    "200313010": {
+        "name": "Tobique--Mactaquac",
+        "province": "New Brunswick"
+    },
+    "200324001": {
+        "name": "Abitibi--T\u00e9miscamingue",
+        "province": "Quebec"
+    },
+    "200324002": {
+        "name": "Ahuntsic",
+        "province": "Quebec"
+    },
+    "200324003": {
+        "name": "Alfred-Pellan",
+        "province": "Quebec"
+    },
+    "200324004": [
+        {
+            "name": "Argenteuil--Mirabel",
+            "province": "Quebec"
+        },
+        {
+            "name": "Argenteuil--Papineau--Mirabel",
+            "province": "Quebec"
+        }
+    ],
+    "200324005": {
+        "name": "Beauce",
+        "province": "Quebec"
+    },
+    "200324006": {
+        "name": "Beauharnois--Salaberry",
+        "province": "Quebec"
+    },
+    "200324007": [
+        {
+            "name": "Beauport",
+            "province": "Quebec"
+        },
+        {
+            "name": "Beauport--Limoilou",
+            "province": "Quebec"
+        }
+    ],
+    "200324008": {
+        "name": "Berthier--Maskinong\u00e9",
+        "province": "Quebec"
+    },
+    "200324009": {
+        "name": "Bourassa",
+        "province": "Quebec"
+    },
+    "200324010": {
+        "name": "Brome--Missisquoi",
+        "province": "Quebec"
+    },
+    "200324011": {
+        "name": "Brossard--La Prairie",
+        "province": "Quebec"
+    },
+    "200324012": {
+        "name": "Chambly--Borduas",
+        "province": "Quebec"
+    },
+    "200324013": [
+        {
+            "name": "Charlesbourg",
+            "province": "Quebec"
+        },
+        {
+            "name": "Charlesbourg--Haute-Saint-Charles",
+            "province": "Quebec"
+        }
+    ],
+    "200324014": [
+        {
+            "name": "Montmorency--Charlevoix--Haute-C\u00f4te-Nord",
+            "province": "Quebec"
+        },
+        {
+            "name": "Charlevoix--Montmorency",
+            "province": "Quebec"
+        }
+    ],
+    "200324015": {
+        "name": "Ch\u00e2teauguay--Saint-Constant",
+        "province": "Quebec"
+    },
+    "200324016": {
+        "name": "Chicoutimi--Le Fjord",
+        "province": "Quebec"
+    },
+    "200324017": {
+        "name": "Compton--Stanstead",
+        "province": "Quebec"
+    },
+    "200324018": {
+        "name": "Drummond",
+        "province": "Quebec"
+    },
+    "200324019": {
+        "name": "Gasp\u00e9sie--\u00celes-de-la-Madeleine",
+        "province": "Quebec"
+    },
+    "200324020": {
+        "name": "Gatineau",
+        "province": "Quebec"
+    },
+    "200324021": {
+        "name": "Hochelaga",
+        "province": "Quebec"
+    },
+    "200324022": {
+        "name": "Honor\u00e9-Mercier",
+        "province": "Quebec"
+    },
+    "200324023": {
+        "name": "Hull--Aylmer",
+        "province": "Quebec"
+    },
+    "200324024": {
+        "name": "Jeanne-Le Ber",
+        "province": "Quebec"
+    },
+    "200324025": {
+        "name": "Joliette",
+        "province": "Quebec"
+    },
+    "200324026": {
+        "name": "Jonqui\u00e8re--Alma",
+        "province": "Quebec"
+    },
+    "200324027": {
+        "name": "Lac-Saint-Louis",
+        "province": "Quebec"
+    },
+    "200324028": {
+        "name": "La Pointe-de-l'\u00cele",
+        "province": "Quebec"
+    },
+    "200324029": {
+        "name": "LaSalle--\u00c9mard",
+        "province": "Quebec"
+    },
+    "200324030": {
+        "name": "Laurentides--Labelle",
+        "province": "Quebec"
+    },
+    "200324031": [
+        {
+            "name": "Laurier",
+            "province": "Quebec"
+        },
+        {
+            "name": "Laurier--Sainte-Marie",
+            "province": "Quebec"
+        }
+    ],
+    "200324032": {
+        "name": "Laval",
+        "province": "Quebec"
+    },
+    "200324033": {
+        "name": "Laval--Les \u00celes",
+        "province": "Quebec"
+    },
+    "200324034": {
+        "name": "L\u00e9vis--Bellechasse",
+        "province": "Quebec"
+    },
+    "200324035": [
+        {
+            "name": "Longueuil",
+            "province": "Quebec"
+        },
+        {
+            "name": "Longueuil--Pierre-Boucher",
+            "province": "Quebec"
+        }
+    ],
+    "200324036": {
+        "name": "Lotbini\u00e8re--Chutes-de-la-Chaudi\u00e8re",
+        "province": "Quebec"
+    },
+    "200324037": {
+        "name": "Louis-H\u00e9bert",
+        "province": "Quebec"
+    },
+    "200324038": {
+        "name": "Louis-Saint-Laurent",
+        "province": "Quebec"
+    },
+    "200324039": {
+        "name": "Manicouagan",
+        "province": "Quebec"
+    },
+    "200324040": {
+        "name": "Marc-Aur\u00e8le-Fortin",
+        "province": "Quebec"
+    },
+    "200324041": [
+        {
+            "name": "Matap\u00e9dia--Matane",
+            "province": "Quebec"
+        },
+        {
+            "name": "Haute-Gasp\u00e9sie--La Mitis--Matane--Matap\u00e9dia",
+            "province": "Quebec"
+        }
+    ],
+    "200324042": {
+        "name": "M\u00e9gantic--L'\u00c9rable",
+        "province": "Quebec"
+    },
+    "200324043": {
+        "name": "Montcalm",
+        "province": "Quebec"
+    },
+    "200324044": {
+        "name": "Mount Royal",
+        "province": "Quebec"
+    },
+    "200324045": {
+        "name": "Notre-Dame-de-Gr\u00e2ce--Lachine",
+        "province": "Quebec"
+    },
+    "200324046": [
+        {
+            "name": "Abitibi--Baie-James--Nunavik--Eeyou",
+            "province": "Quebec"
+        },
+        {
+            "name": "Nunavik--Eeyou",
+            "province": "Quebec"
+        }
+    ],
+    "200324047": {
+        "name": "Outremont",
+        "province": "Quebec"
+    },
+    "200324048": {
+        "name": "Papineau",
+        "province": "Quebec"
+    },
+    "200324049": {
+        "name": "Pierrefonds--Dollard",
+        "province": "Quebec"
+    },
+    "200324050": {
+        "name": "Pontiac",
+        "province": "Quebec"
+    },
+    "200324051": [
+        {
+            "name": "Portneuf",
+            "province": "Quebec"
+        },
+        {
+            "name": "Portneuf--Jacques-Cartier",
+            "province": "Quebec"
+        }
+    ],
+    "200324052": {
+        "name": "Qu\u00e9bec",
+        "province": "Quebec"
+    },
+    "200324053": {
+        "name": "Repentigny",
+        "province": "Quebec"
+    },
+    "200324054": [
+        {
+            "name": "Bas-Richelieu--Nicolet--B\u00e9cancour",
+            "province": "Quebec"
+        },
+        {
+            "name": "Richelieu",
+            "province": "Quebec"
+        }
+    ],
+    "200324055": {
+        "name": "Richmond--Arthabaska",
+        "province": "Quebec"
+    },
+    "200324056": [
+        {
+            "name": "Rimouski--T\u00e9miscouata",
+            "province": "Quebec"
+        },
+        {
+            "name": "Rimouski-Neigette--T\u00e9miscouata--Les Basques",
+            "province": "Quebec"
+        }
+    ],
+    "200324057": {
+        "name": "Rivi\u00e8re-des-Mille-\u00celes",
+        "province": "Quebec"
+    },
+    "200324058": [
+        {
+            "name": "Montmagny--L\u2019Islet--Kamouraska--Rivi\u00e8re-du-Loup",
+            "province": "Quebec"
+        },
+        {
+            "name": "Rivi\u00e8re-du-Loup--Montmagny",
+            "province": "Quebec"
+        }
+    ],
+    "200324059": {
+        "name": "Rivi\u00e8re-du-Nord",
+        "province": "Quebec"
+    },
+    "200324060": [
+        {
+            "name": "Roberval",
+            "province": "Quebec"
+        },
+        {
+            "name": "Roberval--Lac-Saint-Jean",
+            "province": "Quebec"
+        }
+    ],
+    "200324061": {
+        "name": "Rosemont--La Petite-Patrie",
+        "province": "Quebec"
+    },
+    "200324062": {
+        "name": "Saint-Bruno--Saint-Hubert",
+        "province": "Quebec"
+    },
+    "200324063": {
+        "name": "Saint-Hyacinthe--Bagot",
+        "province": "Quebec"
+    },
+    "200324064": {
+        "name": "Saint-Jean",
+        "province": "Quebec"
+    },
+    "200324065": {
+        "name": "Saint-Lambert",
+        "province": "Quebec"
+    },
+    "200324066": {
+        "name": "Saint-Laurent--Cartierville",
+        "province": "Quebec"
+    },
+    "200324067": {
+        "name": "Saint-L\u00e9onard--Saint-Michel",
+        "province": "Quebec"
+    },
+    "200324068": {
+        "name": "Saint-Maurice--Champlain",
+        "province": "Quebec"
+    },
+    "200324069": {
+        "name": "Shefford",
+        "province": "Quebec"
+    },
+    "200324070": {
+        "name": "Sherbrooke",
+        "province": "Quebec"
+    },
+    "200324071": {
+        "name": "Terrebonne--Blainville",
+        "province": "Quebec"
+    },
+    "200324072": {
+        "name": "Trois-Rivi\u00e8res",
+        "province": "Quebec"
+    },
+    "200324073": {
+        "name": "Vaudreuil--Soulanges",
+        "province": "Quebec"
+    },
+    "200324074": {
+        "name": "Verch\u00e8res--Les Patriotes",
+        "province": "Quebec"
+    },
+    "200324075": {
+        "name": "Westmount--Ville-Marie",
+        "province": "Quebec"
+    },
+    "200335001": {
+        "name": "Ajax--Pickering",
+        "province": "Ontario"
+    },
+    "200335002": {
+        "name": "Algoma--Manitoulin--Kapuskasing",
+        "province": "Ontario"
+    },
+    "200335003": {
+        "name": "Ancaster--Dundas--Flamborough--Westdale",
+        "province": "Ontario"
+    },
+    "200335004": {
+        "name": "Barrie",
+        "province": "Ontario"
+    },
+    "200335005": {
+        "name": "Beaches--East York",
+        "province": "Ontario"
+    },
+    "200335006": {
+        "name": "Bramalea--Gore--Malton",
+        "province": "Ontario"
+    },
+    "200335007": {
+        "name": "Brampton--Springdale",
+        "province": "Ontario"
+    },
+    "200335008": {
+        "name": "Brampton West",
+        "province": "Ontario"
+    },
+    "200335009": {
+        "name": "Brant",
+        "province": "Ontario"
+    },
+    "200335010": {
+        "name": "Burlington",
+        "province": "Ontario"
+    },
+    "200335011": {
+        "name": "Cambridge",
+        "province": "Ontario"
+    },
+    "200335012": [
+        {
+            "name": "Carleton--Lanark",
+            "province": "Ontario"
+        },
+        {
+            "name": "Carleton--Mississippi Mills",
+            "province": "Ontario"
+        }
+    ],
+    "200335013": {
+        "name": "Chatham-Kent--Essex",
+        "province": "Ontario"
+    },
+    "200335014": [
+        {
+            "name": "Clarington--Scugog--Uxbridge",
+            "province": "Ontario"
+        },
+        {
+            "name": "Durham",
+            "province": "Ontario"
+        }
+    ],
+    "200335015": {
+        "name": "Davenport",
+        "province": "Ontario"
+    },
+    "200335016": {
+        "name": "Don Valley East",
+        "province": "Ontario"
+    },
+    "200335017": {
+        "name": "Don Valley West",
+        "province": "Ontario"
+    },
+    "200335018": {
+        "name": "Dufferin--Caledon",
+        "province": "Ontario"
+    },
+    "200335019": {
+        "name": "Eglinton--Lawrence",
+        "province": "Ontario"
+    },
+    "200335020": {
+        "name": "Elgin--Middlesex--London",
+        "province": "Ontario"
+    },
+    "200335021": {
+        "name": "Essex",
+        "province": "Ontario"
+    },
+    "200335022": {
+        "name": "Etobicoke Centre",
+        "province": "Ontario"
+    },
+    "200335023": {
+        "name": "Etobicoke--Lakeshore",
+        "province": "Ontario"
+    },
+    "200335024": {
+        "name": "Etobicoke North",
+        "province": "Ontario"
+    },
+    "200335025": {
+        "name": "Glengarry--Prescott--Russell",
+        "province": "Ontario"
+    },
+    "200335026": [
+        {
+            "name": "Grey--Bruce--Owen Sound",
+            "province": "Ontario"
+        },
+        {
+            "name": "Bruce--Grey--Owen Sound",
+            "province": "Ontario"
+        }
+    ],
+    "200335027": {
+        "name": "Guelph",
+        "province": "Ontario"
+    },
+    "200335028": {
+        "name": "Haldimand--Norfolk",
+        "province": "Ontario"
+    },
+    "200335029": {
+        "name": "Haliburton--Kawartha Lakes--Brock",
+        "province": "Ontario"
+    },
+    "200335030": {
+        "name": "Halton",
+        "province": "Ontario"
+    },
+    "200335031": {
+        "name": "Hamilton Centre",
+        "province": "Ontario"
+    },
+    "200335032": {
+        "name": "Hamilton East--Stoney Creek",
+        "province": "Ontario"
+    },
+    "200335033": {
+        "name": "Hamilton Mountain",
+        "province": "Ontario"
+    },
+    "200335034": {
+        "name": "Huron--Bruce",
+        "province": "Ontario"
+    },
+    "200335035": {
+        "name": "Kenora",
+        "province": "Ontario"
+    },
+    "200335036": {
+        "name": "Kingston and the Islands",
+        "province": "Ontario"
+    },
+    "200335037": {
+        "name": "Kitchener Centre",
+        "province": "Ontario"
+    },
+    "200335038": [
+        {
+            "name": "Kitchener--Wilmot--Wellesley--Woolwich",
+            "province": "Ontario"
+        },
+        {
+            "name": "Kitchener--Conestoga",
+            "province": "Ontario"
+        }
+    ],
+    "200335039": {
+        "name": "Kitchener--Waterloo",
+        "province": "Ontario"
+    },
+    "200335040": {
+        "name": "Lanark--Frontenac--Lennox and Addington",
+        "province": "Ontario"
+    },
+    "200335041": {
+        "name": "Leeds--Grenville",
+        "province": "Ontario"
+    },
+    "200335042": {
+        "name": "London--Fanshawe",
+        "province": "Ontario"
+    },
+    "200335043": {
+        "name": "London North Centre",
+        "province": "Ontario"
+    },
+    "200335044": {
+        "name": "London West",
+        "province": "Ontario"
+    },
+    "200335045": {
+        "name": "Markham--Unionville",
+        "province": "Ontario"
+    },
+    "200335046": [
+        {
+            "name": "Middlesex--Kent--Lambton",
+            "province": "Ontario"
+        },
+        {
+            "name": "Lambton--Kent--Middlesex",
+            "province": "Ontario"
+        }
+    ],
+    "200335047": {
+        "name": "Mississauga--Brampton South",
+        "province": "Ontario"
+    },
+    "200335048": {
+        "name": "Mississauga East--Cooksville",
+        "province": "Ontario"
+    },
+    "200335049": {
+        "name": "Mississauga--Erindale",
+        "province": "Ontario"
+    },
+    "200335050": {
+        "name": "Mississauga South",
+        "province": "Ontario"
+    },
+    "200335051": {
+        "name": "Mississauga--Streetsville",
+        "province": "Ontario"
+    },
+    "200335052": {
+        "name": "Nepean--Carleton",
+        "province": "Ontario"
+    },
+    "200335053": {
+        "name": "Newmarket--Aurora",
+        "province": "Ontario"
+    },
+    "200335054": {
+        "name": "Niagara Falls",
+        "province": "Ontario"
+    },
+    "200335055": {
+        "name": "Niagara West--Glanbrook",
+        "province": "Ontario"
+    },
+    "200335056": {
+        "name": "Nickel Belt",
+        "province": "Ontario"
+    },
+    "200335057": {
+        "name": "Nipissing--Timiskaming",
+        "province": "Ontario"
+    },
+    "200335058": {
+        "name": "Northumberland--Quinte West",
+        "province": "Ontario"
+    },
+    "200335059": {
+        "name": "Oak Ridges--Markham",
+        "province": "Ontario"
+    },
+    "200335060": {
+        "name": "Oakville",
+        "province": "Ontario"
+    },
+    "200335061": {
+        "name": "Oshawa",
+        "province": "Ontario"
+    },
+    "200335062": {
+        "name": "Ottawa Centre",
+        "province": "Ontario"
+    },
+    "200335063": {
+        "name": "Ottawa--Orl\u00e9ans",
+        "province": "Ontario"
+    },
+    "200335064": {
+        "name": "Ottawa South",
+        "province": "Ontario"
+    },
+    "200335065": {
+        "name": "Ottawa--Vanier",
+        "province": "Ontario"
+    },
+    "200335066": {
+        "name": "Ottawa West--Nepean",
+        "province": "Ontario"
+    },
+    "200335067": {
+        "name": "Oxford",
+        "province": "Ontario"
+    },
+    "200335068": {
+        "name": "Parkdale--High Park",
+        "province": "Ontario"
+    },
+    "200335069": {
+        "name": "Parry Sound--Muskoka",
+        "province": "Ontario"
+    },
+    "200335070": {
+        "name": "Perth--Wellington",
+        "province": "Ontario"
+    },
+    "200335071": {
+        "name": "Peterborough",
+        "province": "Ontario"
+    },
+    "200335072": {
+        "name": "Pickering--Scarborough East",
+        "province": "Ontario"
+    },
+    "200335073": {
+        "name": "Prince Edward--Hastings",
+        "province": "Ontario"
+    },
+    "200335074": {
+        "name": "Renfrew--Nipissing--Pembroke",
+        "province": "Ontario"
+    },
+    "200335075": {
+        "name": "Richmond Hill",
+        "province": "Ontario"
+    },
+    "200335076": {
+        "name": "St. Catharines",
+        "province": "Ontario"
+    },
+    "200335077": {
+        "name": "St. Paul's",
+        "province": "Ontario"
+    },
+    "200335078": {
+        "name": "Sarnia--Lambton",
+        "province": "Ontario"
+    },
+    "200335079": {
+        "name": "Sault Ste. Marie",
+        "province": "Ontario"
+    },
+    "200335080": {
+        "name": "Scarborough--Agincourt",
+        "province": "Ontario"
+    },
+    "200335081": {
+        "name": "Scarborough Centre",
+        "province": "Ontario"
+    },
+    "200335082": {
+        "name": "Scarborough--Guildwood",
+        "province": "Ontario"
+    },
+    "200335083": {
+        "name": "Scarborough--Rouge River",
+        "province": "Ontario"
+    },
+    "200335084": {
+        "name": "Scarborough Southwest",
+        "province": "Ontario"
+    },
+    "200335085": {
+        "name": "Simcoe--Grey",
+        "province": "Ontario"
+    },
+    "200335086": {
+        "name": "Simcoe North",
+        "province": "Ontario"
+    },
+    "200335087": {
+        "name": "Stormont--Dundas--South Glengarry",
+        "province": "Ontario"
+    },
+    "200335088": {
+        "name": "Sudbury",
+        "province": "Ontario"
+    },
+    "200335089": {
+        "name": "Thornhill",
+        "province": "Ontario"
+    },
+    "200335090": {
+        "name": "Thunder Bay--Rainy River",
+        "province": "Ontario"
+    },
+    "200335091": {
+        "name": "Thunder Bay--Superior North",
+        "province": "Ontario"
+    },
+    "200335092": {
+        "name": "Timmins--James Bay",
+        "province": "Ontario"
+    },
+    "200335093": {
+        "name": "Toronto Centre",
+        "province": "Ontario"
+    },
+    "200335094": {
+        "name": "Toronto--Danforth",
+        "province": "Ontario"
+    },
+    "200335095": {
+        "name": "Trinity--Spadina",
+        "province": "Ontario"
+    },
+    "200335096": {
+        "name": "Vaughan",
+        "province": "Ontario"
+    },
+    "200335097": {
+        "name": "Welland",
+        "province": "Ontario"
+    },
+    "200335098": {
+        "name": "Wellington--Halton Hills",
+        "province": "Ontario"
+    },
+    "200335099": {
+        "name": "Whitby--Oshawa",
+        "province": "Ontario"
+    },
+    "200335100": {
+        "name": "Willowdale",
+        "province": "Ontario"
+    },
+    "200335101": {
+        "name": "Windsor--Tecumseh",
+        "province": "Ontario"
+    },
+    "200335102": {
+        "name": "Windsor West",
+        "province": "Ontario"
+    },
+    "200335103": {
+        "name": "York Centre",
+        "province": "Ontario"
+    },
+    "200335104": {
+        "name": "York--Simcoe",
+        "province": "Ontario"
+    },
+    "200335105": {
+        "name": "York South--Weston",
+        "province": "Ontario"
+    },
+    "200335106": {
+        "name": "York West",
+        "province": "Ontario"
+    },
+    "200346001": {
+        "name": "Brandon--Souris",
+        "province": "Manitoba"
+    },
+    "200346002": [
+        {
+            "name": "Charleswood--St. James",
+            "province": "Manitoba"
+        },
+        {
+            "name": "Charleswood--St. James--Assiniboia",
+            "province": "Manitoba"
+        }
+    ],
+    "200346003": {
+        "name": "Churchill",
+        "province": "Manitoba"
+    },
+    "200346004": [
+        {
+            "name": "Dauphin--Swan River",
+            "province": "Manitoba"
+        },
+        {
+            "name": "Dauphin--Swan River--Marquette",
+            "province": "Manitoba"
+        }
+    ],
+    "200346005": {
+        "name": "Elmwood--Transcona",
+        "province": "Manitoba"
+    },
+    "200346006": {
+        "name": "Kildonan--St. Paul",
+        "province": "Manitoba"
+    },
+    "200346007": {
+        "name": "Portage--Lisgar",
+        "province": "Manitoba"
+    },
+    "200346008": {
+        "name": "Provencher",
+        "province": "Manitoba"
+    },
+    "200346009": {
+        "name": "Saint Boniface",
+        "province": "Manitoba"
+    },
+    "200346010": {
+        "name": "Selkirk--Interlake",
+        "province": "Manitoba"
+    },
+    "200346011": {
+        "name": "Winnipeg Centre",
+        "province": "Manitoba"
+    },
+    "200346012": {
+        "name": "Winnipeg North",
+        "province": "Manitoba"
+    },
+    "200346013": {
+        "name": "Winnipeg South",
+        "province": "Manitoba"
+    },
+    "200346014": {
+        "name": "Winnipeg South Centre",
+        "province": "Manitoba"
+    },
+    "200347001": {
+        "name": "Battlefords--Lloydminster",
+        "province": "Saskatchewan"
+    },
+    "200347002": {
+        "name": "Blackstrap",
+        "province": "Saskatchewan"
+    },
+    "200347003": [
+        {
+            "name": "Churchill River",
+            "province": "Saskatchewan"
+        },
+        {
+            "name": "Desneth\u00e9--Missinippi--Churchill River",
+            "province": "Saskatchewan"
+        }
+    ],
+    "200347004": {
+        "name": "Cypress Hills--Grasslands",
+        "province": "Saskatchewan"
+    },
+    "200347005": {
+        "name": "Palliser",
+        "province": "Saskatchewan"
+    },
+    "200347006": {
+        "name": "Prince Albert",
+        "province": "Saskatchewan"
+    },
+    "200347007": {
+        "name": "Regina--Lumsden--Lake Centre",
+        "province": "Saskatchewan"
+    },
+    "200347008": {
+        "name": "Regina--Qu'Appelle",
+        "province": "Saskatchewan"
+    },
+    "200347009": {
+        "name": "Saskatoon--Humboldt",
+        "province": "Saskatchewan"
+    },
+    "200347010": {
+        "name": "Saskatoon--Rosetown--Biggar",
+        "province": "Saskatchewan"
+    },
+    "200347011": {
+        "name": "Saskatoon--Wanuskewin",
+        "province": "Saskatchewan"
+    },
+    "200347012": {
+        "name": "Souris--Moose Mountain",
+        "province": "Saskatchewan"
+    },
+    "200347013": {
+        "name": "Wascana",
+        "province": "Saskatchewan"
+    },
+    "200347014": {
+        "name": "Yorkton--Melville",
+        "province": "Saskatchewan"
+    },
+    "200348001": [
+        {
+            "name": "Athabasca",
+            "province": "Alberta"
+        },
+        {
+            "name": "Fort McMurray--Athabasca",
+            "province": "Alberta"
+        }
+    ],
+    "200348002": {
+        "name": "Calgary East",
+        "province": "Alberta"
+    },
+    "200348003": [
+        {
+            "name": "Calgary North Centre",
+            "province": "Alberta"
+        },
+        {
+            "name": "Calgary Centre-North",
+            "province": "Alberta"
+        }
+    ],
+    "200348004": {
+        "name": "Calgary Northeast",
+        "province": "Alberta"
+    },
+    "200348005": {
+        "name": "Calgary--Nose Hill",
+        "province": "Alberta"
+    },
+    "200348006": [
+        {
+            "name": "Calgary South Centre",
+            "province": "Alberta"
+        },
+        {
+            "name": "Calgary Centre",
+            "province": "Alberta"
+        }
+    ],
+    "200348007": {
+        "name": "Calgary Southeast",
+        "province": "Alberta"
+    },
+    "200348008": {
+        "name": "Calgary Southwest",
+        "province": "Alberta"
+    },
+    "200348009": {
+        "name": "Calgary West",
+        "province": "Alberta"
+    },
+    "200348010": {
+        "name": "Crowfoot",
+        "province": "Alberta"
+    },
+    "200348011": [
+        {
+            "name": "Edmonton--Mill Woods--Beaumont",
+            "province": "Alberta"
+        },
+        {
+            "name": "Edmonton--Beaumont",
+            "province": "Alberta"
+        }
+    ],
+    "200348012": {
+        "name": "Edmonton Centre",
+        "province": "Alberta"
+    },
+    "200348013": {
+        "name": "Edmonton East",
+        "province": "Alberta"
+    },
+    "200348014": {
+        "name": "Edmonton--Leduc",
+        "province": "Alberta"
+    },
+    "200348015": {
+        "name": "Edmonton--St. Albert",
+        "province": "Alberta"
+    },
+    "200348016": {
+        "name": "Edmonton--Sherwood Park",
+        "province": "Alberta"
+    },
+    "200348017": {
+        "name": "Edmonton--Spruce Grove",
+        "province": "Alberta"
+    },
+    "200348018": {
+        "name": "Edmonton--Strathcona",
+        "province": "Alberta"
+    },
+    "200348019": {
+        "name": "Lethbridge",
+        "province": "Alberta"
+    },
+    "200348020": {
+        "name": "Macleod",
+        "province": "Alberta"
+    },
+    "200348021": {
+        "name": "Medicine Hat",
+        "province": "Alberta"
+    },
+    "200348022": {
+        "name": "Peace River",
+        "province": "Alberta"
+    },
+    "200348023": {
+        "name": "Red Deer",
+        "province": "Alberta"
+    },
+    "200348024": {
+        "name": "Vegreville--Wainwright",
+        "province": "Alberta"
+    },
+    "200348025": [
+        {
+            "name": "Battle River",
+            "province": "Alberta"
+        },
+        {
+            "name": "Westlock--St. Paul",
+            "province": "Alberta"
+        }
+    ],
+    "200348026": {
+        "name": "Wetaskiwin",
+        "province": "Alberta"
+    },
+    "200348027": {
+        "name": "Wild Rose",
+        "province": "Alberta"
+    },
+    "200348028": {
+        "name": "Yellowhead",
+        "province": "Alberta"
+    },
+    "200359001": {
+        "name": "Abbotsford",
+        "province": "British Columbia"
+    },
+    "200359002": {
+        "name": "Burnaby--Douglas",
+        "province": "British Columbia"
+    },
+    "200359003": {
+        "name": "Burnaby--New Westminster",
+        "province": "British Columbia"
+    },
+    "200359004": {
+        "name": "Cariboo--Prince George",
+        "province": "British Columbia"
+    },
+    "200359005": {
+        "name": "Chilliwack--Fraser Canyon",
+        "province": "British Columbia"
+    },
+    "200359006": {
+        "name": "Delta--Richmond East",
+        "province": "British Columbia"
+    },
+    "200359007": [
+        {
+            "name": "Dewdney--Alouette",
+            "province": "British Columbia"
+        },
+        {
+            "name": "Pitt Meadows--Maple Ridge--Mission",
+            "province": "British Columbia"
+        }
+    ],
+    "200359008": {
+        "name": "Esquimalt--Juan de Fuca",
+        "province": "British Columbia"
+    },
+    "200359009": {
+        "name": "Fleetwood--Port Kells",
+        "province": "British Columbia"
+    },
+    "200359010": [
+        {
+            "name": "Kamloops--Thompson",
+            "province": "British Columbia"
+        },
+        {
+            "name": "Kamloops--Thompson--Cariboo",
+            "province": "British Columbia"
+        }
+    ],
+    "200359011": [
+        {
+            "name": "Kelowna",
+            "province": "British Columbia"
+        },
+        {
+            "name": "Kelowna--Lake Country",
+            "province": "British Columbia"
+        }
+    ],
+    "200359012": {
+        "name": "Kootenay--Columbia",
+        "province": "British Columbia"
+    },
+    "200359013": {
+        "name": "Langley",
+        "province": "British Columbia"
+    },
+    "200359014": {
+        "name": "Nanaimo--Alberni",
+        "province": "British Columbia"
+    },
+    "200359015": {
+        "name": "Nanaimo--Cowichan",
+        "province": "British Columbia"
+    },
+    "200359016": {
+        "name": "Newton--North Delta",
+        "province": "British Columbia"
+    },
+    "200359017": {
+        "name": "New Westminster--Coquitlam",
+        "province": "British Columbia"
+    },
+    "200359018": [
+        {
+            "name": "North Okanagan--Shuswap",
+            "province": "British Columbia"
+        },
+        {
+            "name": "Okanagan--Shuswap",
+            "province": "British Columbia"
+        }
+    ],
+    "200359019": {
+        "name": "North Vancouver",
+        "province": "British Columbia"
+    },
+    "200359020": {
+        "name": "Okanagan--Coquihalla",
+        "province": "British Columbia"
+    },
+    "200359021": {
+        "name": "Port Moody--Westwood--Port Coquitlam",
+        "province": "British Columbia"
+    },
+    "200359022": {
+        "name": "Prince George--Peace River",
+        "province": "British Columbia"
+    },
+    "200359023": {
+        "name": "Richmond",
+        "province": "British Columbia"
+    },
+    "200359024": {
+        "name": "Saanich--Gulf Islands",
+        "province": "British Columbia"
+    },
+    "200359025": {
+        "name": "Skeena--Bulkley Valley",
+        "province": "British Columbia"
+    },
+    "200359026": [
+        {
+            "name": "Southern Interior",
+            "province": "British Columbia"
+        },
+        {
+            "name": "British Colombia Southern Interior",
+            "province": "British Columbia"
+        }
+    ],
+    "200359027": {
+        "name": "South Surrey--White Rock--Cloverdale",
+        "province": "British Columbia"
+    },
+    "200359028": {
+        "name": "Surrey North",
+        "province": "British Columbia"
+    },
+    "200359029": {
+        "name": "Vancouver Centre",
+        "province": "British Columbia"
+    },
+    "200359030": {
+        "name": "Vancouver East",
+        "province": "British Columbia"
+    },
+    "200359031": {
+        "name": "Vancouver Island North",
+        "province": "British Columbia"
+    },
+    "200359032": {
+        "name": "Vancouver Kingsway",
+        "province": "British Columbia"
+    },
+    "200359033": {
+        "name": "Vancouver Quadra",
+        "province": "British Columbia"
+    },
+    "200359034": {
+        "name": "Vancouver South",
+        "province": "British Columbia"
+    },
+    "200359035": {
+        "name": "Victoria",
+        "province": "British Columbia"
+    },
+    "200359036": [
+        {
+            "name": "West Vancouver--Sunshine Coast",
+            "province": "British Columbia"
+        },
+        {
+            "name": "West Vancouver--Sunshine Coast--Sea to Sky Country",
+            "province": "British Columbia"
+        }
+    ],
+    "200360001": {
+        "name": "Yukon",
+        "province": "Yukon"
+    },
+    "200361001": {
+        "name": "Northwest Territories",
+        "province": "Northwest Territories"
+    },
+    "200362001": {
+        "name": "Nunavut",
+        "province": "Nunavut"
+    },
+    "201324006": {
+        "geo_name": "Avignon--La Mitis--Matane--Matap\ufffddia",
+        "name": "Avignon--La Mitis--Matane--Matap\u00e9dia",
+        "province": "Quebec"
+    },
+    "201324009": {
+        "geo_name": "B\ufffdcancour--Nicolet--Saurel",
+        "name": "B\u00e9cancour--Nicolet--Saurel",
+        "province": "Quebec"
+    },
+    "201324010": {
+        "geo_name": "Bellechasse--Les Etchemins--L\ufffdvis",
+        "name": "Bellechasse--Les Etchemins--L\u00e9vis",
+        "province": "Quebec"
+    },
+    "201324013": {
+        "geo_name": "Th\ufffdr\ufffdse-De Blainville",
+        "name": "Th\u00e9r\u00e8se-De Blainville",
+        "province": "Quebec"
+    },
+    "201324014": {
+        "geo_name": "Pierre-Boucher--Les Patriotes--Verch\ufffdres",
+        "name": "Pierre-Boucher--Les Patriotes--Verch\u00e8res",
+        "province": "Quebec"
+    },
+    "201324018": {
+        "geo_name": "Rimouski-Neigette--T\ufffdmiscouata--Les Basques",
+        "name": "Rimouski-Neigette--T\u00e9miscouata--Les Basques",
+        "province": "Quebec"
+    },
+    "201324020": [
+        {
+            "geo_name": "Beauport--C\ufffdte-de-Beaupr\ufffd--\ufffdle d\ufffdOrl\ufffdans--Charlevoix",
+            "name": "Charlevoix--Montmorency",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Beauport--C\ufffdte-de-Beaupr\ufffd--\ufffdle d\ufffdOrl\ufffdans--Charlevoix",
+            "name": "Beauport--C\u00f4te-de-Beaupr\u00e9--\u00cele D\u2019Orl\u00e9ans--Charlevoix",
+            "province": "Quebec"
+        }
+    ],
+    "201324021": {
+        "geo_name": "Ch\ufffdteauguay--Lacolle",
+        "name": "Ch\u00e2teauguay--Lacolle",
+        "province": "Quebec"
+    },
+    "201324022": {
+        "geo_name": "Chicoutimi--Le Fjord",
+        "name": "Chicoutimi",
+        "province": "Quebec"
+    },
+    "201324024": {
+        "geo_name": "Dorval--Lachine--LaSalle",
+        "name": "Dorval--Lachine",
+        "province": "Quebec"
+    },
+    "201324026": {
+        "geo_name": "Gasp\ufffdsie--Les \ufffdles-de-la-Madeleine",
+        "name": "Gasp\u00e9sie--Les \u00celes-de-la-Madeleine",
+        "province": "Quebec"
+    },
+    "201324032": {
+        "geo_name": "Jonqui\ufffdre",
+        "name": "Jonqui\u00e8re",
+        "province": "Quebec"
+    },
+    "201324037": [
+        {
+            "geo_name": "LaSalle--\ufffdmard--Verdun",
+            "name": "LaSalle--\u00c9mard--Verdun",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "LaSalle--\ufffdmard--Verdun",
+            "name": "LaSalle--Verdun",
+            "province": "Quebec"
+        }
+    ],
+    "201324041": [
+        {
+            "geo_name": "Longueuil--Charles-LeMoyne",
+            "name": "Longueuil",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Longueuil--Charles-LeMoyne",
+            "name": "Lemoyne",
+            "province": "Quebec"
+        }
+    ],
+    "201324042": {
+        "geo_name": "L\ufffdvis--Lotbini\ufffdre",
+        "name": "L\u00e9vis--Lotbini\u00e8re",
+        "province": "Quebec"
+    },
+    "201324053": {
+        "geo_name": "Notre-Dame-de-Gr\ufffdce--Westmount",
+        "name": "Notre-Dame-de-Gr\u00e2ce--Westmount",
+        "province": "Quebec"
+    },
+    "201324065": {
+        "geo_name": "Marc-Aur\ufffdle-Fortin",
+        "name": "Marc-Aur\u00e8le-Fortin",
+        "province": "Quebec"
+    },
+    "201324068": {
+        "geo_name": "Saint-Laurent",
+        "name": "Saint-Laurent--Cartierville",
+        "province": "Quebec"
+    },
+    "201324071": {
+        "geo_name": "Salaberry--Suro\ufffdt",
+        "name": "Salaberry--Suro\u00eet",
+        "province": "Quebec"
+    },
+    "201324074": {
+        "geo_name": "Vaudreuil--Soulanges",
+        "name": "Soulanges--Vaudreuil",
+        "province": "Quebec"
+    },
+    "201324077": [
+        {
+            "geo_name": "Ville-Marie--Le Sud-Ouest--\ufffdle-des-Soeurs",
+            "name": "Ville-Marie--Le Sud-Ouest--\u00cele-des-Soeurs",
+            "province": "Quebec"
+        },
+        {
+            "geo_name": "Ville-Marie--Le Sud-Ouest--\ufffdle-des-Soeurs",
+            "name": "Ville-Marie",
+            "province": "Quebec"
+        }
+    ],
+    "201335049": {
+        "geo_name": "Lanark--Frontenac--Kingston",
+        "name": "Lanark--Frontenac",
+        "province": "Ontario"
+    },
+    "201335059": {
+        "geo_name": "Mississauga East--Cooksville",
+        "name": "Mississauga--Cooksville",
+        "province": "Ontario"
+    },
+    "201335071": {
+        "geo_name": "Northumberland--Peterborough South",
+        "name": "Northumberland--Pine Ridge",
+        "province": "Ontario"
+    },
+    "201335076": {
+        "geo_name": "Orl\ufffdans",
+        "name": "Orl\u00e9ans",
+        "province": "Ontario"
+    },
+    "201335088": {
+        "geo_name": "Carleton",
+        "name": "Rideau--Carleton",
+        "province": "Ontario"
+    },
+    "201335090": {
+        "geo_name": "Toronto--St. Paul's",
+        "name": "St. Paul's",
+        "province": "Ontario"
+    },
+    "201347004": {
+        "geo_name": "Carlton Trail--Eagle Creek",
+        "name": "Humboldt--Warman--Martensville--Rosetown",
+        "province": "Saskatchewan"
+    },
+    "201348024": {
+        "geo_name": "Grande Prairie--Mackenzie",
+        "name": "Grande Prairie",
+        "province": "Alberta"
+    },
+    "201348030": {
+        "geo_name": "Red Deer--Lacombe",
+        "name": "Red Deer--Wolf Creek",
+        "province": "Alberta"
+    },
+    "201359026": {
+        "geo_name": "Esquimalt--Saanich--Sooke",
+        "name": "Saanich--Esquimalt--Juan de Fuca",
+        "province": "British Columbia"
+    },
+    "201359037": {
+        "geo_name": "North Island--Powell River",
+        "name": "Vancouver Island North--Comox--Powell River",
+        "province": "British Columbia"
+    }
+}

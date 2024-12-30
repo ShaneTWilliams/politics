@@ -6,11 +6,7 @@ setup(
     description="Canadian Political Data Analysis",
     author="Shane Williams",
     packages=["pol"],
-    install_requires=[
-        "geopandas",
-        "openpyxl",
-        "pyogrio"
-    ],
+    install_requires=["black", "click", "isort", "geopandas", "openpyxl", "pyogrio", "alive-progress"],
     entry_points={
         "console_scripts": [
             "pol = pol.cli:main",

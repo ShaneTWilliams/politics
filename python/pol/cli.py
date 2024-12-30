@@ -1,16 +1,19 @@
-import click
 import sys
 
+import click
 from pol.targets import *
+
 
 @click.group()
 def cli():
     pass
 
+
 def main():
-    cli.add_command(scratch)
     cli.add_command(build)
-    cli.add_command(serve_web)
+    cli.add_command(format_code, "format")
+    cli.add_command(clean)
+    cli.add_command(echo)
 
     try:
         ctx = cli.make_context("cli", sys.argv[1:])
@@ -20,3 +23,6 @@ def main():
             sys.exit(0)
         else:
             raise exit_exception
+
+if __name__ == "__main__":
+    main()

@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .diagonal-lines {
+        background: repeating-linear-gradient(
+        45deg,
+        theme("colors.sol-light2"),
+        theme("colors.sol-light2") 5px,
+        theme("colors.sol-light3") 5px,
+        theme("colors.sol-light3") 10px
+        );
+    }
+
+    .dark-diagonal-lines {
+        background: repeating-linear-gradient(
+        45deg,
+        theme("colors.sol-dark2"),
+        theme("colors.sol-dark2") 5px,
+        theme("colors.sol-dark3") 5px,
+        theme("colors.sol-dark3") 10px
+        );
+    }
+}
+
+
+
+.svg-shadow {
+    -webkit-filter: drop-shadow( 0px 10px 20px rgba(0, 0, 0, .3));
+    filter: drop-shadow( 0px 10px 20px rgba(0, 0, 0, .3));
+}
+
+@media (prefers-color-scheme: dark) {
+    .svg-shadow {
+        -webkit-filter: drop-shadow( 0px 10px 20px rgba(255, 255, 255, 0.15));
+        filter: drop-shadow( 0px 10px 20px rgba(255, 255, 255, 0.15));
+    }
+}
+
+.headshot {
+    filter: grayscale()
+}
