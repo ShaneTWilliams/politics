@@ -6,8 +6,8 @@ import pickle
 import geopandas
 import openpyxl
 from alive_progress import alive_bar
-from pol.elections.constants import DETAIL_MAP_BOUNDS
-from pol.elections.patches import (
+from swdata.elections.constants import DETAIL_MAP_BOUNDS
+from swdata.elections.patches import (
     CANDIDATE_INFO_PATCHES,
     CANDIDATE_SPLIT_EXCEPTIONS,
     GEOMETRY_TO_RIDING_METADATA,
@@ -15,8 +15,8 @@ from pol.elections.patches import (
     RIDING_NAME_PATCHES,
     PARTY_PATCHES,
 )
-from pol.elections.structures import *
-from pol.paths import (
+from swdata.elections.structures import *
+from swdata.paths import (
     ARTIFACT_DIR,
     CACHE_DIR,
     GEOMETRY_ARTIFACT_DIR,
@@ -267,6 +267,10 @@ def split_candidates_by_year(candidates_by_id):
     new_candidates = []
     remove_candidates = []
     SPLIT_THRESHOLD = datetime.timedelta(days=30 * 365)
+    MANUAL_SPLITS = {
+        ("Moore", "Christine"): [2006],
+        ("Clark", "Charles Joseph"): [2000],
+    }
 
     # Split based on time
     for candidate in candidates_by_id.values():
@@ -276,9 +280,8 @@ def split_candidates_by_year(candidates_by_id):
         sorted_runs = sorted(candidate.runs, key=lambda run: run.election.date)
         should_be_split = False
         for i in range(1, len(sorted_runs)):
-            if (
-                sorted_runs[i].election.date - sorted_runs[i - 1].election.date
-            ) > SPLIT_THRESHOLD:
+            if (sorted_runs[i].election.date - sorted_runs[i - 1].election.date) > SPLIT_THRESHOLD \
+                or (candidate.last_name, candidate.first_name) in MANUAL_SPLITS:
                 should_be_split = True
                 break
 
@@ -289,8 +292,8 @@ def split_candidates_by_year(candidates_by_id):
         for run in sorted_runs:
             if (
                 not candidate_run_groups
-                or run.election.date - candidate_run_groups[-1][-1].election.date
-                > SPLIT_THRESHOLD
+                or (run.election.date - candidate_run_groups[-1][-1].election.date) > SPLIT_THRESHOLD
+                or run.election.date.year in MANUAL_SPLITS.get((candidate.last_name, candidate.first_name), [])
             ):
                 candidate_run_groups.append([])
             candidate_run_groups[-1].append(run)
@@ -652,7 +655,9 @@ def build():
     WEB_ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
     with alive_bar(len(data), elapsed=False, stats=False) as bar:
         for cls, instances in data.items():
+            fields = set()
             json_file = WEB_ARTIFACT_DIR / f"{cls.__name__.lower()}.json"
+            fields_json_file = WEB_ARTIFACT_DIR / f"{cls.__name__.lower()}_fields.json"
 
             bar()
             bar.text(json_file.name)
@@ -660,9 +665,13 @@ def build():
             obj = {}
             for instance in instances:
                 if instance.id() in obj:
-                    print(instance.id(), instance, instance.to_json())
                     assert False, "Hash collision!"
-                obj[instance.id()] = instance.to_json()
+                instance_json = instance.to_json()
+                fields.update(instance_json.keys())
+                obj[instance.id()] = [instance_json[k] for k in sorted(instance_json)]
+
+            with open (fields_json_file, "w") as f:
+                json.dump(sorted(list(fields)), f)
 
             with open(json_file, "w", encoding="utf-8") as f:
                 json.dump(obj, f, ensure_ascii=False)

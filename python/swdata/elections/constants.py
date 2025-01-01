@@ -1,4 +1,4 @@
-from pol.elections.structures import DetailViewName
+from swdata.elections.structures import DetailViewName
 
 DETAIL_MAP_BOUNDS = {
     DetailViewName.ST_JOHNS: {

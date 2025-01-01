@@ -1,7 +1,13 @@
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="170 0 1000 1500" preserveAspectRatio="xMidYMid meet" class="fill-sol-light3 dark:fill-sol-dark3 svg-shadow h-full w-full sm:py-4">
-    <g transform="translate(0,3120) scale(0.1,-0.1)" stroke="none">
-        <path
-            d="M970 30800 c-236 -32 -446 -203 -538 -440 -48 -123 -45 89 -49 -3699
+<svg
+	version="1.0"
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="170 0 1000 1500"
+	preserveAspectRatio="xMidYMid meet"
+	class="fill-sol-light3 dark:fill-sol-dark3 svg-shadow h-full w-full sm:py-4"
+>
+	<g transform="translate(0,3120) scale(0.1,-0.1)" stroke="none">
+		<path
+			d="M970 30800 c-236 -32 -446 -203 -538 -440 -48 -123 -45 89 -49 -3699
 -4 -3217 -2 -3542 12 -3620 25 -132 55 -203 133 -308 92 -125 200 -201 363
 -253 63 -21 87 -21 1157 -27 l1092 -6 0 -3041 c0 -2353 3 -3045 12 -3054 8 -8
 60 -12 170 -12 l158 0 10 26 c6 16 10 613 10 1635 l0 1609 3093 -2 3092 -3 5
@@ -16,6 +22,7 @@ c-1855 -2 -2053 -1 -2067 14 -14 13 -16 57 -16 333 0 234 3 320 12 329 9 9
 -688 -20 -12 -8225 -10 -8249 2 -18 10 -19 28 -19 671 0 436 4 667 10 680 11
 19 65 19 4138 17 l4127 -3 3 -679z m-1040 -3400 c1 -677 -2 -1234 -6 -1238 -6
 -6 -3931 -11 -6169 -8 -10 0 -13 255 -13 1240 l0 1240 3093 -2 3092 -3 3
--1229z" />
-    </g>
+-1229z"
+		/>
+	</g>
 </svg>

@@ -1,6 +1,6 @@
 import datetime
 
-from pol.elections.structures import Party
+from swdata.elections.structures import Party
 
 CANDIDATE_SPLIT_EXCEPTIONS = [
     ("Elizabeth", "May"),

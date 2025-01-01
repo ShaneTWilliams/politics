@@ -16,9 +16,9 @@ jobs:
       - name: Install Python package
         run: pip install -e python/
       - name: Build JSON data
-        run: pol build --target=json
+        run: swdata build-elections
       - name: Build Web Application
-        run: pol build --target=web
+        run: swdata build-web
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest

@@ -1,15 +1,15 @@
 from setuptools import setup
 
 setup(
-    name="pol",
+    name="swdata",
     version="0.0.1",
-    description="Canadian Political Data Analysis",
+    description="Shane Williams' data processing tools",
     author="Shane Williams",
-    packages=["pol"],
-    install_requires=["black", "click", "isort", "geopandas", "openpyxl", "pyogrio", "alive-progress"],
+    packages=["swdata"],
+    install_requires=["black", "click", "isort", "geopandas", "openpyxl", "pyogrio", "alive-progress", "wikipedia-api"],
     entry_points={
         "console_scripts": [
-            "pol = pol.cli:main",
+            "swdata = swdata.cli:main",
         ],
     },
 )

@@ -1,6 +1,13 @@
-<svg viewBox="0 0 908 356" y=0 x=0 class="svg-shadow fill-sol-light3 dark:fill-sol-dark3 w-full h-full sm:p-4">
+<svg
+	viewBox="0 0 908 356"
+	y="0"
+	x="0"
+	class="svg-shadow fill-sol-light3 dark:fill-sol-dark3 w-full h-full sm:p-4"
+>
 	<g transform="translate(2e-8,1.5068054e-4)" id="g674">
-		<path d="M 45.571,194.893 H 13.508 v -33.785 h 32.063 z m -29.063,-3 H 42.571 V 164.108 H 16.508 Z"/>
+		<path
+			d="M 45.571,194.893 H 13.508 v -33.785 h 32.063 z m -29.063,-3 H 42.571 V 164.108 H 16.508 Z"
+		/>
 	</g>
 	<rect id="rect86" height="19.999987" width="21" y="332.00015" x="4" />
 	<rect id="rect86-7" height="19.999987" width="21" y="309.00015" x="4" />

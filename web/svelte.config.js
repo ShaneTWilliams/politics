@@ -5,6 +5,6 @@ export default {
 		adapter: adapter()
 	},
 	onwarn: (warning, handler) => {
-		handler(warning)
-	},
+		handler(warning);
+	}
 };

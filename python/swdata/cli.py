@@ -1,7 +1,7 @@
 import sys
 
 import click
-from pol.targets import *
+from swdata.targets import *
 
 
 @click.group()
@@ -10,7 +10,9 @@ def cli():
 
 
 def main():
-    cli.add_command(build)
+    cli.add_command(build_elections)
+    cli.add_command(build_web)
+    cli.add_command(build_wiki)
     cli.add_command(format_code, "format")
     cli.add_command(clean)
     cli.add_command(echo)
@@ -23,6 +25,7 @@ def main():
             sys.exit(0)
         else:
             raise exit_exception
+
 
 if __name__ == "__main__":
     main()

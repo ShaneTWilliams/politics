@@ -593,7 +593,6 @@ class Color(enum.Enum):
 
 
 class Record(abc.ABC):
-    # TODO: Make this recursive and cleaner.
     def to_json(self):
         ret = {}
         for k, v in vars(self).items():
@@ -748,7 +747,6 @@ class Candidate(Record):
         self.last_name = last_name
         self.gender = gender
         self.runs = []
-        self.record = {}
         self.index = index
 
     def id(self):

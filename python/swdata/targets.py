@@ -2,7 +2,7 @@ import subprocess
 import sys
 
 import click
-from pol.paths import (
+from swdata.paths import (
     ARTIFACT_DIR,
     GEOMETRY_ARTIFACT_DIR,
     PYTHON_DIR,
@@ -10,6 +10,8 @@ from pol.paths import (
     WEB_ARTIFACT_DIR,
     WEB_DIR,
 )
+from swdata.elections.build import build as elections_build
+from swdata.elections.wiki import build as wiki_build
 
 
 def run_cmd(cmd, error, cwd=None):
@@ -31,26 +33,22 @@ def run_cmd(cmd, error, cwd=None):
 
 
 @click.command()
-@click.option("--target", type=click.Choice(["json", "web", "all"]))
-def build(target):
-    assert target is not None
+def build_elections():
+    elections_build()
 
-    if target == "json" or target == "all":
-        from pol.elections.build import build as json_build
 
-        json_build()
-
-    if target == "web" or target == "all":
-        run_cmd(
-            ["npm", "install"],
-            "Failed to install web dependencies",
-            cwd=WEB_DIR,
-        )
-        run_cmd(
-            ["npm", "run", "build"],
-            "Failed to build web artifacts",
-            cwd=WEB_DIR,
-        )
+@click.command()
+def build_web():
+    run_cmd(
+        ["npm", "install"],
+        "Failed to install web dependencies",
+        cwd=WEB_DIR,
+    )
+    run_cmd(
+        ["npm", "run", "build"],
+        "Failed to build web artifacts",
+        cwd=WEB_DIR,
+    )
 
 
 @click.command()
@@ -88,3 +86,7 @@ def clean():
 @click.command()
 def echo():
     click.echo(f"Politics!")
+
+@click.command()
+def build_wiki():
+    wiki_build()

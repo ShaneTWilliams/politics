@@ -2,12 +2,9 @@
 	xmlns="http://www.w3.org/2000/svg"
 	viewBox="0 0 1350 2100"
 	preserveAspectRatio="xMidYMid meet"
-        class="fill-sol-light3 dark:fill-sol-dark3 svg-shadow h-full w-full sm:py-4"
+	class="fill-sol-light3 dark:fill-sol-dark3 svg-shadow h-full w-full sm:py-4"
 >
-	<g
-		transform="translate(0,3102) scale(0.100000,-0.100000)"
-		stroke="none"
-	>
+	<g transform="translate(0,3102) scale(0.100000,-0.100000)" stroke="none">
 		<path
 			d="M776 30389 c-87 -23 -147 -58 -214 -123 -64 -61 -104 -129 -133 -222
 l-22 -69 -1 -9530 -1 -9530 23 -64 c41 -119 99 -199 192 -264 63 -45 109 -64
